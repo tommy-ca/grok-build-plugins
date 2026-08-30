@@ -27,7 +27,7 @@ Run that from a **host shell**, not from a Grok agent turn. This TUI sandboxes t
 
 Playbooks use `spawn_subagent` and persist-then-wake overnight. See [HARNESS.md](https://github.com/tommy-ca/pstack/blob/main/HARNESS.md).
 
-Sync Cursor `pstack/` intent into the plugin tree using [tommy-ca/pstack UPSTREAM](https://github.com/tommy-ca/pstack/blob/main/UPSTREAM): diff since the pin, copy except `make-bot-ui`, `adapt-harness.py`, TUI hand-map, `verify-harness.py`.
+When Cursor `pstack/` moves, run `python3 scripts/sync-from-upstream.py --log` then `--recipe` in [tommy-ca/pstack](https://github.com/tommy-ca/pstack). The script is print-only. Then copy except `make-bot-ui`, run `adapt-harness.py`, TUI hand-map, `verify-harness.py`. Pin is [UPSTREAM](https://github.com/tommy-ca/pstack/blob/main/UPSTREAM).
 
 ## v1 plugins
 

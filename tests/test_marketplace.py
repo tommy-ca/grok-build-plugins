@@ -57,6 +57,7 @@ def test_readme_install_is_owner_repo() -> None:
     assert "grok plugin enable pstack" in readme
     assert "grok --sandbox off plugin enable pstack" in readme
     assert "pstack:how-explorer" in readme
+    assert "sync-from-upstream.py" in readme
     spec = (ROOT / "SPEC.md").read_text(encoding="utf-8")
     assert "tommy-ca/pstack --trust" in spec
     assert "EROFS" in spec
