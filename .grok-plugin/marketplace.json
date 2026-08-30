@@ -8,7 +8,7 @@
     {
       "name": "pstack",
       "description": "Atomic pstack playbooks and principles recomposed for Grok Build.",
-      "version": "0.14.5-grokbuild.2",
+      "version": "0.14.5-grokbuild.3",
       "homepage": "https://github.com/tommy-ca/pstack",
       "license": "MIT",
       "keywords": [
@@ -19,7 +19,7 @@
       "source": {
         "source": "url",
         "url": "https://github.com/tommy-ca/pstack.git",
-        "sha": "5f65d1d1ab56b8e1d0bf8d2a62a40d9cbd3f629f"
+        "sha": "2615b454727270969e7e5b634d42033ba39988d1"
       }
     }
   ]
