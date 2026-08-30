@@ -7,9 +7,9 @@ Shape follows Grok [plugins](https://docs.x.ai/build) marketplace layout (`.grok
 ## Add this marketplace
 
 ```bash
-grok plugin marketplace add /home/tommyk/projects/grok-build-plugins
-# after GitHub exists:
-# grok plugin marketplace add tommy-ca/grok-build-plugins
+grok plugin marketplace add tommy-ca/grok-build-plugins
+# or a local checkout:
+# grok plugin marketplace add /home/tommyk/projects/grok-build-plugins
 ```
 
 Install pstack (already Grok-native: `spawn_subagent`, persist-then-wake overnight):
