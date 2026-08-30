@@ -20,6 +20,8 @@ grok plugin marketplace add tommy-ca/grok-build-plugins
 # grok plugin marketplace add /path/to/grok-build-plugins
 ```
 
+Run that from a **host shell**, not from a Grok agent turn. This TUI sandboxes tools with bubblewrap (`__GROK_INSIDE_BWRAP=1`). `[sandbox] profile` `homelab` extends `workspace`. `~/.grok/config.toml` is bind-mounted read-only. Nested `grok plugin marketplace add` then fails with EROFS (os error 30). `grok plugin install tommy-ca/pstack --trust` still works. It writes `installed-plugins/`, not `config.toml`.
+
 Playbooks use `spawn_subagent` and persist-then-wake overnight. See [HARNESS.md](https://github.com/tommy-ca/pstack/blob/main/HARNESS.md).
 
 Sync Cursor `pstack/` intent into the plugin tree using [tommy-ca/pstack UPSTREAM](https://github.com/tommy-ca/pstack/blob/main/UPSTREAM): diff since the pin, copy except `make-bot-ui`, `adapt-harness.py`, TUI hand-map, `verify-harness.py`.

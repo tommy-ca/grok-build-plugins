@@ -27,6 +27,20 @@ Shipped docs MUST use `grok plugin install tommy-ca/pstack --trust`. They MUST w
 - **THEN** they use owner/repo `tommy-ca/pstack`
 - **AND** they warn that bare `pstack` can resolve to the Cursor wrap
 
+### Requirement: Nested marketplace add documents sandbox EROFS
+
+Feature: grok-build-marketplace
+Rule: Agent bwrap cannot rewrite config.toml
+
+Shipped catalog docs MUST say `grok plugin marketplace add` rewrites `~/.grok/config.toml` and fails with EROFS (os error 30) inside a sandboxed Grok agent session. They MUST tell the operator to run add from a host shell. They MUST keep `grok plugin install tommy-ca/pstack --trust` as the in-session install path.
+
+#### Scenario: Agent nested grok cannot add a marketplace
+
+- **GIVEN** `__GROK_INSIDE_BWRAP=1` and `config.toml` bind-mounted read-only
+- **WHEN** shipped docs describe `grok plugin marketplace add`
+- **THEN** they name EROFS on `~/.grok/config.toml`
+- **AND** they name a host shell as the fix
+
 ### Requirement: v1 catalog is pstack only
 
 Feature: grok-build-marketplace

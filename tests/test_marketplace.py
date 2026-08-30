@@ -51,8 +51,12 @@ def test_readme_install_is_owner_repo() -> None:
     assert "grok plugin install pstack --trust" not in readme
     assert "many sibling folders" not in readme
     assert "rev-parse origin/main" in readme
+    assert "EROFS" in readme
+    assert "config.toml" in readme
+    assert "host shell" in readme
     spec = (ROOT / "SPEC.md").read_text(encoding="utf-8")
     assert "tommy-ca/pstack --trust" in spec
+    assert "EROFS" in spec
     delta = (
         ROOT
         / "openspec/changes/grok-build-plugins-marketplace/specs/grok-build-marketplace/spec.md"
