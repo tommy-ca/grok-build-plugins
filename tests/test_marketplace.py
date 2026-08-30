@@ -30,8 +30,19 @@ def test_catalog_does_not_vendor_skills() -> None:
     assert not (ROOT / "plugins" / "pstack" / "skills").exists()
 
 
+def test_readme_install_is_owner_repo() -> None:
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert "grok plugin install tommy-ca/pstack --trust" in readme
+    assert "cursor/plugins" in readme
+    install_pstack = "grok plugin install pstack --trust"
+    assert install_pstack not in readme
+    assert "many plugin folders" not in readme
+    assert "index + `plugins/pstack`" not in readme
+
+
 if __name__ == "__main__":
     test_index_exists()
     test_pstack_is_pinned_url()
     test_catalog_does_not_vendor_skills()
+    test_readme_install_is_owner_repo()
     print("PASS tests/test_marketplace.py")
