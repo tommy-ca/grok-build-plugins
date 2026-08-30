@@ -10,7 +10,10 @@ xAI Official already publishes a plugin named `pstack` that points at `cursor/pl
 
 ```bash
 grok plugin install tommy-ca/pstack --trust
+grok plugin enable pstack
 ```
+
+`inspect` listing pstack as enabled is trust, not `[plugins].enabled`. Skills and `pstack:how-explorer` agents load only after enable. Enable rewrites `~/.grok/config.toml`. Inside a sandboxed agent that is EROFS (os error 30). Run enable from a host shell (`grok --sandbox off plugin enable pstack`). After enable, spawn `pstack:how-explorer`, not `how-explorer`. After marketplace add, still install `tommy-ca/pstack`, never bare `pstack`.
 
 Optional catalog (browse later siblings; does not replace the owner/repo install):
 

@@ -18,6 +18,16 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **THEN** `plugins[0].source.sha` is 40 lowercase hex
 - **AND** after a pstack release the sha is set to `git rev-parse origin/main` of `tommy-ca/pstack`
 
+### Enable is required and hits EROFS in the agent sandbox
+
+- **GIVEN** pstack is installed with `--trust` and missing from `[plugins].enabled`
+- **WHEN** shipped docs name the next command
+- **THEN** the command is `grok plugin enable pstack`
+- **AND** they say `inspect` "enabled" is trust
+- **AND** they say enable rewrites `config.toml` and fails with EROFS (os error 30) inside the agent sandbox
+- **AND** they name a host shell or `grok --sandbox off plugin enable pstack`
+- **AND** they say spawn types are `pstack:how-explorer`, not `how-explorer`
+
 ### Marketplace add from a sandboxed agent is EROFS
 
 - **GIVEN** a Grok agent session with `__GROK_INSIDE_BWRAP=1` and `config.toml` bind-mounted read-only
