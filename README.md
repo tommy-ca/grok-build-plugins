@@ -2,7 +2,7 @@
 
 Grok Build marketplace catalog. Plugin **source of truth** for pstack is [tommy-ca/pstack](https://github.com/tommy-ca/pstack). This repo is an index. It does not vendor `skills/`.
 
-The index uses Grok's remote source form (`url` plus a full commit sha), the same *index mechanics* as xAI Official, not Cursor's many sibling folders and not open-pstack's vendored `plugins/pstack`. Cursor wrap and open-pstack-as-Grok-host are not the default.
+The index uses Grok's remote source form (`url` plus a full commit sha). It does not vendor plugin folders. Cursor wrap and open-pstack-as-Grok-host are not the default. Contract: [SPEC.md](./SPEC.md).
 
 ## Install pstack (Grok-native)
 
@@ -17,7 +17,7 @@ Optional catalog (browse later siblings; does not replace the owner/repo install
 ```bash
 grok plugin marketplace add tommy-ca/grok-build-plugins
 # or a local checkout:
-# grok plugin marketplace add /home/tommyk/projects/grok-build-plugins
+# grok plugin marketplace add /path/to/grok-build-plugins
 ```
 
 Playbooks use `spawn_subagent` and persist-then-wake overnight. See [HARNESS.md](https://github.com/tommy-ca/pstack/blob/main/HARNESS.md).
@@ -28,7 +28,9 @@ Sync Cursor `pstack/` intent into the plugin tree using [tommy-ca/pstack UPSTREA
 
 | Name | Source |
 | --- | --- |
-| `pstack` | pinned sha of `tommy-ca/pstack` |
+| `pstack` | pinned sha of `tommy-ca/pstack` (`marketplace.json`) |
+
+After a pstack release, set `plugins[0].source.sha` to `git -C pstack rev-parse origin/main` (40 hex) and re-run `python3 tests/test_marketplace.py`.
 
 ## Later candidates (not in this index)
 
