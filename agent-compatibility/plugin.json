@@ -1,0 +1,18 @@
+{
+  "name": "agent-compatibility",
+  "version": "1.0.0-grokbuild.0",
+  "description": "CLI-backed repo compatibility scans plus agents that audit startup, validation, and docs against reality.",
+  "author": {
+    "name": "tommy-ca"
+  },
+  "homepage": "https://github.com/tommy-ca/grok-build-plugins/tree/main/agent-compatibility",
+  "repository": "https://github.com/tommy-ca/grok-build-plugins",
+  "license": "MIT",
+  "keywords": [
+    "agent-compatibility",
+    "grok-build",
+    "audit"
+  ],
+  "skills": "./skills/",
+  "agents": "./agents/"
+}

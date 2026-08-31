@@ -36,9 +36,11 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **AND** docs tell the operator to run add from a host shell
 - **AND** `grok plugin install tommy-ca/pstack --trust` remains the in-session path
 
-### v1 is pstack only
+### Catalog lists grok-native siblings
 
-- **GIVEN** the v1 index
+- **GIVEN** the marketplace index
 - **WHEN** `plugins[]` is read
-- **THEN** the only name is `pstack`
+- **THEN** `pstack` is a pinned git url
+- **AND** `agent-compatibility` and `cli-for-agent` are local paths `./agent-compatibility` and `./cli-for-agent`
+- **AND** there is no `plugins/` directory and no `pstack/` plugin folder
 - **AND** `cursor-team-kit` and `make-bot-ui` are not required

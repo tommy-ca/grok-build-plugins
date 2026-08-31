@@ -13,4 +13,4 @@ Keep `tommy-ca/pstack` as a single-plugin repo. Keep this catalog as an index of
 
 ## Consequences
 
-v1 stays pstack only. `owner/repo#subdir` remains available if a future plugin lives in a monorepo. Bare `grok plugin install pstack` can still hit the xAI Official Cursor wrap.
+pstack stays a remote pin. `owner/repo#subdir` remains available if a future plugin lives in a monorepo. Bare `grok plugin install pstack` can still hit the xAI Official Cursor wrap. v1-only is retired by ADR 0002.

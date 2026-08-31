@@ -1,0 +1,8 @@
+Official plugin source
+https://github.com/cursor/plugins/tree/main/agent-compatibility
+tree fd878692de15a3069c21c8f429eb0b9f2fe178fa
+
+Grok-native adapter lives in this catalog sibling folder.
+Spawn is spawn_subagent with agent-compatibility:<role>.
+Scanner is npx -y agent-compatibility@latest, not vendored.
+No hooks. No commands/. No Cursor model: fast frontmatter.
