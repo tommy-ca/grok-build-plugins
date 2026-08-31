@@ -42,6 +42,13 @@ def test_pstack_is_pinned_url() -> None:
 def test_catalog_does_not_vendor_skills() -> None:
     assert not (ROOT / "skills").exists()
     assert not (ROOT / "plugins").exists()
+    adr = ROOT / "adr/0001-catalog-is-index-not-plugin-monorepo.md"
+    assert adr.is_file()
+    text = adr.read_text(encoding="utf-8")
+    assert "url" in text
+    assert "plugins/pstack" in text
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert "Do not nest tommy-ca/pstack as `plugins/pstack`" in readme
 
 
 def test_readme_install_is_owner_repo() -> None:
