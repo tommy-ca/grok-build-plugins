@@ -34,7 +34,7 @@ def test_pstack_is_pinned_url() -> None:
         want_ver = json.loads(plugin_json.read_text(encoding="utf-8"))["version"]
         assert plugins[0]["version"] == want_ver
         got = subprocess.run(
-            ["git", "-C", str(sibling), "rev-parse", "HEAD"],
+            ["git", "-C", str(sibling), "rev-parse", "origin/main"],
             check=True,
             capture_output=True,
             text=True,
