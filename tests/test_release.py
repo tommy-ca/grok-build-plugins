@@ -36,6 +36,7 @@ def test_local_versions_are_unique_and_named() -> None:
     for name, folder, manifest in local_plugins():
         version = manifest["version"]
         assert re.fullmatch(rf"\d+\.\d+\.\d+-{re.escape(name)}\.\d+", version), version
+        assert re.fullmatch(r"\d{4}\.\d{1,2}\.\d{1,2}", version) is None
         assert by_name[name]["version"] == version
         versions.append(version)
     assert len(versions) == len(set(versions)), versions

@@ -15,7 +15,8 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 
 - **GIVEN** local plugins `agent-compatibility`, `cli-for-agent`, and `tommy-mode`
 - **WHEN** `plugin.json` versions are read
-- **THEN** each version is `MAJOR.MINOR.PATCH-<plugin-name>.N`
+- **THEN** each version is SemVer `MAJOR.MINOR.PATCH-<plugin-name>.N`
+- **AND** it is not calendar-only uniqueness
 - **AND** no two local versions are equal
 - **AND** `scripts/release.sh` tags those versions with `grok --sandbox off plugin tag --push`
 - **AND** pstack is not a tag target in this repo
