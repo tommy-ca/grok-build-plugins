@@ -173,10 +173,32 @@ def test_grok_native_siblings_validate() -> None:
     assert (ROOT / "adr/0002-grok-native-sibling-plugins.md").is_file()
 
 
+def test_operator_docs_match_live_inspect() -> None:
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    ac = (ROOT / "agent-compatibility/README.md").read_text(encoding="utf-8")
+    cli = (ROOT / "cli-for-agent/README.md").read_text(encoding="utf-8")
+    spec = (ROOT / "SPEC.md").read_text(encoding="utf-8")
+    spec_main = (
+        ROOT / "openspec/specs/grok-build-marketplace/spec.md"
+    ).read_text(encoding="utf-8")
+    agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+    for text in (readme, ac, cli):
+        assert "new session" in text
+    assert "inspect.agents" in readme
+    assert "directory count" in readme
+    assert "--available" in readme
+    assert "config.toml" in readme
+    assert "host shell" in readme
+    assert "python3 tests/test_marketplace.py" in agents
+    assert "new session" in spec
+    assert "inspect.agents" in spec_main
+
+
 if __name__ == "__main__":
     test_index_exists()
     test_pstack_is_pinned_url()
     test_catalog_does_not_vendor_skills()
     test_readme_install_is_owner_repo()
     test_grok_native_siblings_validate()
+    test_operator_docs_match_live_inspect()
     print("PASS tests/test_marketplace.py")

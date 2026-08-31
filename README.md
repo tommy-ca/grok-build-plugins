@@ -11,9 +11,13 @@ grok plugin install tommy-ca/pstack --trust
 grok plugin enable pstack
 ```
 
-`inspect` listing pstack as enabled is trust, not `[plugins].enabled`. Skills and `pstack:how-explorer` agents load only after enable. Enable rewrites `~/.grok/config.toml`. Inside a sandboxed agent that is EROFS (os error 30). Run enable from a host shell (`grok --sandbox off plugin enable pstack`). After enable, spawn `pstack:how-explorer`, not `how-explorer`. After marketplace add, still install `tommy-ca/pstack`, never bare `pstack`.
+`[plugins].enabled` is the enable list. `inspect` may still print a plugin as enabled after `--trust` and before enable. Skills and `pstack:how-explorer` agents load only after enable. Then start a **new session**. grok snapshots slash names and spawn types at session start.
 
-Optional catalog (browse later siblings; does not replace the owner/repo install):
+Live roles are `inspect.agents[]`. `inspect.plugins[].provides.agents` is the agents **directory count** (often `1`), not the number of `pstack:` or `agent-compatibility:` types.
+
+Enable rewrites `~/.grok/config.toml`. Nested `grok plugin enable` and `grok plugin marketplace add` fail with EROFS (os error 30) when that file is bind-mounted read-only. That happens from a nested grok in this TUI even if `__GROK_INSIDE_BWRAP` is unset. Run add and enable from a **host shell** (`grok --sandbox off plugin enable pstack`). After enable, spawn `pstack:how-explorer`, not `how-explorer`. After marketplace add, still install `tommy-ca/pstack`, never bare `pstack`.
+
+Optional catalog (does not replace the owner/repo pstack install):
 
 ```bash
 grok plugin marketplace add tommy-ca/grok-build-plugins
@@ -21,7 +25,7 @@ grok plugin marketplace add tommy-ca/grok-build-plugins
 # grok plugin marketplace add /path/to/grok-build-plugins
 ```
 
-Run that from a **host shell**, not from a Grok agent turn. This TUI sandboxes tools with bubblewrap (`__GROK_INSIDE_BWRAP=1`). `[sandbox] profile` `homelab` extends `workspace`. `~/.grok/config.toml` is bind-mounted read-only. Nested `grok plugin marketplace add` then fails with EROFS (os error 30). `grok plugin install tommy-ca/pstack --trust` still works. It writes `installed-plugins/`, not `config.toml`.
+`grok plugin marketplace list` prints source URLs only. Browse plugin names with `grok plugin list --json --available`. Nested add still hits EROFS on `config.toml`. `grok plugin install tommy-ca/pstack --trust` still works from the agent. It writes `installed-plugins/`, not `config.toml`.
 
 Playbooks use `spawn_subagent` and persist-then-wake overnight. See [HARNESS.md](https://github.com/tommy-ca/pstack/blob/main/HARNESS.md).
 
@@ -46,7 +50,7 @@ grok plugin install cli-for-agent --trust
 grok plugin enable cli-for-agent
 ```
 
-Spawn `agent-compatibility:startup-review`, not `startup-review`.
+Spawn `agent-compatibility:startup-review`, not `startup-review`. Start a new session after enable.
 
 ## Skip list
 

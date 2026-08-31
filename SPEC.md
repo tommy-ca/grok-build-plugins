@@ -23,14 +23,15 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **GIVEN** pstack is installed with `--trust` and missing from `[plugins].enabled`
 - **WHEN** shipped docs name the next command
 - **THEN** the command is `grok plugin enable pstack`
-- **AND** they say `inspect` "enabled" is trust
-- **AND** they say enable rewrites `config.toml` and fails with EROFS (os error 30) inside the agent sandbox
+- **AND** they say `[plugins].enabled` is the enable list
+- **AND** they say enable rewrites `config.toml` and fails with EROFS (os error 30) from nested grok even when `__GROK_INSIDE_BWRAP` is unset
 - **AND** they name a host shell or `grok --sandbox off plugin enable pstack`
 - **AND** they say spawn types are `pstack:how-explorer`, not `how-explorer`
+- **AND** they say start a new session after enable
 
 ### Marketplace add from a sandboxed agent is EROFS
 
-- **GIVEN** a Grok agent session with `__GROK_INSIDE_BWRAP=1` and `config.toml` bind-mounted read-only
+- **GIVEN** a nested grok that cannot rewrite bind-mounted `config.toml`
 - **WHEN** the agent runs `grok plugin marketplace add`
 - **THEN** the nested CLI fails with EROFS (os error 30) on `~/.grok/config.toml`
 - **AND** docs tell the operator to run add from a host shell
@@ -45,3 +46,5 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **AND** there is no `plugins/` directory and no `pstack/` plugin folder
 - **AND** `cursor-team-kit` and `make-bot-ui` are not required
 - **AND** docs spawn `agent-compatibility:startup-review`, not `startup-review`
+- **AND** docs say start a new session after enable
+- **AND** docs say live roles are `inspect.agents[]` and `provides.agents` is a directory count
