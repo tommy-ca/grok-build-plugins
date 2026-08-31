@@ -8,7 +8,7 @@ grok plugin install agent-compatibility --trust
 grok plugin enable agent-compatibility
 ```
 
-Run marketplace add and enable from a host shell. Enable rewrites `~/.grok/config.toml` and hits EROFS inside the agent sandbox. After enable, spawn `agent-compatibility:startup-review`, not `startup-review`.
+Run marketplace add and enable from a host shell. Nested enable rewrites `~/.grok/config.toml` and hits EROFS even when `__GROK_INSIDE_BWRAP` is unset. After enable, start a **new session**. Spawn `agent-compatibility:startup-review`, not `startup-review`. Live roles are `inspect.agents[]`. `provides.agents` is a directory count.
 
 Then `/check-agent-compatibility`. The parent fans out four children (depth 1). Host map: [`HARNESS.md`](./HARNESS.md).
 
