@@ -53,6 +53,8 @@ def test_catalog_does_not_vendor_skills() -> None:
     assert "plugins/pstack" in text
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     assert "Do not nest tommy-ca/pstack as `plugins/pstack`" in readme
+    assert "Do not add a `pstack/` sibling to match cursor/plugins" in readme
+    assert "Cursor sibling layout for grok-native ports" in readme
     assert not (ROOT / "pstack").exists()
 
 

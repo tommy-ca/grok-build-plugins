@@ -1,6 +1,6 @@
 # grok-build-plugins
 
-Grok Build marketplace catalog. Plugin **source of truth** for pstack is [tommy-ca/pstack](https://github.com/tommy-ca/pstack). pstack stays a remote `url` plus sha. Grok-native siblings live as folders next to this README (`agent-compatibility/`, `cli-for-agent/`). This repo does not vendor `cursor/plugins`. It does not nest pstack. Contract: [SPEC.md](./SPEC.md).
+Grok Build marketplace catalog. Plugin **source of truth** for pstack is [tommy-ca/pstack](https://github.com/tommy-ca/pstack). pstack stays a remote `url` plus sha. Grok-native siblings live as folders next to this README (`agent-compatibility/`, `cli-for-agent/`). That is the Cursor sibling layout for grok-native ports. It does not mean adding `pstack/` here. This repo does not vendor `cursor/plugins`. It does not nest pstack. Contract: [SPEC.md](./SPEC.md).
 
 ## Install pstack (Grok-native)
 
@@ -66,4 +66,4 @@ Spawn `agent-compatibility:startup-review`, not `startup-review`. Start a new se
 
 ## Skip list
 
-From `cursor/plugins`, skip unless a Grok-native gap is proven: `cursor-team-kit` (use `/unslop`), `make-bot-ui`, `orchestrate` (Cursor cloud), canvases, `cursor-sdk`, `continual-learning`, `ralph-loop`, `create-plugin`. Do not nest tommy-ca/pstack as `plugins/pstack` to match cursor/plugins or open-pstack. See [adr/0001-catalog-is-index-not-plugin-monorepo.md](./adr/0001-catalog-is-index-not-plugin-monorepo.md) and [adr/0002-grok-native-sibling-plugins.md](./adr/0002-grok-native-sibling-plugins.md).
+From `cursor/plugins`, skip unless a Grok-native gap is proven: `cursor-team-kit` (use `/unslop`), `make-bot-ui`, `orchestrate` (Cursor cloud), canvases, `cursor-sdk`, `continual-learning`, `ralph-loop`, `create-plugin`. Do not nest tommy-ca/pstack as `plugins/pstack` to match open-pstack. Do not add a `pstack/` sibling to match cursor/plugins. See [adr/0001-catalog-is-index-not-plugin-monorepo.md](./adr/0001-catalog-is-index-not-plugin-monorepo.md) and [adr/0002-grok-native-sibling-plugins.md](./adr/0002-grok-native-sibling-plugins.md).

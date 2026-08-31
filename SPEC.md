@@ -55,6 +55,7 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **THEN** `pstack` is a pinned git url
 - **AND** `agent-compatibility`, `cli-for-agent`, and `tommy-mode` are local paths `./agent-compatibility`, `./cli-for-agent`, and `./tommy-mode`
 - **AND** there is no `plugins/` directory and no `pstack/` plugin folder
+- **AND** Cursor sibling dirs in this repo are grok-native ports only, not a nested pstack
 - **AND** `cursor-team-kit` and `make-bot-ui` are not required
 - **AND** docs spawn `agent-compatibility:startup-review`, not `startup-review`
 - **AND** docs say start a new session after enable
