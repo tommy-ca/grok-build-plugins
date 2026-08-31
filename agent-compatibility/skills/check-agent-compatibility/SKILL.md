@@ -13,14 +13,14 @@ Use when the user wants the full compatibility pass for a repo.
 
 ## Workflow
 
-Grok `MAX_SUBAGENT_DEPTH` is 1. This skill runs in the parent. Fan out four children in one message. Do not send effort on spawn. Omit `model` to inherit, or send `grok-4.6` if that is the shipped default. Children do not spawn.
+Grok `MAX_SUBAGENT_DEPTH` is 1. This skill runs in the parent. Fan out four children in **one** message. Each `spawn_subagent` needs `prompt`, `description` (3-5 words), `subagent_type`, `background: true` (TUI default is false), and `isolation: "none"` unless HARNESS says otherwise. Omit `model` to inherit. Do not send effort on spawn. Children do not spawn.
 
-1. Spawn `spawn_subagent` `subagent_type` `agent-compatibility:compatibility-scan-review` to run the CLI and capture the raw repository score.
-2. Spawn `agent-compatibility:startup-review` to verify whether the repo can be booted by an agent.
-3. Spawn `agent-compatibility:validation-review` to check whether an agent can verify a small change without an unnecessarily heavy loop.
-4. Spawn `agent-compatibility:docs-reliability-review` to see whether the documented setup and run paths match reality.
+1. `spawn_subagent` `subagent_type` `agent-compatibility:compatibility-scan-review` to run the CLI and capture the raw repository score.
+2. `spawn_subagent` `subagent_type` `agent-compatibility:startup-review` to verify whether the repo can be booted by an agent.
+3. `spawn_subagent` `subagent_type` `agent-compatibility:validation-review` to check whether an agent can verify a small change without an unnecessarily heavy loop.
+4. `spawn_subagent` `subagent_type` `agent-compatibility:docs-reliability-review` to see whether the documented setup and run paths match reality.
 5. Use one subagent per task. Do not collapse these checks into one agent prompt.
-6. Join with `get_command_or_subagent_output`.
+6. Join with `get_command_or_subagent_output` using `task_ids` and a positive `timeout_ms`.
 7. Compute an internal workflow score as the rounded average of Startup, Validation Loop, and Docs Reliability scores.
 8. Compute an Agent Compatibility Score as `round((deterministic_score * 0.7) + (workflow_score * 0.3))`.
 9. Synthesize the results into one final response.

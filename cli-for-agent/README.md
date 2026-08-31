@@ -10,6 +10,6 @@ grok plugin enable cli-for-agent
 
 Run marketplace add and enable from a host shell. Enable rewrites `~/.grok/config.toml` and hits EROFS inside the agent sandbox.
 
-Then `/cli-for-agents` when you design or review a CLI for agents.
+Then `/cli-for-agents` when you design or review a CLI for agents. If that name collides with a user skill, use `cli-for-agent:cli-for-agents`.
 
 pstack stays `grok plugin install tommy-ca/pstack --trust`. This plugin is a sibling, not a pstack pack.

@@ -82,6 +82,12 @@ def test_readme_install_is_owner_repo() -> None:
     assert "pstack:how-explorer" in text
     assert "agent-compatibility" in text
     assert "./agent-compatibility" in text
+    assert "agent-compatibility:startup-review" in text
+    assert "agent-compatibility:startup-review" in readme
+    adr1 = (ROOT / "adr/0001-catalog-is-index-not-plugin-monorepo.md").read_text(
+        encoding="utf-8"
+    )
+    assert "sibling" in adr1.lower() or "local path" in adr1.lower()
 
 
 FORBIDDEN = (
@@ -129,17 +135,41 @@ def test_grok_native_siblings_validate() -> None:
                 continue
             if path.suffix not in {".md", ".json"}:
                 continue
-            if path.name in {"HARNESS.md", "UPSTREAM"}:
-                continue
             text = path.read_text(encoding="utf-8")
+            skip = set()
+            if path.name in {"HARNESS.md", "UPSTREAM"}:
+                skip.add("reasoning_effort")
             for token in FORBIDDEN:
+                if token in skip:
+                    continue
                 assert token not in text, f"{path}: {token}"
     ac_skill = (
         ROOT / "agent-compatibility/skills/check-agent-compatibility/SKILL.md"
     ).read_text(encoding="utf-8")
     assert "spawn_subagent" in ac_skill
-    assert "agent-compatibility:compatibility-scan-review" in ac_skill
     assert "MAX_SUBAGENT_DEPTH" in ac_skill
+    assert "background: true" in ac_skill
+    assert "task_ids" in ac_skill
+    assert "timeout_ms" in ac_skill
+    assert "Launch `" not in ac_skill
+    for role in (
+        "compatibility-scan-review",
+        "startup-review",
+        "validation-review",
+        "docs-reliability-review",
+    ):
+        assert f"agent-compatibility:{role}" in ac_skill
+    harness = ROOT / "agent-compatibility/HARNESS.md"
+    assert harness.is_file()
+    harness_text = harness.read_text(encoding="utf-8")
+    assert "gap" in harness_text
+    assert "capabilityMode: execute" in harness_text
+    upstream = (ROOT / "agent-compatibility/UPSTREAM").read_text(encoding="utf-8")
+    assert "fd878692de15a3069c21c8f429eb0b9f2fe178fa" in upstream
+    assert (ROOT / "cli-for-agent/HARNESS.md").is_file()
+    assert "cli-for-agent:cli-for-agents" in (
+        ROOT / "cli-for-agent/README.md"
+    ).read_text(encoding="utf-8")
     assert (ROOT / "adr/0002-grok-native-sibling-plugins.md").is_file()
 
 
