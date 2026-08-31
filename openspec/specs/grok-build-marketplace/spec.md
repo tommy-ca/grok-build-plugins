@@ -37,7 +37,7 @@ Shipped docs MUST use `grok plugin install tommy-ca/pstack --trust`. They MUST w
 Feature: grok-build-marketplace
 Rule: Agent bwrap cannot rewrite config.toml
 
-Shipped catalog docs MUST say `grok plugin marketplace add` rewrites `~/.grok/config.toml` and fails with EROFS (os error 30) inside a sandboxed Grok agent session. They MUST tell the operator to run add from a host shell. They MUST keep `grok plugin install tommy-ca/pstack --trust` as the in-session install path.
+Shipped catalog docs MUST say `grok plugin marketplace add` rewrites `~/.grok/config.toml` and fails with EROFS (os error 30) inside a sandboxed Grok agent session. They MUST tell the operator to run add from a host shell. They MUST keep `grok plugin install tommy-ca/pstack --trust` as the in-session install path. They MUST say `~/.grok/hooks/` is read-only under `workspace` and `homelab`. They MUST NOT claim `read_write` of that directory unbinds the pin.
 
 #### Scenario: Agent nested grok cannot add a marketplace
 
@@ -45,6 +45,26 @@ Shipped catalog docs MUST say `grok plugin marketplace add` rewrites `~/.grok/co
 - **WHEN** shipped docs describe `grok plugin marketplace add`
 - **THEN** they name EROFS on `~/.grok/config.toml`
 - **AND** they name a host shell as the fix
+
+### Requirement: Herdr SessionStart tracking does not write hooks
+
+Feature: grok-build-marketplace
+Rule: pane.report_agent_session is tmp plus unix socket
+
+Docs MUST state that `herdr-agent-state.sh` writes a temp file under `$TMPDIR` and reports to `$HERDR_SOCKET_PATH`. `grok --sandbox devbox` is herdr-tracked for install because that profile skips Direct global hook write protection. `herdr integration install grok` MUST be a host shell, `grok --sandbox herdr-install`, `grok --sandbox off`, or `grok --sandbox devbox`.
+
+#### Scenario: why devbox is herdr-tracked for install
+
+- **GIVEN** `18-sandbox.md` Direct global hook write protection
+- **WHEN** the operator uses `grok --sandbox devbox`
+- **THEN** that protection is not applied
+- **AND** `herdr integration install grok` can write `~/.grok/hooks/herdr.json`
+
+#### Scenario: homelab still reports if hooks exist
+
+- **GIVEN** herdr grok hooks are already installed and `HERDR_ENV=1`
+- **WHEN** SessionStart runs under `homelab`
+- **THEN** the script may report over the unix socket without writing `~/.grok/hooks/`
 
 ### Requirement: Catalog lists grok-native sibling plugins
 

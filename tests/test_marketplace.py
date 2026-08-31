@@ -205,6 +205,35 @@ def test_operator_docs_match_live_inspect() -> None:
     assert "inspect.agents" in spec_main
 
 
+def test_herdr_hooks_sandbox() -> None:
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    spec = (ROOT / "SPEC.md").read_text(encoding="utf-8")
+    profile = (ROOT / ".grok/sandbox.toml").read_text(encoding="utf-8")
+    script = (ROOT / "scripts/install-herdr-grok-hooks.sh").read_text(
+        encoding="utf-8"
+    )
+    delta = (
+        ROOT
+        / "openspec/changes/grok-herdr-hooks-sandbox/specs/grok-build-marketplace/spec.md"
+    ).read_text(encoding="utf-8")
+    main = (
+        ROOT / "openspec/specs/grok-build-marketplace/spec.md"
+    ).read_text(encoding="utf-8")
+    assert "herdr integration install grok" in readme
+    assert "devbox" in readme
+    assert "herdr-install" in readme
+    assert "read_write" in readme
+    assert "HERDR_SOCKET_PATH" in spec
+    assert "Direct global hook write protection" in spec
+    assert 'extends = "devbox"' in profile
+    assert "[profiles.herdr-install]" in profile
+    assert "__GROK_INSIDE_BWRAP" in script
+    assert "herdr integration install grok" in script
+    assert "herdr-install" in delta
+    assert "pane.report_agent_session" in delta
+    assert "Herdr SessionStart tracking does not write hooks" in main
+
+
 if __name__ == "__main__":
     test_index_exists()
     test_pstack_is_pinned_url()
@@ -212,4 +241,5 @@ if __name__ == "__main__":
     test_readme_install_is_owner_repo()
     test_grok_native_siblings_validate()
     test_operator_docs_match_live_inspect()
+    test_herdr_hooks_sandbox()
     print("PASS tests/test_marketplace.py")

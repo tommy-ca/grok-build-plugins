@@ -48,6 +48,16 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **AND** docs tell the operator to run add from a host shell
 - **AND** `grok plugin install tommy-ca/pstack --trust` remains the in-session path
 
+### Herdr grok hooks
+
+- **GIVEN** `homelab` extends `workspace`
+- **WHEN** `herdr integration install grok` runs inside a Grok agent turn
+- **THEN** `~/.grok/hooks/` is EROFS
+- **AND** docs do not claim `read_write` of that directory unbinds the pin
+- **AND** install uses a host shell, `grok --sandbox herdr-install`, `grok --sandbox off`, or `grok --sandbox devbox`
+- **AND** SessionStart tracking writes `$TMPDIR` and `$HERDR_SOCKET_PATH`, not the hooks directory
+- **AND** `grok --sandbox devbox` is herdr-tracked for install because it skips Direct global hook write protection
+
 ### Catalog lists grok-native siblings
 
 - **GIVEN** the marketplace index

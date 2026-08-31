@@ -1,0 +1,7 @@
+# Project profiles. homelab stays the daily driver in ~/.grok/config.toml.
+# workspace-derived profiles pin ~/.grok/hooks read-only. read_write cannot
+# unbind that. herdr-install extends devbox so herdr integration install grok
+# can write ~/.grok/hooks. Use a new session: grok --sandbox herdr-install
+
+[profiles.herdr-install]
+extends = "devbox"

@@ -27,6 +27,24 @@ grok plugin marketplace add tommy-ca/grok-build-plugins
 
 `grok plugin marketplace list` prints source URLs only. Browse plugin names with `grok plugin list --json --available`. Nested add still hits EROFS on `config.toml`. `grok plugin install tommy-ca/pstack --trust` still works from the agent. It writes `installed-plugins/`, not `config.toml`.
 
+## Herdr grok SessionStart
+
+`herdr integration install grok` writes `~/.grok/hooks/herdr.json` and `herdr-agent-state.sh`. `grok --sandbox devbox` is correctly tracked for that install because `devbox` skips Direct global hook write protection (`18-sandbox.md`). Daily `homelab` extends `workspace`, so `~/.grok/hooks/` is bind-mounted read-only. Adding `read_write` of that path on `homelab` does not unbind it.
+
+SessionStart tracking does not write the hooks dir. The script copies stdin to `$TMPDIR` and sends `pane.report_agent_session` to `$HERDR_SOCKET_PATH` (`~/.config/herdr/herdr.sock`). That report can succeed on `homelab` when the files already exist.
+
+To install or update the grok integration, use a host shell:
+
+```bash
+./scripts/install-herdr-grok-hooks.sh
+# or:
+grok --sandbox herdr-install
+# then herdr integration install grok
+# or grok --sandbox off / grok --sandbox devbox
+```
+
+`[profiles.herdr-install]` lives in this repo's `.grok/sandbox.toml`. It extends `devbox`. Do not use it as the daily driver.
+
 Playbooks use `spawn_subagent` and persist-then-wake overnight. See [HARNESS.md](https://github.com/tommy-ca/pstack/blob/main/HARNESS.md).
 
 When Cursor `pstack/` moves, run `python3 scripts/sync-from-upstream.py --log` then `--recipe` in [tommy-ca/pstack](https://github.com/tommy-ca/pstack). The script is print-only. Then copy except `make-bot-ui`, run `adapt-harness.py`, TUI hand-map, `verify-harness.py`. Pin is [UPSTREAM](https://github.com/tommy-ca/pstack/blob/main/UPSTREAM).
