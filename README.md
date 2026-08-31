@@ -42,7 +42,7 @@ When Cursor `pstack/` moves, run `python3 scripts/sync-from-upstream.py --log` t
 
 After a pstack release, set the pstack `source.sha` to `git -C pstack rev-parse origin/main` (40 hex) and re-run `python3 tests/test_marketplace.py`. Do not tag pstack from this repo.
 
-Local sibling versions are SemVer `MAJOR.MINOR.PATCH-<plugin-name>.N` so git tags cannot collide. Do not use CalVer or a ship date as uniqueness. Ship day is on the GitHub Release. After `release.yml` is on `origin/main`, tag from a host shell:
+Local sibling versions are SemVer `MAJOR.MINOR.PATCH-<plugin-name>.N` so git tags cannot collide. Do not copy pstack `-grokbuild.N` onto locals; that was the `v1.0.0-grokbuild.0` collision. Marketplace pstack version may still be pstack's grokbuild string. That row is a url+sha pin, not a catalog tag. Do not use CalVer or a ship date as uniqueness. Ship day is on the GitHub Release. After `release.yml` is on `origin/main`, tag from a host shell:
 
 ```bash
 ./scripts/release.sh
