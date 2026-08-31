@@ -44,3 +44,4 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **AND** `agent-compatibility` and `cli-for-agent` are local paths `./agent-compatibility` and `./cli-for-agent`
 - **AND** there is no `plugins/` directory and no `pstack/` plugin folder
 - **AND** `cursor-team-kit` and `make-bot-ui` are not required
+- **AND** docs spawn `agent-compatibility:startup-review`, not `startup-review`

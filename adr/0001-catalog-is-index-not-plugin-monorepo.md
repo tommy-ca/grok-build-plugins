@@ -9,7 +9,7 @@ cursor/plugins is a 63-plugin marketplace with sibling dirs. open-pstack nests o
 
 ## Decision
 
-Keep `tommy-ca/pstack` as a single-plugin repo. Keep this catalog as an index of remote plugins. Do not vendor `cursor/plugins`. Do not nest pstack as `plugins/pstack/`. A later Grok-native plugin is another `plugins[]` entry with its own git `url` and sha.
+Keep `tommy-ca/pstack` as a single-plugin repo. Do not vendor `cursor/plugins`. Do not nest pstack as `plugins/pstack/`. A later Grok-native plugin is a sibling folder with a local path, or another `plugins[]` entry with its own git `url` and sha. See ADR 0002.
 
 ## Consequences
 

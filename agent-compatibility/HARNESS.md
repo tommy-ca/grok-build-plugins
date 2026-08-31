@@ -7,14 +7,24 @@ Host map for this plugin. grok does not load it as a skill. The parent skill rea
 | Need | Grok primitive |
 |---|---|
 | Slash | `/check-agent-compatibility` from `skills/` |
-| Spawn | `spawn_subagent` `subagent_type` `agent-compatibility:<role>` |
+| Spawn | `spawn_subagent` with `prompt`, `description` (3-5 words), `subagent_type` `agent-compatibility:<role>` |
 | Roles | `compatibility-scan-review`, `startup-review`, `validation-review`, `docs-reliability-review` |
 | Depth | `MAX_SUBAGENT_DEPTH` 1. This parent fans out. Children do not spawn. |
-| Background | `background: true` then join with `get_command_or_subagent_output` |
-| Model | omit to inherit, or `grok-4.6` if the file is absent |
+| Background | `background: true` (TUI default is false) |
+| Join | `get_command_or_subagent_output` with `task_ids` and `timeout_ms` > 0 |
+| Cancel | `kill_command_or_subagent` |
+| Resume | `resume_from` same `subagent_type`. **gap** for this skill. |
+| Model | omit `model` to inherit the parent |
 | Effort | agent frontmatter `effort`. Never send `reasoning_effort` on spawn. |
-| Read-only | body rule. Not a spawn field. |
+| Tool policy | agent `capabilityMode: execute` (shell allowed, no file edits). Body says do not edit. Not grok `read-only` (that mode has no shell, so no `npx`). |
 | Isolation | `none` unless the child must not touch the writer tree |
+| Todos | `todo_write`. **gap** for this skill. |
+| Ask the human | `ask_user_question`. **gap** for this skill. |
+| Overnight | `/loop` → `scheduler_create`. **gap** for this skill. |
+| Watch | `monitor`. **gap** for this skill. |
+| Skill order | pstack, then user, then this plugin |
+| Workflows | Not a plugin field. **gap**. |
+| Hooks | none. This plugin has no `hooks` key. |
 
 Bare role names are unknown. Spawn `agent-compatibility:startup-review`, not `startup-review`.
 
