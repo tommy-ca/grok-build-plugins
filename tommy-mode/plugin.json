@@ -1,6 +1,6 @@
 {
   "name": "tommy-mode",
-  "version": "1.0.0-grokbuild.0",
+  "version": "1.0.0-tommy-mode.0",
   "description": "Personal overlay on poteto-mode: pstack-first OpenSpec, worktrees, merge-to-main with SSH push, live verification.",
   "author": {
     "name": "tommy-ca"

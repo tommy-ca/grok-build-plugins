@@ -25,7 +25,7 @@
     {
       "name": "agent-compatibility",
       "description": "CLI-backed repo compatibility scans plus agents that audit startup, validation, and docs against reality.",
-      "version": "1.0.0-grokbuild.0",
+      "version": "1.0.0-agent-compatibility.0",
       "homepage": "https://github.com/tommy-ca/grok-build-plugins/tree/main/agent-compatibility",
       "license": "MIT",
       "keywords": [
@@ -37,7 +37,7 @@
     {
       "name": "cli-for-agent",
       "description": "Patterns for designing CLIs that coding agents can run reliably.",
-      "version": "1.0.0-grokbuild.0",
+      "version": "1.0.0-cli-for-agent.0",
       "homepage": "https://github.com/tommy-ca/grok-build-plugins/tree/main/cli-for-agent",
       "license": "MIT",
       "keywords": [
@@ -50,7 +50,7 @@
     {
       "name": "tommy-mode",
       "description": "Personal overlay on poteto-mode. Not a pstack pack.",
-      "version": "1.0.0-grokbuild.0",
+      "version": "1.0.0-tommy-mode.0",
       "homepage": "https://github.com/tommy-ca/grok-build-plugins/tree/main/tommy-mode",
       "license": "MIT",
       "keywords": [

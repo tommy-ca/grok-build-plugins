@@ -11,6 +11,15 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **THEN** the command is `grok plugin install tommy-ca/pstack --trust`
 - **AND** they warn that bare `pstack` can resolve to the Cursor wrap
 
+### Local sibling versions are unique tags
+
+- **GIVEN** local plugins `agent-compatibility`, `cli-for-agent`, and `tommy-mode`
+- **WHEN** `plugin.json` versions are read
+- **THEN** each version is `MAJOR.MINOR.PATCH-<plugin-name>.N`
+- **AND** no two local versions are equal
+- **AND** `scripts/release.sh` tags those versions with `grok --sandbox off plugin tag --push`
+- **AND** pstack is not a tag target in this repo
+
 ### Pin is recorded
 
 - **GIVEN** `.grok-plugin/marketplace.json`

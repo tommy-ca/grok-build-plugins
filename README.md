@@ -40,7 +40,16 @@ When Cursor `pstack/` moves, run `python3 scripts/sync-from-upstream.py --log` t
 | `cli-for-agent` | `./cli-for-agent` |
 | `tommy-mode` | `./tommy-mode` |
 
-After a pstack release, set the pstack `source.sha` to `git -C pstack rev-parse origin/main` (40 hex) and re-run `python3 tests/test_marketplace.py`.
+After a pstack release, set the pstack `source.sha` to `git -C pstack rev-parse origin/main` (40 hex) and re-run `python3 tests/test_marketplace.py`. Do not tag pstack from this repo.
+
+Local sibling versions are `1.0.0-<plugin-name>.N` so git tags cannot collide. After `release.yml` is on `origin/main`, tag from a host shell:
+
+```bash
+./scripts/release.sh
+./scripts/release.sh agent-compatibility
+```
+
+That runs `grok --sandbox off plugin tag --push` on each local folder. If the local tag exists and origin does not, it `git push origin` that ref. Then `gh release view` or `gh release create --verify-tag --latest=false`. Nested grok cannot write `.git/refs/tags`.
 
 Install siblings after marketplace add (host shell):
 

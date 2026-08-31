@@ -1,6 +1,6 @@
 {
   "name": "agent-compatibility",
-  "version": "1.0.0-grokbuild.0",
+  "version": "1.0.0-agent-compatibility.0",
   "description": "CLI-backed repo compatibility scans plus agents that audit startup, validation, and docs against reality.",
   "author": {
     "name": "tommy-ca"

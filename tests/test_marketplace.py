@@ -116,6 +116,7 @@ def test_grok_native_siblings_validate() -> None:
         folder = ROOT / name
         plugin = json.loads((folder / "plugin.json").read_text(encoding="utf-8"))
         assert plugin["name"] == name
+        assert plugin["version"] == by_name[name]["version"]
         assert "skills" in plugin
         assert "hooks" not in plugin
         assert "commands" not in plugin
