@@ -1,0 +1,17 @@
+{
+  "name": "tommy-mode",
+  "version": "1.0.0-grokbuild.0",
+  "description": "Personal overlay on poteto-mode: pstack-first OpenSpec, worktrees, merge-to-main with SSH push, live verification.",
+  "author": {
+    "name": "tommy-ca"
+  },
+  "homepage": "https://github.com/tommy-ca/grok-build-plugins/tree/main/tommy-mode",
+  "repository": "https://github.com/tommy-ca/grok-build-plugins",
+  "license": "MIT",
+  "keywords": [
+    "tommy-mode",
+    "poteto-mode",
+    "grok-build"
+  ],
+  "skills": "./skills/"
+}
