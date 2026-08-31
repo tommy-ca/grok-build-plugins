@@ -39,4 +39,4 @@ After a pstack release, set `plugins[0].source.sha` to `git -C pstack rev-parse 
 
 ## Later candidates (not in this index)
 
-From `cursor/plugins`, skip unless a Grok-native gap is proven: `cursor-team-kit` (use `/unslop`), `make-bot-ui`, `orchestrate` (Cursor cloud), canvases, `cursor-sdk`. Possible later Grok ports after an adapter: `cli-for-agent`, `continual-learning`, `ralph-loop`, `create-plugin`.
+From `cursor/plugins`, skip unless a Grok-native gap is proven: `cursor-team-kit` (use `/unslop`), `make-bot-ui`, `orchestrate` (Cursor cloud), canvases, `cursor-sdk`. Possible later Grok ports after an adapter: `cli-for-agent`, `continual-learning`, `ralph-loop`, `create-plugin`. Do not nest tommy-ca/pstack as `plugins/pstack` to match cursor/plugins or open-pstack. A later plugin is another `plugins[]` row with `url` and sha. See [adr/0001-catalog-is-index-not-plugin-monorepo.md](./adr/0001-catalog-is-index-not-plugin-monorepo.md).
