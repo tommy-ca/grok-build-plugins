@@ -10,5 +10,5 @@
 
 ## 3. Prove and archive
 
-- [ ] 3.1 Land writers on `origin/main`. From a host shell run `./scripts/release.sh`. Confirm tags, GitHub Releases, and a non-empty `gh run list --workflow=release.yml`.
-- [ ] 3.2 `openspec validate catalog-sibling-release-tag --type change --strict` then archive after implementation is on `main`.
+- [x] 3.1 Land writers on `origin/main`. From a host shell run `./scripts/release.sh`. Confirm tags, GitHub Releases, and a non-empty `gh run list --workflow=release.yml`.
+- [x] 3.2 `openspec validate catalog-sibling-release-tag --type change --strict` then archive after implementation is on `main`.
