@@ -1,7 +1,7 @@
 # grok-build-marketplace Specification
 
 ## Purpose
-TBD - created by archiving change grok-build-plugins-marketplace. Update Purpose after archive.
+Catalog lists pstack as a remote pin and grok-native siblings as local folders. It does not vendor cursor/plugins or nest pstack.
 
 ## Requirements
 
@@ -10,7 +10,7 @@ TBD - created by archiving change grok-build-plugins-marketplace. Update Purpose
 Feature: grok-build-marketplace
 Rule: tommy-ca/pstack is the plugin source of truth
 
-The marketplace MUST list a plugin named `pstack` whose source is a git URL of `https://github.com/tommy-ca/pstack.git` pinned to a full 40-hex sha. It MUST NOT rsync `skills/` into a second copy.
+The marketplace MUST list a plugin named `pstack` whose source is a git URL of `https://github.com/tommy-ca/pstack.git` pinned to a full 40-hex sha. It MUST NOT rsync `skills/` into a second copy. It MUST NOT nest pstack as `plugins/pstack` or as a `pstack/` sibling folder in this repo.
 
 #### Scenario: Pin is recorded
 
@@ -46,18 +46,20 @@ Shipped catalog docs MUST say `grok plugin marketplace add` rewrites `~/.grok/co
 - **THEN** they name EROFS on `~/.grok/config.toml`
 - **AND** they name a host shell as the fix
 
-### Requirement: v1 catalog is pstack only
+### Requirement: Catalog lists grok-native sibling plugins
 
 Feature: grok-build-marketplace
-Rule: Optional Cursor siblings stay optional
+Rule: Cursor sibling layout without vendoring cursor/plugins
 
-`cursor-team-kit` and `make-bot-ui` MUST NOT be required Grok plugins.
+The marketplace MUST list `agent-compatibility` and `cli-for-agent` as local sources (`./agent-compatibility`, `./cli-for-agent`). Those folders MUST contain a grok `plugin.json` with `skills` (and `agents` when the plugin has roles). They MUST NOT declare `hooks`, `commands`, or MCP. `cursor-team-kit`, canvases, `cursor-sdk`, and `orchestrate` MUST NOT be required.
 
-#### Scenario: v1 catalog is pstack only
+#### Scenario: siblings are local, pstack is remote
 
-- **GIVEN** the v1 marketplace index
-- **WHEN** plugins[] is read
-- **THEN** the only installable plugin is `pstack`
+- **GIVEN** `.grok-plugin/marketplace.json`
+- **WHEN** `plugins[]` is read
+- **THEN** `pstack` uses a pinned git url
+- **AND** `agent-compatibility` and `cli-for-agent` use local paths
+- **AND** there is no `plugins/` directory and no `pstack/` plugin folder
 
 ### Requirement: Documented install also enables pstack
 

@@ -21,6 +21,31 @@
         "url": "https://github.com/tommy-ca/pstack.git",
         "sha": "22e235e81ef7bf76f5f21c5d4546b864a34f6770"
       }
+    },
+    {
+      "name": "agent-compatibility",
+      "description": "CLI-backed repo compatibility scans plus agents that audit startup, validation, and docs against reality.",
+      "version": "1.0.0-grokbuild.0",
+      "homepage": "https://github.com/tommy-ca/grok-build-plugins/tree/main/agent-compatibility",
+      "license": "MIT",
+      "keywords": [
+        "agent-compatibility",
+        "grok-build"
+      ],
+      "source": "./agent-compatibility"
+    },
+    {
+      "name": "cli-for-agent",
+      "description": "Patterns for designing CLIs that coding agents can run reliably.",
+      "version": "1.0.0-grokbuild.0",
+      "homepage": "https://github.com/tommy-ca/grok-build-plugins/tree/main/cli-for-agent",
+      "license": "MIT",
+      "keywords": [
+        "cli",
+        "agents",
+        "grok-build"
+      ],
+      "source": "./cli-for-agent"
     }
   ]
 }

@@ -18,7 +18,10 @@ def test_pstack_is_pinned_url() -> None:
     data = json.loads(INDEX.read_text(encoding="utf-8"))
     assert data["name"] == "grok-build-plugins"
     plugins = data["plugins"]
-    assert [p["name"] for p in plugins] == ["pstack"]
+    names = [p["name"] for p in plugins]
+    assert names[0] == "pstack"
+    assert "agent-compatibility" in names
+    assert "cli-for-agent" in names
     src = plugins[0]["source"]
     assert src.get("source") == "url"
     assert src["url"] == "https://github.com/tommy-ca/pstack.git"
@@ -49,6 +52,7 @@ def test_catalog_does_not_vendor_skills() -> None:
     assert "plugins/pstack" in text
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     assert "Do not nest tommy-ca/pstack as `plugins/pstack`" in readme
+    assert not (ROOT / "pstack").exists()
 
 
 def test_readme_install_is_owner_repo() -> None:
@@ -56,7 +60,6 @@ def test_readme_install_is_owner_repo() -> None:
     assert "grok plugin install tommy-ca/pstack --trust" in readme
     assert "xAI Official already publishes a plugin named `pstack`" in readme
     assert "grok plugin install pstack --trust" not in readme
-    assert "many sibling folders" not in readme
     assert "rev-parse origin/main" in readme
     assert "EROFS" in readme
     assert "config.toml" in readme
@@ -77,6 +80,67 @@ def test_readme_install_is_owner_repo() -> None:
     text = spec_main.read_text(encoding="utf-8")
     assert "## Requirements" in text
     assert "pstack:how-explorer" in text
+    assert "agent-compatibility" in text
+    assert "./agent-compatibility" in text
+
+
+FORBIDDEN = (
+    "model: fast",
+    "readonly: true",
+    "readonly:true",
+    "AskQuestion",
+    "the Task tool",
+    "capability_mode",
+    "reasoning_effort",
+    ".cursor-plugin",
+)
+
+
+def test_grok_native_siblings_validate() -> None:
+    data = json.loads(INDEX.read_text(encoding="utf-8"))
+    by_name = {p["name"]: p for p in data["plugins"]}
+    for name in ("agent-compatibility", "cli-for-agent"):
+        src = by_name[name]["source"]
+        if isinstance(src, str):
+            path = src
+        else:
+            path = src.get("path") or ""
+        assert path in {f"./{name}", name}
+        folder = ROOT / name
+        plugin = json.loads((folder / "plugin.json").read_text(encoding="utf-8"))
+        assert plugin["name"] == name
+        assert "skills" in plugin
+        assert "hooks" not in plugin
+        assert "commands" not in plugin
+        assert "mcpServers" not in plugin
+        assert not (folder / "commands").exists()
+        assert not (folder / "hooks").exists()
+        assert not (folder / ".mcp.json").exists()
+        assert not (folder / ".cursor-plugin").exists()
+        proc = subprocess.run(
+            ["grok", "plugin", "validate", str(folder)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        assert proc.returncode == 0, proc.stderr or proc.stdout
+        for path in folder.rglob("*"):
+            if not path.is_file():
+                continue
+            if path.suffix not in {".md", ".json"}:
+                continue
+            if path.name in {"HARNESS.md", "UPSTREAM"}:
+                continue
+            text = path.read_text(encoding="utf-8")
+            for token in FORBIDDEN:
+                assert token not in text, f"{path}: {token}"
+    ac_skill = (
+        ROOT / "agent-compatibility/skills/check-agent-compatibility/SKILL.md"
+    ).read_text(encoding="utf-8")
+    assert "spawn_subagent" in ac_skill
+    assert "agent-compatibility:compatibility-scan-review" in ac_skill
+    assert "MAX_SUBAGENT_DEPTH" in ac_skill
+    assert (ROOT / "adr/0002-grok-native-sibling-plugins.md").is_file()
 
 
 if __name__ == "__main__":
@@ -84,4 +148,5 @@ if __name__ == "__main__":
     test_pstack_is_pinned_url()
     test_catalog_does_not_vendor_skills()
     test_readme_install_is_owner_repo()
+    test_grok_native_siblings_validate()
     print("PASS tests/test_marketplace.py")
