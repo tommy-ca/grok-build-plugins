@@ -70,18 +70,13 @@ def test_readme_install_is_owner_repo() -> None:
     assert "EROFS" in spec
     assert "grok plugin enable pstack" in spec
     assert "pstack:how-explorer" in spec
-    delta = (
-        ROOT
-        / "openspec/changes/grok-build-plugins-marketplace/specs/grok-build-marketplace/spec.md"
+    spec_main = (
+        ROOT / "openspec/specs/grok-build-marketplace/spec.md"
     )
-    assert delta.is_file()
-    assert "## ADDED Requirements" in delta.read_text(encoding="utf-8")
-    enable_delta = (
-        ROOT
-        / "openspec/changes/pstack-enable-spawn-docs/specs/grok-build-marketplace/spec.md"
-    )
-    assert enable_delta.is_file()
-    assert "pstack:how-explorer" in enable_delta.read_text(encoding="utf-8")
+    assert spec_main.is_file()
+    text = spec_main.read_text(encoding="utf-8")
+    assert "## Requirements" in text
+    assert "pstack:how-explorer" in text
 
 
 if __name__ == "__main__":
