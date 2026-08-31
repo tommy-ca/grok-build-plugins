@@ -51,14 +51,14 @@ Shipped catalog docs MUST say `grok plugin marketplace add` rewrites `~/.grok/co
 Feature: grok-build-marketplace
 Rule: Cursor sibling layout without vendoring cursor/plugins
 
-The marketplace MUST list `agent-compatibility` and `cli-for-agent` as local sources (`./agent-compatibility`, `./cli-for-agent`). Those folders MUST contain a grok `plugin.json` with `skills` (and `agents` when the plugin has roles). They MUST NOT declare `hooks`, `commands`, or MCP. `cursor-team-kit`, canvases, `cursor-sdk`, and `orchestrate` MUST NOT be required.
+The marketplace MUST list `agent-compatibility`, `cli-for-agent`, and `tommy-mode` as local sources (`./agent-compatibility`, `./cli-for-agent`, `./tommy-mode`). `tommy-mode` MUST NOT live in the pstack plugin tree. Those folders MUST contain a grok `plugin.json` with `skills` (and `agents` when the plugin has roles). They MUST NOT declare `hooks`, `commands`, or MCP. `cursor-team-kit`, canvases, `cursor-sdk`, and `orchestrate` MUST NOT be required.
 
 #### Scenario: siblings are local, pstack is remote
 
 - **GIVEN** `.grok-plugin/marketplace.json`
 - **WHEN** `plugins[]` is read
 - **THEN** `pstack` uses a pinned git url
-- **AND** `agent-compatibility` and `cli-for-agent` use local paths
+- **AND** `agent-compatibility`, `cli-for-agent`, and `tommy-mode` use local paths
 - **AND** there is no `plugins/` directory and no `pstack/` plugin folder
 
 ### Requirement: Documented install also enables pstack

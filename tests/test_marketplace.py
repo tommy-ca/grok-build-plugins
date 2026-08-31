@@ -22,6 +22,7 @@ def test_pstack_is_pinned_url() -> None:
     assert names[0] == "pstack"
     assert "agent-compatibility" in names
     assert "cli-for-agent" in names
+    assert "tommy-mode" in names
     src = plugins[0]["source"]
     assert src.get("source") == "url"
     assert src["url"] == "https://github.com/tommy-ca/pstack.git"
@@ -105,7 +106,7 @@ FORBIDDEN = (
 def test_grok_native_siblings_validate() -> None:
     data = json.loads(INDEX.read_text(encoding="utf-8"))
     by_name = {p["name"]: p for p in data["plugins"]}
-    for name in ("agent-compatibility", "cli-for-agent"):
+    for name in ("agent-compatibility", "cli-for-agent", "tommy-mode"):
         src = by_name[name]["source"]
         if isinstance(src, str):
             path = src
@@ -171,18 +172,24 @@ def test_grok_native_siblings_validate() -> None:
         ROOT / "cli-for-agent/README.md"
     ).read_text(encoding="utf-8")
     assert (ROOT / "adr/0002-grok-native-sibling-plugins.md").is_file()
+    tm = (ROOT / "tommy-mode/skills/tommy-mode/SKILL.md").read_text(encoding="utf-8")
+    assert "disable-model-invocation: true" in tm
+    assert "tommy-ca/grok-build-plugins" not in tm
+    assert "plugins/pstack" not in tm
+    assert "upstream-cursor-plugins" not in tm
 
 
 def test_operator_docs_match_live_inspect() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     ac = (ROOT / "agent-compatibility/README.md").read_text(encoding="utf-8")
     cli = (ROOT / "cli-for-agent/README.md").read_text(encoding="utf-8")
+    tm_readme = (ROOT / "tommy-mode/README.md").read_text(encoding="utf-8")
     spec = (ROOT / "SPEC.md").read_text(encoding="utf-8")
     spec_main = (
         ROOT / "openspec/specs/grok-build-marketplace/spec.md"
     ).read_text(encoding="utf-8")
     agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
-    for text in (readme, ac, cli):
+    for text in (readme, ac, cli, tm_readme):
         assert "new session" in text
     assert "inspect.agents" in readme
     assert "directory count" in readme

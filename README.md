@@ -38,6 +38,7 @@ When Cursor `pstack/` moves, run `python3 scripts/sync-from-upstream.py --log` t
 | `pstack` | pinned sha of `tommy-ca/pstack` (`marketplace.json`) |
 | `agent-compatibility` | `./agent-compatibility` |
 | `cli-for-agent` | `./cli-for-agent` |
+| `tommy-mode` | `./tommy-mode` |
 
 After a pstack release, set the pstack `source.sha` to `git -C pstack rev-parse origin/main` (40 hex) and re-run `python3 tests/test_marketplace.py`.
 
@@ -48,6 +49,8 @@ grok plugin install agent-compatibility --trust
 grok plugin enable agent-compatibility
 grok plugin install cli-for-agent --trust
 grok plugin enable cli-for-agent
+grok plugin install tommy-mode --trust
+grok --sandbox off plugin enable tommy-mode
 ```
 
 Spawn `agent-compatibility:startup-review`, not `startup-review`. Start a new session after enable.

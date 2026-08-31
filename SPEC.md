@@ -42,7 +42,7 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **GIVEN** the marketplace index
 - **WHEN** `plugins[]` is read
 - **THEN** `pstack` is a pinned git url
-- **AND** `agent-compatibility` and `cli-for-agent` are local paths `./agent-compatibility` and `./cli-for-agent`
+- **AND** `agent-compatibility`, `cli-for-agent`, and `tommy-mode` are local paths `./agent-compatibility`, `./cli-for-agent`, and `./tommy-mode`
 - **AND** there is no `plugins/` directory and no `pstack/` plugin folder
 - **AND** `cursor-team-kit` and `make-bot-ui` are not required
 - **AND** docs spawn `agent-compatibility:startup-review`, not `startup-review`
