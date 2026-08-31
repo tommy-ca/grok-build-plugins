@@ -37,6 +37,7 @@ def test_local_versions_are_unique_and_named() -> None:
         version = manifest["version"]
         assert re.fullmatch(rf"\d+\.\d+\.\d+-{re.escape(name)}\.\d+", version), version
         assert re.fullmatch(r"\d{4}\.\d{1,2}\.\d{1,2}", version) is None
+        assert "grokbuild" not in version, version
         assert by_name[name]["version"] == version
         versions.append(version)
     assert len(versions) == len(set(versions)), versions
@@ -45,8 +46,11 @@ def test_local_versions_are_unique_and_named() -> None:
         "cli-for-agent",
         "tommy-mode",
     }
-    pstack = by_name["pstack"]["source"]
-    assert pstack.get("source") == "url"
+    pstack = by_name["pstack"]
+    assert pstack["source"].get("source") == "url"
+    assert re.fullmatch(r"\d+\.\d+\.\d+-grokbuild\.\d+", pstack["version"]), pstack[
+        "version"
+    ]
 
 
 def test_release_script_host_sandbox_and_dual_writer() -> None:
