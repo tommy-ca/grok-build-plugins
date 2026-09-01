@@ -212,10 +212,6 @@ def test_herdr_hooks_sandbox() -> None:
     script = (ROOT / "scripts/install-herdr-grok-hooks.sh").read_text(
         encoding="utf-8"
     )
-    delta = (
-        ROOT
-        / "openspec/changes/grok-herdr-hooks-sandbox/specs/grok-build-marketplace/spec.md"
-    ).read_text(encoding="utf-8")
     main = (
         ROOT / "openspec/specs/grok-build-marketplace/spec.md"
     ).read_text(encoding="utf-8")
@@ -229,8 +225,8 @@ def test_herdr_hooks_sandbox() -> None:
     assert "[profiles.herdr-install]" in profile
     assert "__GROK_INSIDE_BWRAP" in script
     assert "herdr integration install grok" in script
-    assert "herdr-install" in delta
-    assert "pane.report_agent_session" in delta
+    assert "herdr-install" in main
+    assert "pane.report_agent_session" in main
     assert "Herdr SessionStart tracking does not write hooks" in main
 
 

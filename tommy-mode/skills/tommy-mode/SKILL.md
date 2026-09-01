@@ -48,7 +48,11 @@ After GREEN, parent-spawn `pstack:independent-verifier`. Review the child's diff
 
 `inspect.plugins[].provides.agents` is the agents directory count, often `1`. Live types are `inspect.agents[]`.
 
-Nested `grok plugin enable` and `grok plugin marketplace add` rewrite `~/.grok/config.toml` and hit EROFS. Run them as `grok --sandbox off …`. Daily TUI stays `workspace`. `grok plugin install … --trust` does not need sandbox off.
+Nested `grok inspect` is a new process. It applies `[sandbox] profile` from config. It is not this TUI. Measure this process with `argv`, `__GROK_INSIDE_BWRAP`, session `summary.json` `sandbox_profile`, `/proc/self/mountinfo`, and `~/.grok/sandbox-events.jsonl`. `--sandbox` on the TUI is sticky on resume, including when a built-in profile fail-opens.
+
+Nested `grok plugin enable` and `grok plugin marketplace add` rewrite `~/.grok/config.toml` and hit EROFS. Run them as `grok --sandbox off …`. Daily TUI stays `workspace` or host `homelab` (both workspace-derived). Do not run the all-day TUI as `devbox`. `grok plugin install … --trust` does not need sandbox off.
+
+DestDir writes outside Chezmoi source (`plugin enable` only in live `config.toml`, `cp` into `$HOME`) revert on the next trunk apply. Proof is apply from merged source plus empty `chezmoi diff`.
 
 ## Understand first
 
