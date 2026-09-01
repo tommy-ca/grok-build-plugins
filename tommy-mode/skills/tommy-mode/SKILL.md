@@ -34,6 +34,14 @@ Push back when a request recouples two products or invents a host field. A recom
 
 Worktrees live at `$REPO/.worktrees/$BRANCH_NAME`. Preserve slashes in the branch name. Isolation checkout is `main`. Feature work is not that tree.
 
+The user skill `/using-git-worktrees` owns that path. pstack `HARNESS.md` puts user `/using-git-worktrees` before builtin `isolation: "worktree"`. Create `$REPO/.worktrees/$BRANCH_NAME` first. Then spawn with `isolation: none` and `cwd` set to that path.
+
+Do not pass `spawn_subagent isolation="worktree"`. That creates `~/.grok/worktrees/<repo>/subagent-<uuid>`. It is not the skill. `cwd` cannot be combined with `isolation: worktree`.
+
+If this session cannot write the target repo, split a Herdr pane. Start a grok worker there (`homelab` or `workspace`, not `devbox`) with cwd of that repo, and land the change. Do not edit a different product to dodge the deny.
+
+Durable OpenSpec lives in dest-env (`/home/tommyk/projects/dev-env`), not a product-pack `intent/` tree. When sandbox returns EACCES on dest-env, apply on the host.
+
 Commits are signed. Conventional subjects. Merge with `--no-ff` into `main`, then `git push` over SSH.
 
 Do not rewrite published history.
