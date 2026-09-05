@@ -4,7 +4,7 @@ Host map. grok does not load it as a skill.
 
 | Need | Grok primitive |
 |---|---|
-| Slash | `/long-horizon-swarm` |
+| Slash | `/long-horizon-swarm` plus overlay skills `/field-guide`, `/review-lenses`, `/openspec-intent-flow` |
 | Spawn | none of its own. Overlay uses `pstack:<role>` from the pstack plugin |
 | Skill order | pstack, then user, then this plugin |
 | Hooks | none |

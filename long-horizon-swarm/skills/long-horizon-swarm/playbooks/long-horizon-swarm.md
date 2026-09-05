@@ -2,29 +2,24 @@
 
 **You own the spec and the tree. You never write product code.** Overlay on Orchestrate. Use when the work is a standing program that must run for hours or days, the user steps away, or the user names long-horizon swarm / swarm economics / spec-as-root. One-session tasks stay on Autonomous run. Short fan-out stays on `/swarm`.
 
-Copy poteto-mode `playbooks/orchestrate.md` steps into the todolist first. Then copy the gates below. A skipped gate stays listed with `skip: <reason>`.
+Open a todolist with Orchestrate steps first, then the steps below copied in verbatim. A skipped step stays listed with `skip: <reason>`.
 
-OverlayGate is refuse or run. Parse `grok inspect --json` `.skills[].name` at this boundary. Trust OverlayRun inside the gates.
+This playbook calls overlay skills and pstack leaves by name. It does not replace them.
 
-This playbook adds overlay policy. It does not replace Orchestrate drain, frontier, or land.
+If `openspec/changes/<id>/` exists, treat it as the Spec-lowering pipeline via **openspec-intent-flow**. Artifact order is proposal -> (specs, design) -> adr -> tasks. Refuse worker spawn until tasks.md exists. GIVEN/WHEN/THEN scenarios are Brief.ACCEPTANCE.
 
-#### Gate Spec
+OverlayGate is refuse or run. Parse `grok inspect --json` `.skills[].name` at this boundary.
 
-OpenSpec is mandatory. `schema: intent-driven`. Artifact order is proposal, then specs and design in parallel, then adr, then tasks. Capability kebab is conceptKey. Each `#### Scenario` is one Brief.ACCEPTANCE line, copied not paraphrased. Each `tasks.md` checkbox is one parent-owned unit.
-
-Refuse worker spawn until `adr.md` and `tasks.md` exist. Living `openspec/specs/` stays read-only during apply. Propose, then apply, then archive. No blob spec fallback. If the operator does not want OpenSpec, they wanted Orchestrate, not this overlay.
-
-`bindOpenSpec(openspec/changes/<id>/)` yields SpecRoot. Adopt an existing change folder. Do not invent a second spec tree.
-
-Before any `spawn_subagent`, create `long-horizon/<id>/field-guide/` if missing. Seed `index.md` with the goal one-liner, the done predicate, and pointers to surprises, seams, and anti-patterns. If `index.md` exists, adopt it. Drain curates. It does not create the first index.
-
-#### Gate Spawn contract
-
-Planner is this session. Workers implement. CostPolicy reads `~/.grok/pstack-models.toml`.
+1) Frame the Spec. Prefer an OpenSpec intent-driven change folder (`openspec/changes/<id>/`) via the **openspec-intent-flow** skill. Write proposal.md first. Specs and design may proceed in parallel. adr.md before tasks.md. No blob spec fallback. State the done predicate as something countable. If one agent could finish inside the session budget, `skip: route to Autonomous run` and stop.
+2) Install the runtime. Before any `spawn_subagent`, seed Field Guide via the **field-guide** skill under `long-horizon/<id>/`. Create `design-docs/` and `spend.tsv` there. Write `openspec/config.yaml` with `schema: intent-driven` when using OpenSpec. Write standing orders from `references/standing-orders-template.md` before any spawn. Open the trail via show-me-your-work. HostStore is Orchestrate durable-state by name.
+3) Lower the accepted artifacts into a TaskTree. Each `tasks.md` box becomes a TaskNode. `conceptKey` equals the OpenSpec capability id. Role and model come from **planner-worker-split**. Two live nodes must not share a conceptKey. Contested decomposition or a one-way artifact shape runs the pstack `arena` skill (Phases A–F) before implementer spawn; write the synthesis note under `long-horizon/<id>/arena/<unit-id>.md`. Uncontested nodes list `skip: arena, <reason>` on the unit. Refuse to spawn if tasks.md exists without adr.md.
+4) Write the throughput checkpoint as four todo items (Feature step 3). Blocking first steps. Independent workstreams. Shared mutable state. Smallest safe decomposition.
+5) Author a Brief per ready leaf using the Orchestrate brief template. Fields are GOAL, SCOPE, CONTEXT, ACCEPTANCE, VERIFY, TIMEBOX, FORBIDDEN, REPORT, STANDING, FIELD_GUIDE. Acceptance lines are the Gherkin scenarios for that capability, copied not paraphrased. Inject `field-guide/index.md` and standing orders verbatim. Missing Brief fields are a refuse-to-spawn condition.
+6) Spawn workers with exclusive write targets.
 
 ```
 spawn_subagent
-  prompt: Brief(GOAL, SCOPE, CONTEXT, ACCEPTANCE, VERIFY, TIMEBOX, FORBIDDEN, REPORT, STANDING, FIELD_GUIDE)
+  prompt: Brief
   description: <3-5 words>
   subagent_type: pstack:feature
   background: true
@@ -32,82 +27,44 @@ spawn_subagent
   model: <toml key feature, or grok-4.6, omit if inherit-parent>
 ```
 
-Verifier uses `pstack:independent-verifier` on a different model when one exists. Reconciler uses `pstack:poteto-agent` and writes conflicts and design only. Short coverage inside a leaf still uses `/swarm` and toml key `swarm-workers`.
-
-ACCEPTANCE is Gherkin copied from scenarios. Inject `long-horizon/<id>/field-guide/index.md` after standing orders. Exclusive write target per unit. Missing Brief fields refuse the spawn.
-
-Parent only. Depth 1. Recurse is parent-owned units. Children do not call `spawn_subagent`. Two live units must not share a conceptKey or exclusive path. A worker that wants to change scope writes BLOCKED and stops.
-
-Isolation `none` only when the unit needs this machine. Do not combine `cwd` with `isolation: worktree`.
-
-#### Gate Drain extras
-
-Classify via Orchestrate. HostStore stays the board.
-
-Then overlay extras under `long-horizon/<id>/` in the target repo.
-
-```
-long-horizon/<id>/
-  field-guide/index.md
-  field-guide/surprises.md
-  field-guide/seams.md
-  field-guide/anti-patterns.md
-  spend.tsv
-```
-
-If `index.md` is missing at drain, that is a spawn-contract miss. Do not invent a first index here. Line budget default 80. One curator (the parent). Recurring bullets become structure, then the prose copy is deleted.
-
-Append a SpendRow on every drain. Columns: ts, role, model, tokens, usd, agent_count, unit_id. Tokens may be unknown. Role and model are still required. Do not use a tsv units board.
-
-Megafile default 800 loc. Worker reports ISSUES, not PASS. Parent spawns a decompose unit. The original unit does not keep growing the file.
-
-Ossify is one licensed patch. Planner writes the reason in OpenSpec `design.md` first. One worker patches and names the new invariant. Failures become parent-owned units. Not a license to break the spec.
-
-Design collisions spawn reconciler `pstack:poteto-agent`.
-
-#### Gate Review stack
-
-Pick at least two decorrelated lenses. Default merge-ready set is output-only plus codebase-only. Add live when the unit is behavioral. Add regression when blast radius is more than one module.
-
-Interrogate is one review lens. Call pstack `/interrogate` for that view. Interrogate alone does not meet the two-lens bar. Parent fans out `pstack:independent-verifier` for output-only and codebase-only. Codebase-only walks may use `pstack:how-explorer`.
-
-If both seats are the same family, ledger `family: same-degraded`. Synthesize Act on | Consider | Noted | Dismissed. All-clean is required to land. CI green is an input, not a verdict.
-
-#### Gate Close
-
-Confirm every Gherkin scenario on the real artifact. Merge deltas into `openspec/specs/`. Move the change folder to `openspec/changes/archive/`. Curate Field Guide. Encode recurring corrections into structure. Leave HostStore intact.
-
-After a session restart, re-read the OpenSpec change folder, `long-horizon/<id>/`, and host state. In-session children are gone. Respawn from stored briefs.
+Spawn verifiers `pstack:independent-verifier`. Planner is this session. Depth 1. Recurse is parent-owned units. Children do not call `spawn_subagent`. Use `/swarm` only for short coverage or race slices inside a leaf.
+7) Drain through Orchestrate. If Field Guide `index.md` is missing, that is a spawn-contract miss. Do not invent a first index here. On every drain: classify inbox pointers, record a SpendRow, run **coordination-layer** `record`, apply **megafile-gate**, apply **ossify-break** if core files are frozen, reconcile DesignDoc collisions with `pstack:poteto-agent`.
+8) Stacked review before land. Run **review-lenses** (at least 2: output-only, codebase-only, plus live if the unit is behavioral). Include pstack `/interrogate` as one named view. Do not auto-apply findings. Single-family harnesses record `family: same-degraded`. Interrogate alone does not meet the two-lens bar. Write the HostStore ledger row. CI green is not a verdict.
+9) Land continuous via `playbooks/shipping.md` / stacker rules. Advance HostStore frontier only on merge or new head SHA. New SHA voids the ledger row.
+10) Close. Confirm every Gherkin scenario on the real artifact. Archive the OpenSpec change (`openspec archive <slug>` or merge deltas into `openspec/specs/` by hand and move the folder to `changes/archive/`). Audit the trail via show-me-your-work. Encode recurring corrections into field-guide AND structure. Leave HostStore intact. After a session restart, re-read the OpenSpec change folder, `long-horizon/<id>/`, and HostStore. In-session children are gone. Respawn from stored briefs.
 
 **Reply:** change folder path, done predicate, tree size, spend split, landed units with verdicts, open gates, field-guide index length vs budget, archive path.
 
-#### Extra standing-order bullets
+#### OpenSpec intent-driven gates
 
-Do not clone Orchestrate's list. Add only these.
+When the user names OpenSpec, `/opsx`, or intent-driven flows, or `openspec/config.yaml` exists, run these gates on top of the steps above. Call the **openspec-intent-flow** skill.
 
-- Inject `long-horizon/<id>/field-guide/index.md`. Keep it under the line budget.
-- Spend row on every drain.
-- Megafile 800. Cross it and stop.
-- Ossify-break is one licensed patch plus a named invariant.
-- ACCEPTANCE is Gherkin copied from scenarios.
-- No worker spawn until `tasks.md` and `adr.md` exist.
-- Workers write BLOCKED. They do not replan.
-- Recurse is parent-owned units. Children do not call `spawn_subagent`.
+0. **Explore (optional).** `/opsx:explore` is Investigation / how / prototype. No files.
 
-#### Appendix. Article loop
+P. **Propose.** Write `openspec/changes/<slug>/` artifacts in order: proposal.md → (specs deltas || design.md) → adr.md → tasks.md. Capabilities listed in the proposal are conceptKeys. Stop unless the user also asked to apply.
 
-Map from https://cursor.com/blog/agent-swarm-model-economics onto Orchestrate plus these gates. Not a second playbook.
+A. **Apply.** Lower each `tasks.md` checkbox to a Unit. Each `#### Scenario` becomes a Brief.ACCEPTANCE line. Spawn workers only after adr.md and tasks.md exist. `openspec/specs/` stays read-only.
 
-| Article | Overlay | Artifact |
+U. **Update.** Implementation surprises revise the change-folder artifacts and Field Guide, not living specs.
+
+R. **Archive.** After ledger-verified land: merge deltas into `openspec/specs/`, move the change folder to `openspec/changes/archive/`, curate Field Guide, encode lessons.
+
+Binding table: `references/openspec-binding.md` in this plugin.
+
+#### Article loop (swarm economics)
+
+Map from https://cursor.com/blog/agent-swarm-model-economics onto the steps above. Do not add a second playbook.
+
+| Article | Playbook | Artifact |
 | --- | --- | --- |
-| 1 Planner receives goal | Gate Spec | OpenSpec proposal |
-| 2 Decompose into tree | Orchestrate scale plus parent-owned units | tasks.md checkboxes |
-| 3 Delegate | Gate Spawn contract | Brief plus CostPolicy |
-| 4 Worker executes | `spawn_subagent` `pstack:<role>` | exclusive worktree |
-| 5 Commit via VCS | Orchestrate land | git SHA on the unit |
-| 6 Collision, neutral resolver | Drain extras reconciler | `pstack:poteto-agent` |
-| 7 Field Guide | Gate Spec seed, drain curate | `long-horizon/<id>/field-guide/` |
-| 8 Review lenses | Gate Review stack | host ledger |
+| 1 Planner receives goal | step 1 | OpenSpec proposal / spec |
+| 2 Decompose into tree | step 3 | tasks.md → TaskTree |
+| 3 Delegate | step 5 | Brief + CostPolicy |
+| 4 Worker executes | step 6 | exclusive worktree |
+| 5 Commit via VCS | step 6–7 | git SHA on the unit |
+| 6 Collision, neutral resolver | step 7 reconciler | coordination-layer |
+| 7 Field Guide | step 2 seed, drain curate | field-guide/index.md |
+| 8 Review lenses | step 8 | HostStore ledger |
 | 9 Recurse | more parent-owned units | this session, not a child planner |
 
-Skip custom VCS. Skip sibling chat.
+Skip custom VCS. Skip sibling chat. SpendRow on every drain.

@@ -189,12 +189,28 @@ def test_grok_native_siblings_validate() -> None:
     assert "upstream-cursor-plugins" not in tm
     lhs_root = ROOT / "long-horizon-swarm"
     lhs_plugin = json.loads((lhs_root / "plugin.json").read_text(encoding="utf-8"))
-    assert lhs_plugin["version"] == "1.0.0-long-horizon-swarm.0"
+    assert lhs_plugin["version"] == "1.1.0-long-horizon-swarm.0"
     assert lhs_plugin["version"] == by_name["long-horizon-swarm"]["version"]
     assert by_name["long-horizon-swarm"]["source"] == "./long-horizon-swarm"
     assert "agents" not in lhs_plugin
-    skill_dirs = [p for p in (lhs_root / "skills").iterdir() if p.is_dir()]
-    assert [p.name for p in skill_dirs] == ["long-horizon-swarm"]
+    skill_dirs = sorted(
+        p.name for p in (lhs_root / "skills").iterdir() if p.is_dir()
+    )
+    assert skill_dirs == [
+        "coordination-layer",
+        "field-guide",
+        "long-horizon-swarm",
+        "megafile-gate",
+        "openspec-intent-flow",
+        "ossify-break",
+        "planner-worker-split",
+        "review-lenses",
+    ]
+    for name in skill_dirs:
+        text = (lhs_root / "skills" / name / "SKILL.md").read_text(encoding="utf-8")
+        fm = text.split("---", 2)[1]
+        assert "\ndisable-model-invocation: true" in fm
+        assert "metadata.cursor" not in fm
     lhs_skill = (
         lhs_root / "skills/long-horizon-swarm/SKILL.md"
     ).read_text(encoding="utf-8")
@@ -213,7 +229,18 @@ def test_grok_native_siblings_validate() -> None:
     playbook_text = playbook.read_text(encoding="utf-8")
     assert "spawn_subagent" in overlay_text
     assert "pstack:" in overlay_text
-    assert "toml key feature" in playbook_text
+    assert "pstack:feature" in playbook_text
+    assert "toml key feature" in playbook_text.replace("`", "")
+    for overlay_skill in (
+        "planner-worker-split",
+        "review-lenses",
+        "coordination-layer",
+        "megafile-gate",
+        "ossify-break",
+        "openspec-intent-flow",
+        "field-guide",
+    ):
+        assert overlay_skill in playbook_text
     assert "Before any `spawn_subagent`" in playbook_text
     assert "playbooks/babysit.md" in lhs_skill
     assert "/pr-babysit" in lhs_skill
@@ -225,6 +252,10 @@ def test_grok_native_siblings_validate() -> None:
     assert "children do not spawn" in overlay_text.lower()
     assert "Depth 1" in overlay_text
     assert "/interrogate" in playbook.read_text(encoding="utf-8")
+    assert "openspec-intent-flow" in playbook_text
+    assert "field-guide" in playbook_text
+    assert "TaskTree" in playbook_text
+    assert "1)" in playbook_text and "10)" in playbook_text
     for banned in (
         "orch init",
         "chatroom_send",
@@ -235,17 +266,26 @@ def test_grok_native_siblings_validate() -> None:
         "GROK-CHAT.md",
         "units.tsv",
         "readonly: true",
+        "metadata.cursor",
+        "pstack-models.mdc",
+        "orchestrate/<",
     ):
         for path in lhs_root.rglob("*"):
             if not path.is_file():
                 continue
             text = path.read_text(encoding="utf-8", errors="replace")
             assert banned not in text, f"{path}: {banned}"
-    assert not (lhs_root / "skills/coordination-layer").exists()
+    assert (lhs_root / "skills/coordination-layer/SKILL.md").is_file()
     assert not (lhs_root / "skills/long-horizon-swarm-grok-adapter").exists()
     assert not (lhs_root / "GROK-CHAT.md").exists()
     assert not (lhs_root / "rules").exists()
     assert not (lhs_root / "agents").exists()
+    assert (lhs_root / "GLOSSARY.md").is_file()
+    assert (lhs_root / "docs/REQUIRES.md").is_file()
+    assert (lhs_root / "references/handoff-contract.md").is_file()
+    assert (lhs_root / "references/openspec-binding.md").is_file()
+    assert (lhs_root / "references/standing-orders-template.md").is_file()
+    assert "HostStore" in overlay_text
     assert "pstack-long-horizon-swarm-0.1.1.zip" in lhs_upstream
     assert (
         "becdfa7f0cd3a0d3550fb2301da61ffb64e333188e04c66ce67cc7f9e7b4056b"

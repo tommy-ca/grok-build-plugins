@@ -91,3 +91,15 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **AND** children do not spawn
 - **AND** it does not name `orch init`
 - **AND** it does not name `chatroom_send`
+
+- **GIVEN** `long-horizon-swarm/skills/`
+- **WHEN** skill directories are listed
+- **THEN** they include `field-guide`, `planner-worker-split`, `review-lenses`, `coordination-layer`, `megafile-gate`, `ossify-break`, and `openspec-intent-flow`
+- **AND** they do not include `long-horizon-swarm-grok-adapter`
+
+- **GIVEN** `skills/long-horizon-swarm/playbooks/long-horizon-swarm.md`
+- **WHEN** the playbook is read
+- **THEN** it copies ten numbered steps
+- **AND** it names `openspec-intent-flow`
+- **AND** it names `field-guide`
+- **AND** it names TaskTree or TaskNode
