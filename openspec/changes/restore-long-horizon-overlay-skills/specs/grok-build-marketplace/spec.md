@@ -44,7 +44,7 @@ The sibling MUST ship overlay skills `long-horizon-swarm`, `field-guide`, `plann
 - **WHEN** durable state is described
 - **THEN** HostStore is the Grok board
 - **AND** pstack `scripts/orch/orch.ts` is named as Codex compatibility
-- **AND** Grok steps do not run `orch init`
+- **AND** the overlay playbook does not contain `orch init`
 
 #### Scenario: overlay ships zip overlay skills grok-native
 

@@ -36,3 +36,7 @@
 ## 7. Orch bind
 
 - [x] 7.1 Update HARNESS and REQUIRES. Grok HostStore. pstack `scripts/orch/orch.ts` is Codex (`orch init`). Overlay playbook does not run that CLI. Tests drop a global ban on the substring `orch init`. Living spec and SPEC match.
+
+## 8. Arena HostStore pick
+
+- [x] 8.1 Playbook step 2 is Confirm the host runtime. No `orch init` in the playbook. Handoff file is extras. Tests lock HARNESS and REQUIRES both name Codex orch. Overlay ships no `scripts/orch`. Arena base is HostStore (C1 12 vs C2 6).
