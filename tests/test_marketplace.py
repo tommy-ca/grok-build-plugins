@@ -24,6 +24,7 @@ def test_pstack_is_pinned_url() -> None:
     assert "cli-for-agent" in names
     assert "tommy-mode" in names
     assert "long-horizon-swarm" in names
+    assert "pstack-herdr" in names
     src = plugins[0]["source"]
     assert src.get("source") == "url"
     assert src["url"] == "https://github.com/tommy-ca/pstack.git"
@@ -114,6 +115,7 @@ def test_grok_native_siblings_validate() -> None:
         "cli-for-agent",
         "tommy-mode",
         "long-horizon-swarm",
+        "pstack-herdr",
     ):
         src = by_name[name]["source"]
         if isinstance(src, str):
