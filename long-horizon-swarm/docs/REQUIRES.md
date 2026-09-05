@@ -5,7 +5,8 @@ This plugin does not ship these. They must come from pstack.
 | pstack leaf | Used for |
 | --- | --- |
 | poteto-mode | router |
-| orchestrate playbook | coordinator, Brief, HostStore |
+| orchestrate playbook | coordinator, Brief, HostStore on Grok |
+| `skills/poteto-mode/scripts/orch/orch.ts` | Codex store. `orch init` writes that store. Grok overlay does not run it |
 | swarm | short coverage / race slices only |
 | arena | contested shape |
 | interrogate | one review-lenses view |

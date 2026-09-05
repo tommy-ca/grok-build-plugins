@@ -11,7 +11,7 @@
 
 ## 1. Tests red
 
-- [x] 1.1 Fail then pass. Tests expect overlay skill dirs `field-guide`, `planner-worker-split`, `review-lenses`, `coordination-layer`, `megafile-gate`, `ossify-break`, `openspec-intent-flow`, and `long-horizon-swarm`. Version `1.1.0-long-horizon-swarm.0`. Playbook names ten steps and `openspec-intent-flow`. Still no grok-adapter, `orch init`, or `chatroom_send`.
+- [x] 1.1 Fail then pass. Tests expect overlay skill dirs `field-guide`, `planner-worker-split`, `review-lenses`, `coordination-layer`, `megafile-gate`, `ossify-break`, `openspec-intent-flow`, and `long-horizon-swarm`. Version `1.1.0-long-horizon-swarm.0`. Playbook names ten steps and `openspec-intent-flow`. Still no grok-adapter or `chatroom_send`. `orch init` may appear only as Codex compatibility, not as a Grok step.
 
 ## 2. Overlay skills
 
@@ -32,3 +32,7 @@
 ## 6. Prove
 
 - [x] 6.1 `python3 tests/test_release.py`. Overlay `test_marketplace` functions. `grok plugin validate ./long-horizon-swarm`. `openspec validate restore-long-horizon-overlay-skills --type change --strict`.
+
+## 7. Orch bind
+
+- [x] 7.1 Update HARNESS and REQUIRES. Grok HostStore. pstack `scripts/orch/orch.ts` is Codex (`orch init`). Overlay playbook does not run that CLI. Tests drop a global ban on the substring `orch init`. Living spec and SPEC match.

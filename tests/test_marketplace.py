@@ -256,8 +256,14 @@ def test_grok_native_siblings_validate() -> None:
     assert "field-guide" in playbook_text
     assert "TaskTree" in playbook_text
     assert "1)" in playbook_text and "10)" in playbook_text
+    assert "scripts/orch/orch.ts" in lhs_harness or "scripts/orch/orch.ts" in (
+        lhs_root / "docs/REQUIRES.md"
+    ).read_text(encoding="utf-8")
+    assert "Codex" in lhs_harness or "Codex" in (
+        lhs_root / "docs/REQUIRES.md"
+    ).read_text(encoding="utf-8")
+    assert "Do not invoke pstack `scripts/orch/orch.ts`" in playbook_text
     for banned in (
-        "orch init",
         "chatroom_send",
         "/home/workdir",
         "Harper",

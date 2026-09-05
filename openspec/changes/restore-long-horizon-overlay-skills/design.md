@@ -6,7 +6,7 @@ Archived `add-long-horizon-swarm-plugin` shipped a one-skill collapse. Zip 0.1.1
 
 **Goals:** Ship the zip overlay skill set under `long-horizon-swarm/skills/`. Entry playbook is the zip 10-step TaskTree bound to `spawn_subagent` and HostStore. OpenSpec intent flow is a skill. Version `1.1.0-long-horizon-swarm.0`.
 
-**Non-Goals:** Cursor `.cursor-plugin`. Grok-chat adapter. `orch init`. Nested planner spawn. Patching pstack. New catalog ADR.
+**Non-Goals:** Cursor `.cursor-plugin`. Grok-chat adapter. Invoking pstack `scripts/orch/orch.ts` on Grok. Nested planner spawn. Patching pstack ADR 0008. New catalog ADR.
 
 ## Decisions
 
@@ -19,7 +19,8 @@ Archived `add-long-horizon-swarm-plugin` shipped a one-skill collapse. Zip 0.1.1
 ## Risks / Trade-offs
 
 - [Eight inspectable skill names] -> Operator asked for zip overlay modules. Tests lock the set so collapse cannot silently return.
-- [Glossary and REQUIRES can mention banned leftovers] -> Rewrite those sentences. Do not write `orch init` or `chatroom_send`.
+- [pstack ships `scripts/orch` with `orch init`] -> Grok playbooks still must not invoke it (pstack ADR 0008). Overlay HARNESS and REQUIRES name it as Codex compatibility. Zip Cursor `orch init` stays out of the Grok step list.
+- [Grok-chat leftover] -> Keep banning `chatroom_send`. Do not treat `orch init` as the same class of leftover.
 
 ## Migration Plan
 
