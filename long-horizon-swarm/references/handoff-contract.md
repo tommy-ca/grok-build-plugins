@@ -1,7 +1,7 @@
 # Handoff contract
 
 Used by overlay workers and verifiers.
-Write to `long-horizon/<id>/handoffs/<task>.md`. Also push a HostStore inbox pointer at the same path.
+Write to `long-horizon/<id>/handoffs/<task>.md`. If orch ran, also drop an inbox pointer in that store. If orch did not run, publish through HostStore. The markdown file is extras.
 
 ## Worker
 

@@ -14,4 +14,4 @@ Not a second type system. Each OpenSpec file is an existing overlay artifact.
 | `openspec/config.yaml` | `schema: intent-driven` |
 | `long-horizon/<id>/` | overlay extras, not the board |
 
-Each `#### Scenario` becomes one Brief.ACCEPTANCE line. HostStore stays the board.
+Each `#### Scenario` becomes one Brief.ACCEPTANCE line. The unit board is orch when bun can run `orch.ts`, else HostStore.

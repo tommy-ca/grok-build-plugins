@@ -14,7 +14,8 @@ One name per concept. Article words where the article named them. pstack skill n
 | arena | pstack arena | arena-view |
 | interrogate | pstack interrogate | interrogate-view |
 | TaskTree | task tree | TaskGraph type |
-| HostStore | Orchestrate durable-state | second board |
+| OrchStore | pstack orch.ts under long-horizon/<id>/ | second board |
+| HostStore | Orchestrate durable-state when orch cannot run | second board |
 | Brief | orchestrate brief | prompt.txt |
 | openspec-intent-flow | OpenSpec binding | openspec-intent |
 | coordination-layer | git adapter | coordination (spec id) |

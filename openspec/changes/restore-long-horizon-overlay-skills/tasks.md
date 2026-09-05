@@ -11,7 +11,7 @@
 
 ## 1. Tests red
 
-- [x] 1.1 Fail then pass. Tests expect overlay skill dirs `field-guide`, `planner-worker-split`, `review-lenses`, `coordination-layer`, `megafile-gate`, `ossify-break`, `openspec-intent-flow`, and `long-horizon-swarm`. Version `1.1.0-long-horizon-swarm.0`. Playbook names ten steps and `openspec-intent-flow`. Still no grok-adapter or `chatroom_send`. `orch init` may appear only as Codex compatibility, not as a Grok step.
+- [x] 1.1 Fail then pass. Tests expect overlay skill dirs. Version `1.1.0-long-horizon-swarm.0`. Playbook names ten steps and `openspec-intent-flow`. Still no grok-adapter or `chatroom_send`.
 
 ## 2. Overlay skills
 
@@ -35,4 +35,12 @@
 
 ## 7. Orch bind
 
-- [x] 7.1 Update HARNESS and REQUIRES. Grok HostStore. pstack `scripts/orch/orch.ts` is Codex (`orch init`). Overlay playbook does not run that CLI. Tests drop a global ban on the substring `orch init`. Living spec and SPEC match.
+- [x] 7.1 Runtime probe. bun then node. `orch init` when the CLI runs. HostStore when it cannot. Not Codex-only.
+
+## 8. Arena HostStore pick
+
+- [x] 8.1 Playbook step 2 probes bun then node. `orch init` when either exists. Skip orch on Grok chat (no bun, no node). Overlay ships no `scripts/orch`.
+
+## 9. Lever
+
+- [x] 9.1 `scripts/verify-long-horizon-swarm.sh` runs overlay tests, `grok plugin validate`, and `orch init` in a temp store when bun or node exists.

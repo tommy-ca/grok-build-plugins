@@ -256,13 +256,17 @@ def test_grok_native_siblings_validate() -> None:
     assert "field-guide" in playbook_text
     assert "TaskTree" in playbook_text
     assert "1)" in playbook_text and "10)" in playbook_text
-    assert "scripts/orch/orch.ts" in lhs_harness or "scripts/orch/orch.ts" in (
-        lhs_root / "docs/REQUIRES.md"
-    ).read_text(encoding="utf-8")
-    assert "Codex" in lhs_harness or "Codex" in (
-        lhs_root / "docs/REQUIRES.md"
-    ).read_text(encoding="utf-8")
-    assert "Do not invoke pstack `scripts/orch/orch.ts`" in playbook_text
+    requires = (lhs_root / "docs/REQUIRES.md").read_text(encoding="utf-8")
+    assert "scripts/orch/orch.ts" in lhs_harness
+    assert "scripts/orch/orch.ts" in requires
+    assert "bun" in lhs_harness.lower() or "bun" in requires.lower()
+    assert "Grok chat" in lhs_harness or "Grok chat" in requires
+    assert "orch init" in playbook_text
+    assert "Prefer `bun`" in playbook_text
+    assert "--store long-horizon/<id>" in playbook_text
+    assert "Cursor" not in playbook_text
+    assert "Codex" not in lhs_harness
+    assert "Codex" not in requires
     for banned in (
         "chatroom_send",
         "/home/workdir",
@@ -282,6 +286,11 @@ def test_grok_native_siblings_validate() -> None:
             text = path.read_text(encoding="utf-8", errors="replace")
             assert banned not in text, f"{path}: {banned}"
     assert (lhs_root / "skills/coordination-layer/SKILL.md").is_file()
+    assert not (lhs_root / "scripts/orch").exists()
+    lever = (ROOT / "scripts/verify-long-horizon-swarm.sh").read_text(encoding="utf-8")
+    assert "orch init" in lever or "--store" in lever
+    assert "bun" in lever
+    assert "Grok chat" in lever
     assert not (lhs_root / "skills/long-horizon-swarm-grok-adapter").exists()
     assert not (lhs_root / "GROK-CHAT.md").exists()
     assert not (lhs_root / "rules").exists()

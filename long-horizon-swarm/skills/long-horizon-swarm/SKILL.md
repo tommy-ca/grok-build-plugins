@@ -22,10 +22,17 @@ Stop. Do not spawn.
 - **missing-poteto-mode.** Run `grok inspect --json`. If `poteto-mode` is missing from `.skills[].name`, refuse. Tell the operator to run `grok plugin install tommy-ca/pstack --trust`, enable pstack from a host shell, then start a new session. Do not invent a router.
 - **one-session.** One agent fits the budget. Route to Autonomous run.
 - **flat-swarm.** Coverage matrix with no spec. Route to `/swarm`.
-- **second-board.** Ask wants a playbook-local units board. HostStore is Orchestrate durable-state by name.
+- **second-board.** Ask wants a third unit store besides the one step 2 selected.
+- **dual-write.** Ask wants HostStore and orch as two unit boards at once. Use the board step 2 selected.
 - **nested-spawn.** A child that would call `spawn_subagent`. Recurse is parent-owned units.
 - **openspec-incomplete.** `adr.md` or `tasks.md` missing. OpenSpec is mandatory.
 - **shared-write-target.** Two live units share a ConceptKey or exclusive path.
+
+## Runtime skip
+
+Does not abort the overlay.
+
+- **no-orch-runtime.** bun is missing, or bun and node both fail to run `orch.ts`. Skip `orch init`. Seed HostStore and extras only. Grok chat sandbox is this case.
 
 Do not copy pstack leaves into this plugin. Do not rewrite poteto-mode. Do not implement a custom VCS. Do not clone arena or interrogate.
 
@@ -67,6 +74,7 @@ CatalogEntry is name `long-horizon-swarm`, version `1.1.0-long-horizon-swarm.0`,
 
 Three stores.
 
-- HostStore. Orchestrate durable-state by name. The board.
-- OverlayWorkspace. `long-horizon/<id>/`. Field Guide, spend.tsv, handoffs, design-docs. Not the board.
+- OrchStore. pstack `orch.ts` under `long-horizon/<id>/` when bun or node exists. The overlay unit board.
+- HostStore. Orchestrate durable-state by name. The board when bun and node are both missing.
+- OverlayWorkspace. `long-horizon/<id>/` Field Guide, spend.tsv, handoffs, design-docs. Extras, not a third board.
 - OpenSpecChange. `openspec/changes/<id>/`. Spec pipeline. Not the board.
