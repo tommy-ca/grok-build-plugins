@@ -89,5 +89,23 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **THEN** the text names `spawn_subagent` and `pstack:`
 - **AND** recurse is parent-owned units
 - **AND** children do not spawn
-- **AND** it does not name `orch init`
+- **AND** it does not invoke `scripts/orch/orch.ts`
 - **AND** it does not name `chatroom_send`
+
+- **GIVEN** overlay HARNESS or REQUIRES
+- **WHEN** durable state is described
+- **THEN** HostStore is the Grok board
+- **AND** pstack `scripts/orch/orch.ts` is named as Codex compatibility
+- **AND** Grok steps do not run `orch init`
+
+- **GIVEN** `long-horizon-swarm/skills/`
+- **WHEN** skill directories are listed
+- **THEN** they include `field-guide`, `planner-worker-split`, `review-lenses`, `coordination-layer`, `megafile-gate`, `ossify-break`, and `openspec-intent-flow`
+- **AND** they do not include `long-horizon-swarm-grok-adapter`
+
+- **GIVEN** `skills/long-horizon-swarm/playbooks/long-horizon-swarm.md`
+- **WHEN** the playbook is read
+- **THEN** it copies ten numbered steps
+- **AND** it names `openspec-intent-flow`
+- **AND** it names `field-guide`
+- **AND** it names TaskTree or TaskNode
