@@ -1,0 +1,54 @@
+---
+description: pstack task/role → herdr agent map (Herd router overrides). Keep like pstack-models.
+alwaysApply: true
+---
+# pstack → herdr agent routing. One line per pstack role/task key.
+# Shape mirrors ~/.cursor/rules/pstack-models.mdc (role → model), but values are
+# herdr agent kinds (agy, claude, …) or routing aliases.
+#
+# Philosophy (arena / interrogate / poteto):
+# - Model diversity for judgment stays on Cursor Task (pstack-models) — NEVER fake it with N×same herdr kind.
+# - Arena Frame→Fan→Cross-judge→Pick→Graft→Verify and Interrogate reviewers stay `local`.
+# - Herd/herdr only after Act-on for session-sized *implement* arms (separate worktrees).
+# - Prove-it, propose, merge stay local (fleet authority).
+#
+# Values:
+#   <kind>              — Herd spawns interactive herdr agent (registry Status must be ready)
+#   kind1, kind2        — ordered preference; first ready wins
+#   local | pstack-task | inherit-parent — do NOT route to herdr
+#
+# Companion twin: copy references/pstack-herdr-agents.md beside the rule
+# Registry gate: operator registry (see references/registry.example.md)
+# Orch skill: herd-with-herdr
+
+# --- Session-sized implement (herdr workhorse) ---
+feature, refactoring: agy
+bug-fix: agy
+perf-issue: agy
+swarm workers: agy
+openspec-apply, session-apply: agy
+arena-implement-arm: agy
+
+# --- Judgment / hardest / hillclimb (pstack Task models — not herdr) ---
+hardest tasks: local
+hillclimb: local
+judgment and prose: local
+how explorer: local
+how explainer: local
+how critics: local
+why investigators: local
+why synthesizer: local
+reflect tooling: local
+reflect judgment, divergent, synthesizer: local
+
+# --- Arena / interrogate / architect panels (ALWAYS local until true kind diversity exists) ---
+# Do not map these to agy. One kind ≠ arena. Cross-judge is never a herdr agent.
+arena runners: local
+arena cross-judge pool: local
+architect runners: local
+interrogate reviewers: local
+
+# --- Fleet authority (never external) ---
+openspec-propose: local
+eng-lead-merge: local
+prove-it: local

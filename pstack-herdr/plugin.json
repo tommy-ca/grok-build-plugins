@@ -1,0 +1,19 @@
+{
+  "name": "pstack-herdr",
+  "version": "0.1.0-pstack-herdr.0",
+  "description": "Optional pstack overlay: task/role → herdr agent router plus interactive herdr orch skills. Arena/interrogate stay on pstack Task; herdr implements after Act-on. Not a pstack pack.",
+  "author": {
+    "name": "tommy-ca"
+  },
+  "homepage": "https://github.com/tommy-ca/grok-build-plugins/tree/main/pstack-herdr",
+  "repository": "https://github.com/tommy-ca/grok-build-plugins",
+  "license": "MIT",
+  "keywords": [
+    "pstack-herdr",
+    "herdr",
+    "agy",
+    "poteto-mode",
+    "grok-build"
+  ],
+  "skills": "./skills/"
+}

@@ -13,7 +13,7 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 
 ### Local sibling versions are unique tags
 
-- **GIVEN** local plugins `agent-compatibility`, `cli-for-agent`, `tommy-mode`, and `long-horizon-swarm`
+- **GIVEN** local plugins `agent-compatibility`, `cli-for-agent`, `tommy-mode`, `long-horizon-swarm`, and `pstack-herdr`
 - **WHEN** `plugin.json` versions are read
 - **THEN** each version is SemVer `MAJOR.MINOR.PATCH-<plugin-name>.N`
 - **AND** it does not contain `grokbuild`
@@ -63,7 +63,7 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **GIVEN** the marketplace index
 - **WHEN** `plugins[]` is read
 - **THEN** `pstack` is a pinned git url
-- **AND** `agent-compatibility`, `cli-for-agent`, `tommy-mode`, and `long-horizon-swarm` are local paths `./agent-compatibility`, `./cli-for-agent`, `./tommy-mode`, and `./long-horizon-swarm`
+- **AND** `agent-compatibility`, `cli-for-agent`, `tommy-mode`, `long-horizon-swarm`, and `pstack-herdr` are local paths `./agent-compatibility`, `./cli-for-agent`, `./tommy-mode`, `./long-horizon-swarm`, and `./pstack-herdr`
 - **AND** there is no `plugins/` directory and no `pstack/` plugin folder
 - **AND** Cursor sibling dirs in this repo are grok-native ports only, not a nested pstack
 - **AND** `cursor-team-kit` and `make-bot-ui` are not required
@@ -109,3 +109,17 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **AND** it names `openspec-intent-flow`
 - **AND** it names `field-guide`
 - **AND** it names TaskTree or TaskNode
+
+
+### pstack-herdr is an optional pstack overlay
+
+- **GIVEN** `.grok-plugin/marketplace.json`
+- **WHEN** `plugins[]` is read
+- **THEN** `pstack-herdr` uses local path `./pstack-herdr`
+- **AND** pstack remains a pinned git url
+- **AND** there is no nested `pstack/` directory
+
+- **GIVEN** the overlay skills
+- **WHEN** arena or interrogate roles are resolved
+- **THEN** they stay on pstack Task (`local` in `pstack-herdr-agents`)
+- **AND** session-sized implement roles may route to ready herdr kinds
