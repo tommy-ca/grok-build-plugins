@@ -71,14 +71,14 @@ Docs MUST state that `herdr-agent-state.sh` writes a temp file under `$TMPDIR` a
 Feature: grok-build-marketplace
 Rule: Cursor sibling layout without vendoring cursor/plugins
 
-The marketplace MUST list `agent-compatibility`, `cli-for-agent`, and `tommy-mode` as local sources (`./agent-compatibility`, `./cli-for-agent`, `./tommy-mode`). `tommy-mode` MUST NOT live in the pstack plugin tree. Those folders MUST contain a grok `plugin.json` with `skills` (and `agents` when the plugin has roles). They MUST NOT declare `hooks`, `commands`, or MCP. `cursor-team-kit`, canvases, `cursor-sdk`, and `orchestrate` MUST NOT be required.
+The marketplace MUST list `agent-compatibility`, `cli-for-agent`, `tommy-mode`, and `long-horizon-swarm` as local sources (`./agent-compatibility`, `./cli-for-agent`, `./tommy-mode`, `./long-horizon-swarm`). `tommy-mode` MUST NOT live in the pstack plugin tree. `long-horizon-swarm` MUST NOT live in the pstack plugin tree. Those folders MUST contain a grok `plugin.json` with `skills` (and `agents` when the plugin has roles). They MUST NOT declare `hooks`, `commands`, or MCP. `cursor-team-kit`, canvases, `cursor-sdk`, and `orchestrate` MUST NOT be required.
 
 #### Scenario: siblings are local, pstack is remote
 
 - **GIVEN** `.grok-plugin/marketplace.json`
 - **WHEN** `plugins[]` is read
 - **THEN** `pstack` uses a pinned git url
-- **AND** `agent-compatibility`, `cli-for-agent`, and `tommy-mode` use local paths
+- **AND** `agent-compatibility`, `cli-for-agent`, `tommy-mode`, and `long-horizon-swarm` use local paths
 - **AND** there is no `plugins/` directory and no `pstack/` plugin folder
 
 ### Requirement: Documented install also enables pstack
@@ -160,7 +160,7 @@ Each local sibling `plugin.json` version MUST match `MAJOR.MINOR.PATCH-<plugin-n
 
 #### Scenario: sibling versions cannot collide
 
-- **GIVEN** local plugins `agent-compatibility`, `cli-for-agent`, and `tommy-mode`
+- **GIVEN** local plugins `agent-compatibility`, `cli-for-agent`, `tommy-mode`, and `long-horizon-swarm`
 - **WHEN** `plugin.json` versions are read
 - **THEN** each version contains that plugin name
 - **AND** no two local versions are equal
@@ -219,7 +219,7 @@ Local sibling versions MUST remain `MAJOR.MINOR.PATCH-<plugin-name>.N`. They MUS
 
 #### Scenario: local versions exclude grokbuild
 
-- **GIVEN** local plugins `agent-compatibility`, `cli-for-agent`, and `tommy-mode`
+- **GIVEN** local plugins `agent-compatibility`, `cli-for-agent`, `tommy-mode`, and `long-horizon-swarm`
 - **WHEN** `plugin.json` versions are read
 - **THEN** none contain `grokbuild`
 - **AND** each contains that plugin name
@@ -244,7 +244,7 @@ Feature: grok-build-marketplace
 Rule: catalog is an index
 Rule: Cursor sibling dirs are for grok-native ports only
 
-The marketplace MUST list `pstack` as a git url plus sha of `https://github.com/tommy-ca/pstack.git`. It MUST NOT add a `pstack/` folder at the catalog root. It MUST NOT nest `plugins/pstack`. Cursor `plugins` uses sibling directories at repo root. This catalog already uses that shape for `agent-compatibility`, `cli-for-agent`, and `tommy-mode`. pstack is not that kind of member. Shipped docs MUST keep `grok plugin install tommy-ca/pstack --trust`. They MUST NOT document `tommy-ca/grok-build-plugins#pstack` as the default. Existing tags MUST NOT be moved.
+The marketplace MUST list `pstack` as a git url plus sha of `https://github.com/tommy-ca/pstack.git`. It MUST NOT add a `pstack/` folder at the catalog root. It MUST NOT nest `plugins/pstack`. Cursor `plugins` uses sibling directories at repo root. This catalog already uses that shape for `agent-compatibility`, `cli-for-agent`, `tommy-mode`, and `long-horizon-swarm`. pstack is not that kind of member. Shipped docs MUST keep `grok plugin install tommy-ca/pstack --trust`. They MUST NOT document `tommy-ca/grok-build-plugins#pstack` as the default. Existing tags MUST NOT be moved.
 
 #### Scenario: pstack stays a remote pin
 
@@ -260,3 +260,35 @@ The marketplace MUST list `pstack` as a git url plus sha of `https://github.com/
 - **WHEN** catalog membership is considered
 - **THEN** pstack remains url+sha
 - **AND** local siblings remain the grok-native ports only
+
+### Requirement: long-horizon-swarm is an optional pstack overlay
+
+Feature: grok-build-marketplace
+Rule: Overlay sibling, not a pstack pack
+
+The marketplace MUST list `long-horizon-swarm` as a local source `./long-horizon-swarm`. That folder MUST contain a grok `plugin.json` with `skills` and no `agents`, `hooks`, `commands`, or MCP. Shipped overlay docs MUST tell the operator to install and enable `tommy-ca/pstack` first. The overlay skill MUST refuse to spawn when poteto-mode is missing. Recurse MUST be parent-owned units. The overlay MUST NOT run `orch init`, MUST NOT teach `chatroom_send`, and MUST NOT add a `pstack/` folder.
+
+#### Scenario: overlay is a local sibling
+
+- **GIVEN** `.grok-plugin/marketplace.json`
+- **WHEN** `plugins[]` is read
+- **THEN** `long-horizon-swarm` uses local path `./long-horizon-swarm`
+- **AND** pstack remains a pinned git url
+- **AND** there is no `pstack/` directory
+
+#### Scenario: overlay refuses without pstack
+
+- **GIVEN** the overlay skill
+- **WHEN** poteto-mode is missing
+- **THEN** the skill tells the operator to install `tommy-ca/pstack --trust` and enable pstack
+- **AND** it does not spawn workers
+
+#### Scenario: overlay uses Grok Build spawn
+
+- **GIVEN** the overlay playbook
+- **WHEN** a worker is spawned
+- **THEN** the text names `spawn_subagent` and `pstack:`
+- **AND** recurse is parent-owned units
+- **AND** children do not spawn
+- **AND** it does not name `orch init`
+- **AND** it does not name `chatroom_send`

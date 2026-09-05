@@ -23,6 +23,7 @@ def test_pstack_is_pinned_url() -> None:
     assert "agent-compatibility" in names
     assert "cli-for-agent" in names
     assert "tommy-mode" in names
+    assert "long-horizon-swarm" in names
     src = plugins[0]["source"]
     assert src.get("source") == "url"
     assert src["url"] == "https://github.com/tommy-ca/pstack.git"
@@ -108,7 +109,12 @@ FORBIDDEN = (
 def test_grok_native_siblings_validate() -> None:
     data = json.loads(INDEX.read_text(encoding="utf-8"))
     by_name = {p["name"]: p for p in data["plugins"]}
-    for name in ("agent-compatibility", "cli-for-agent", "tommy-mode"):
+    for name in (
+        "agent-compatibility",
+        "cli-for-agent",
+        "tommy-mode",
+        "long-horizon-swarm",
+    ):
         src = by_name[name]["source"]
         if isinstance(src, str):
             path = src
@@ -181,6 +187,72 @@ def test_grok_native_siblings_validate() -> None:
     assert "tommy-ca/grok-build-plugins" not in tm
     assert "plugins/pstack" not in tm
     assert "upstream-cursor-plugins" not in tm
+    lhs_root = ROOT / "long-horizon-swarm"
+    lhs_plugin = json.loads((lhs_root / "plugin.json").read_text(encoding="utf-8"))
+    assert lhs_plugin["version"] == "1.0.0-long-horizon-swarm.0"
+    assert lhs_plugin["version"] == by_name["long-horizon-swarm"]["version"]
+    assert by_name["long-horizon-swarm"]["source"] == "./long-horizon-swarm"
+    assert "agents" not in lhs_plugin
+    skill_dirs = [p for p in (lhs_root / "skills").iterdir() if p.is_dir()]
+    assert [p.name for p in skill_dirs] == ["long-horizon-swarm"]
+    lhs_skill = (
+        lhs_root / "skills/long-horizon-swarm/SKILL.md"
+    ).read_text(encoding="utf-8")
+    assert lhs_skill.lstrip().startswith("---")
+    assert "disable-model-invocation: true" in lhs_skill.split("---", 2)[1]
+    playbook = (
+        lhs_root / "skills/long-horizon-swarm/playbooks/long-horizon-swarm.md"
+    )
+    assert playbook.is_file()
+    lhs_harness = (lhs_root / "HARNESS.md").read_text(encoding="utf-8")
+    lhs_readme = (lhs_root / "README.md").read_text(encoding="utf-8")
+    lhs_upstream = (lhs_root / "UPSTREAM").read_text(encoding="utf-8")
+    overlay_text = "\n".join(
+        [lhs_skill, playbook.read_text(encoding="utf-8"), lhs_harness, lhs_readme]
+    )
+    assert "spawn_subagent" in overlay_text
+    assert "pstack:" in overlay_text
+    assert "missing-poteto-mode" in lhs_skill
+    assert ".skills[].name" in lhs_skill
+    assert "tommy-ca/pstack --trust" in lhs_skill
+    assert "Do not spawn" in lhs_skill
+    assert "parent-owned" in overlay_text
+    assert "children do not spawn" in overlay_text.lower()
+    assert "Depth 1" in overlay_text
+    assert "/interrogate" in playbook.read_text(encoding="utf-8")
+    for banned in (
+        "orch init",
+        "chatroom_send",
+        "/home/workdir",
+        "Harper",
+        ".cursor-plugin",
+        "the Task tool",
+        "GROK-CHAT.md",
+        "units.tsv",
+        "readonly: true",
+    ):
+        for path in lhs_root.rglob("*"):
+            if not path.is_file():
+                continue
+            text = path.read_text(encoding="utf-8", errors="replace")
+            assert banned not in text, f"{path}: {banned}"
+    assert not (lhs_root / "skills/coordination-layer").exists()
+    assert not (lhs_root / "skills/long-horizon-swarm-grok-adapter").exists()
+    assert not (lhs_root / "GROK-CHAT.md").exists()
+    assert not (lhs_root / "rules").exists()
+    assert not (lhs_root / "agents").exists()
+    assert "pstack-long-horizon-swarm-0.1.1.zip" in lhs_upstream
+    assert (
+        "becdfa7f0cd3a0d3550fb2301da61ffb64e333188e04c66ce67cc7f9e7b4056b"
+        in lhs_upstream
+    )
+    assert "/long-horizon-swarm" in lhs_harness
+    assert "none of its own" in lhs_harness
+    assert "pstack, then user, then this plugin" in lhs_harness
+    assert "Hooks" in lhs_harness
+    assert "Commands" in lhs_harness
+    assert "long-horizon/" in overlay_text
+    assert "orchestrate/<slug>/" not in overlay_text
 
 
 def test_operator_docs_match_live_inspect() -> None:
@@ -188,12 +260,13 @@ def test_operator_docs_match_live_inspect() -> None:
     ac = (ROOT / "agent-compatibility/README.md").read_text(encoding="utf-8")
     cli = (ROOT / "cli-for-agent/README.md").read_text(encoding="utf-8")
     tm_readme = (ROOT / "tommy-mode/README.md").read_text(encoding="utf-8")
+    lhs_readme = (ROOT / "long-horizon-swarm/README.md").read_text(encoding="utf-8")
     spec = (ROOT / "SPEC.md").read_text(encoding="utf-8")
     spec_main = (
         ROOT / "openspec/specs/grok-build-marketplace/spec.md"
     ).read_text(encoding="utf-8")
     agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
-    for text in (readme, ac, cli, tm_readme):
+    for text in (readme, ac, cli, tm_readme, lhs_readme):
         assert "new session" in text
     assert "inspect.agents" in readme
     assert "directory count" in readme
