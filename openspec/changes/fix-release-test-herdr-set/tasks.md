@@ -6,10 +6,10 @@
 
 ## 1. Apply (Wave-5 — requires Todd-go)
 
-- [ ] 1.1 After Todd-go: update `tests/test_release.py` expected local set to include `pstack-herdr` beside `agent-compatibility`, `cli-for-agent`, `tommy-mode`, and `long-horizon-swarm`.
-- [ ] 1.2 Run `python3 tests/test_release.py` → PASS.
-- [ ] 1.3 Merge OpenSpec delta for version/identity GIVENs when applying this change (or confirm identical text already on tip from ordered apply).
-- [ ] 1.4 `openspec validate fix-release-test-herdr-set --type change --strict` PASS on the apply branch.
+- [x] 1.1 After Todd-go: update `tests/test_release.py` expected local set to include `pstack-herdr` beside `agent-compatibility`, `cli-for-agent`, `tommy-mode`, and `long-horizon-swarm`.
+- [x] 1.2 Run `python3 tests/test_release.py` → PASS.
+- [x] 1.3 Merge OpenSpec delta for version/identity GIVENs when applying this change (or confirm identical text already on tip from ordered apply).
+- [x] 1.4 `openspec validate fix-release-test-herdr-set --type change --strict` PASS on the apply branch.
 
 ## 2. Archive (after apply + Todd/eng-lead go)
 
