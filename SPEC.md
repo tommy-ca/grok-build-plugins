@@ -96,7 +96,7 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **WHEN** durable state is described
 - **THEN** HostStore is the Grok board
 - **AND** pstack `scripts/orch/orch.ts` is named as Codex compatibility
-- **AND** Grok steps do not run `orch init`
+- **AND** the overlay playbook does not contain `orch init`
 
 - **GIVEN** `long-horizon-swarm/skills/`
 - **WHEN** skill directories are listed

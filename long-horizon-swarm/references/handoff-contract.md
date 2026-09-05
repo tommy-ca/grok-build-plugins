@@ -1,7 +1,7 @@
 # Handoff contract
 
 Used by overlay workers and verifiers.
-Write to `long-horizon/<id>/handoffs/<task>.md`. Also push a HostStore inbox pointer at the same path.
+Write to `long-horizon/<id>/handoffs/<task>.md`. Publish the completion through canonical host task state (HostStore inbox). The file is extras. It is not the board.
 
 ## Worker
 
