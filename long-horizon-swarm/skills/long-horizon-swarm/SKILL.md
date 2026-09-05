@@ -22,8 +22,9 @@ Stop. Do not spawn.
 - **missing-poteto-mode.** Run `grok inspect --json`. If `poteto-mode` is missing from `.skills[].name`, refuse. Tell the operator to run `grok plugin install tommy-ca/pstack --trust`, enable pstack from a host shell, then start a new session. Do not invent a router.
 - **one-session.** One agent fits the budget. Route to Autonomous run.
 - **flat-swarm.** Coverage matrix with no spec. Route to `/swarm`.
-- **second-board.** Ask wants a playbook-local units board or Grok `orch init`. HostStore is Orchestrate durable-state by name.
-- **dual-write.** Ask wants HostStore and pstack `scripts/orch` both as the board. Pick HostStore. Codex orch stays on the Codex map.
+- **second-board.** Ask wants a third store besides orch (when bun or node exists) or HostStore (when neither exists).
+- **no-orch-runtime.** `bun` and `node` are both missing. Skip `orch init`. Seed HostStore and extras only. Grok chat sandbox is this case.
+- **dual-write.** Ask wants HostStore and orch as two unit boards at once. Pick orch when bun or node exists. Pick HostStore when they do not.
 - **nested-spawn.** A child that would call `spawn_subagent`. Recurse is parent-owned units.
 - **openspec-incomplete.** `adr.md` or `tasks.md` missing. OpenSpec is mandatory.
 - **shared-write-target.** Two live units share a ConceptKey or exclusive path.
@@ -68,6 +69,7 @@ CatalogEntry is name `long-horizon-swarm`, version `1.1.0-long-horizon-swarm.0`,
 
 Three stores.
 
-- HostStore. Orchestrate durable-state by name. The board.
-- OverlayWorkspace. `long-horizon/<id>/`. Field Guide, spend.tsv, handoffs, design-docs. Not the board.
+- OrchStore. pstack `orch.ts` under `long-horizon/<id>/` when bun or node exists. The overlay unit board.
+- HostStore. Orchestrate durable-state by name. The board when bun and node are both missing.
+- OverlayWorkspace. `long-horizon/<id>/` Field Guide, spend.tsv, handoffs, design-docs. Extras, not a third board.
 - OpenSpecChange. `openspec/changes/<id>/`. Spec pipeline. Not the board.

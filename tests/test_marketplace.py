@@ -259,11 +259,11 @@ def test_grok_native_siblings_validate() -> None:
     requires = (lhs_root / "docs/REQUIRES.md").read_text(encoding="utf-8")
     assert "scripts/orch/orch.ts" in lhs_harness
     assert "scripts/orch/orch.ts" in requires
-    assert "Codex" in lhs_harness
-    assert "Codex" in requires
-    assert "HostStore" in playbook_text
-    assert "Do not invoke pstack `scripts/orch/orch.ts`" in playbook_text
-    assert "orch init" not in playbook_text
+    assert "bun" in lhs_harness.lower() or "bun" in requires.lower()
+    assert "Grok chat" in lhs_harness or "Grok chat" in requires
+    assert "orch init" in playbook_text
+    assert "bun" in playbook_text
+    assert "node" in playbook_text
     assert "Cursor" not in playbook_text
     for banned in (
         "chatroom_send",
