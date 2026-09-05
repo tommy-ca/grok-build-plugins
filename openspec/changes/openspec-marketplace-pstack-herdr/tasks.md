@@ -6,11 +6,11 @@
 
 ## 1. Apply (Wave-5 — requires Todd-go; soft-after #1)
 
-- [ ] 1.1 Prefer `fix-release-test-herdr-set` lever green first (`python3 tests/test_release.py` PASS).
-- [ ] 1.2 After Todd-go: apply this change’s OpenSpec delta into the intent-driven pipeline (keep capability `grok-build-marketplace` only; no companion spec).
-- [ ] 1.3 Confirm catalog-list scenarios name `./pstack-herdr` and overlay requirement mirrors SPEC (arena/I1/prove-it local; implement after Act-on; anti N×agy).
-- [ ] 1.4 `openspec validate openspec-marketplace-pstack-herdr --type change --strict` PASS on the apply branch.
-- [ ] 1.5 `openspec validate --all --strict` PASS after merge/archive path is ready.
+- [x] 1.1 Prefer `fix-release-test-herdr-set` lever green first (`python3 tests/test_release.py` PASS).
+- [x] 1.2 After Todd-go: apply this change’s OpenSpec delta into the intent-driven pipeline (keep capability `grok-build-marketplace` only; no companion spec).
+- [x] 1.3 Confirm catalog-list scenarios name `./pstack-herdr` and overlay requirement mirrors SPEC (arena/I1/prove-it local; implement after Act-on; anti N×agy).
+- [x] 1.4 `openspec validate openspec-marketplace-pstack-herdr --type change --strict` PASS on the apply branch.
+- [x] 1.5 `openspec validate --all --strict` PASS after merge/archive path is ready.
 
 ## 2. Archive (after apply + Todd/eng-lead go)
 
