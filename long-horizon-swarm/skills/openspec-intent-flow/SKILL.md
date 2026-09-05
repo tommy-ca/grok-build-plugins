@@ -42,7 +42,7 @@ adr/NNNN-<slug>.md
 long-horizon/<change>/
 ```
 
-The change id is the overlay program id and the TaskTree root id. `long-horizon/<change>/` is extras (Field Guide, spend, handoffs, design-docs). HostStore is the board.
+The change id is the overlay program id and the TaskTree root id. `long-horizon/<change>/` holds extras and, when bun can run `orch.ts`, the orch unit store. HostStore is the board only when orch cannot run.
 
 ## Gates
 
@@ -72,7 +72,7 @@ Read `references/openspec-binding.md` in this plugin. Short form:
 | `/opsx:propose` | Write proposal.md, then specs + design, then adr, then tasks. Stop for review unless the user said apply too. |
 | `/opsx:apply` | Long-horizon-swarm scale/drain/land, one Unit per checkbox. |
 | `/opsx:update` | Revise change-folder artifacts from Field Guide surprises. Never edit `openspec/specs/` here. |
-| `/opsx:verify` | Review-lenses + HostStore ledger on current SHA. |
+| `/opsx:verify` | Review-lenses + ledger on the selected board at the current SHA. |
 | `/opsx:sync` or `/opsx:archive` | Merge deltas into truth specs, move change to archive, encode lessons. |
 
 If the OpenSpec CLI is on PATH, prefer `openspec status --change <id>` and `openspec archive <id>` over hand-merging. If it is not, merge by the delta headers and record `cli: absent` in the trail.

@@ -1,7 +1,7 @@
 ---
 name: coordination-layer
 description: >
-  Interface over git worktrees, HostStore frontier, ledger, and a reconciler.
+  Interface over git worktrees, the selected-board frontier, ledger, and a reconciler.
   Use for /coordination-layer or when a long-horizon drain must record collisions.
   Does not implement a custom VCS.
 disable-model-invocation: true
@@ -11,7 +11,7 @@ disable-model-invocation: true
 
 An interface. The git adapter is in scope. A custom VCS is not.
 
-Builds on worktrees, HostStore (Orchestrate durable-state by name), babysit, stacker rules, **principle-separate-before-serializing-shared-state**.
+Builds on worktrees, the selected unit board, babysit, stacker rules, **principle-separate-before-serializing-shared-state**.
 
 ## Interface
 
@@ -25,8 +25,8 @@ blockCommit(path, reason)
 Git adapter:
 
 - worktree per worker exclusive write target (`spawn_subagent` `isolation: worktree`)
-- HostStore frontier generation is the lock token for stack topology
-- HostStore ledger keyed by pr+sha is the verification lock
+- selected-board frontier is the lock token for stack topology
+- selected-board ledger keyed by pr+sha is the verification lock
 - one stacker per stack may run gt or rebase
 - workers never rebase
 

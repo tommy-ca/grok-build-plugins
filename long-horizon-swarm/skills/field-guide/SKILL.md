@@ -23,7 +23,7 @@ long-horizon/<id>/field-guide/
   anti-patterns.md  things that already failed
 ```
 
-HostStore is the board. This folder is extras.
+This folder is extras. The unit board is orch when bun can run `orch.ts`, else HostStore.
 
 ## Steps
 

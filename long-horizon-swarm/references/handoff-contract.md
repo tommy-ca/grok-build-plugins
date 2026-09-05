@@ -1,7 +1,7 @@
 # Handoff contract
 
 Used by overlay workers and verifiers.
-Write to `long-horizon/<id>/handoffs/<task>.md`. Publish the completion through canonical host task state (HostStore inbox). The file is extras. It is not the board.
+Write to `long-horizon/<id>/handoffs/<task>.md`. If orch ran, also drop an inbox pointer in that store. If orch did not run, publish through HostStore. The markdown file is extras.
 
 ## Worker
 

@@ -3,7 +3,7 @@
 Paste into `long-horizon/<id>/preferences.md` before the first spawn. Numbered. Verbatim in every brief.
 
 1. Planners never write product code. Briefs are the product.
-2. Workers never edit plan, HostStore, or design docs they do not own.
+2. Workers never edit plan, the selected unit board, or design docs they do not own.
 3. Every spawn reads field-guide/index.md and stays under its line budget.
 4. One writer per worktree. Shared mutable files are split first.
 5. Every design decision has one conceptKey and one design-docs/<conceptKey>.md owner.

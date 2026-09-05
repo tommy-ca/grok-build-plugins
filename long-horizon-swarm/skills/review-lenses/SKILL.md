@@ -29,7 +29,7 @@ Does not auto-apply fixes.
 1. Pick at least two lenses that do not share a model family when two families exist. Default merge-ready set: output-only plus codebase-only. Add live when the unit is behavioral. Add regression when the blast radius is more than one module.
 2. Parent fans out. Output-only and live use `pstack:independent-verifier`. Codebase-only may use `pstack:how-explorer`. The interrogate lens is `/interrogate`. Do not send extra spawn fields.
 3. Synthesize with the interrogate categories: Act on, Consider, Noted, Dismissed.
-4. Write the HostStore ledger row only after the stacked verdict. All-clean (no Act on) is required to land. PASS+NOTES may land if every note is Dismissed or Noted with a reason.
+4. Write the ledger row on the selected board only after the stacked verdict. All-clean (no Act on) is required to land. PASS+NOTES may land if every note is Dismissed or Noted with a reason.
 5. Record which lenses ran in the show-me-your-work trail.
 
 ## Invariants

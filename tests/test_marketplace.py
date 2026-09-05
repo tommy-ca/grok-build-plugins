@@ -262,9 +262,11 @@ def test_grok_native_siblings_validate() -> None:
     assert "bun" in lhs_harness.lower() or "bun" in requires.lower()
     assert "Grok chat" in lhs_harness or "Grok chat" in requires
     assert "orch init" in playbook_text
-    assert "bun" in playbook_text
-    assert "node" in playbook_text
+    assert "Prefer `bun`" in playbook_text
+    assert "--store long-horizon/<id>" in playbook_text
     assert "Cursor" not in playbook_text
+    assert "Codex" not in lhs_harness
+    assert "Codex" not in requires
     for banned in (
         "chatroom_send",
         "/home/workdir",
@@ -285,6 +287,10 @@ def test_grok_native_siblings_validate() -> None:
             assert banned not in text, f"{path}: {banned}"
     assert (lhs_root / "skills/coordination-layer/SKILL.md").is_file()
     assert not (lhs_root / "scripts/orch").exists()
+    lever = (ROOT / "scripts/verify-long-horizon-swarm.sh").read_text(encoding="utf-8")
+    assert "orch init" in lever or "--store" in lever
+    assert "bun" in lever
+    assert "Grok chat" in lever
     assert not (lhs_root / "skills/long-horizon-swarm-grok-adapter").exists()
     assert not (lhs_root / "GROK-CHAT.md").exists()
     assert not (lhs_root / "rules").exists()
