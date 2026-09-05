@@ -210,8 +210,13 @@ def test_grok_native_siblings_validate() -> None:
     overlay_text = "\n".join(
         [lhs_skill, playbook.read_text(encoding="utf-8"), lhs_harness, lhs_readme]
     )
+    playbook_text = playbook.read_text(encoding="utf-8")
     assert "spawn_subagent" in overlay_text
     assert "pstack:" in overlay_text
+    assert "toml key feature" in playbook_text
+    assert "Before any `spawn_subagent`" in playbook_text
+    assert "playbooks/babysit.md" in lhs_skill
+    assert "/pr-babysit" in lhs_skill
     assert "missing-poteto-mode" in lhs_skill
     assert ".skills[].name" in lhs_skill
     assert "tommy-ca/pstack --trust" in lhs_skill

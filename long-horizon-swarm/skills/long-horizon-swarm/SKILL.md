@@ -37,7 +37,7 @@ Playbook gates plus drain extras. Spec-as-root. Planner vs worker CostPolicy. Fi
 
 ## What this reuses
 
-Call pstack leaves by name. Orchestrate. `/swarm`. arena. interrogate. architect. show-me-your-work. shipping. babysit.
+Call pstack leaves by name. Orchestrate playbook. `/swarm`. arena. interrogate. architect. show-me-your-work. `playbooks/shipping.md`. `playbooks/babysit.md`. Do not route babysit to `/pr-babysit`.
 
 ## Spawn
 

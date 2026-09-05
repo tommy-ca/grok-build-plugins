@@ -16,6 +16,8 @@ Refuse worker spawn until `adr.md` and `tasks.md` exist. Living `openspec/specs/
 
 `bindOpenSpec(openspec/changes/<id>/)` yields SpecRoot. Adopt an existing change folder. Do not invent a second spec tree.
 
+Before any `spawn_subagent`, create `long-horizon/<id>/field-guide/` if missing. Seed `index.md` with the goal one-liner, the done predicate, and pointers to surprises, seams, and anti-patterns. If `index.md` exists, adopt it. Drain curates. It does not create the first index.
+
 #### Gate Spawn contract
 
 Planner is this session. Workers implement. CostPolicy reads `~/.grok/pstack-models.toml`.
@@ -53,7 +55,7 @@ long-horizon/<id>/
   spend.tsv
 ```
 
-Seed Field Guide if missing. If `index.md` exists, adopt it. Line budget default 80. One curator (the parent). Recurring bullets become structure, then the prose copy is deleted.
+If `index.md` is missing at drain, that is a spawn-contract miss. Do not invent a first index here. Line budget default 80. One curator (the parent). Recurring bullets become structure, then the prose copy is deleted.
 
 Append a SpendRow on every drain. Columns: ts, role, model, tokens, usd, agent_count, unit_id. Tokens may be unknown. Role and model are still required. Do not use a tsv units board.
 
@@ -104,7 +106,7 @@ Map from https://cursor.com/blog/agent-swarm-model-economics onto Orchestrate pl
 | 4 Worker executes | `spawn_subagent` `pstack:<role>` | exclusive worktree |
 | 5 Commit via VCS | Orchestrate land | git SHA on the unit |
 | 6 Collision, neutral resolver | Drain extras reconciler | `pstack:poteto-agent` |
-| 7 Field Guide | Drain extras | `long-horizon/<id>/field-guide/` |
+| 7 Field Guide | Gate Spec seed, drain curate | `long-horizon/<id>/field-guide/` |
 | 8 Review lenses | Gate Review stack | host ledger |
 | 9 Recurse | more parent-owned units | this session, not a child planner |
 
