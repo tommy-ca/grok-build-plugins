@@ -1,6 +1,6 @@
 # grok-build-plugins
 
-Grok Build marketplace catalog. Plugin **source of truth** for pstack is [tommy-ca/pstack](https://github.com/tommy-ca/pstack). pstack stays a remote `url` plus sha. Grok-native siblings live as folders next to this README (`agent-compatibility/`, `cli-for-agent/`). That is the Cursor sibling layout for grok-native ports. It does not mean adding `pstack/` here. This repo does not vendor `cursor/plugins`. It does not nest pstack. Contract: [SPEC.md](./SPEC.md).
+Grok Build marketplace catalog. Plugin **source of truth** for pstack is [tommy-ca/pstack](https://github.com/tommy-ca/pstack). pstack stays a remote `url` plus sha. Grok-native siblings live as folders next to this README (`agent-compatibility/`, `cli-for-agent/`, `tommy-mode/`, `long-horizon-swarm/`). That is the Cursor sibling layout for grok-native ports. It does not mean adding `pstack/` here. This repo does not vendor `cursor/plugins`. It does not nest pstack. Contract: [SPEC.md](./SPEC.md).
 
 ## Install pstack (Grok-native)
 
@@ -57,6 +57,7 @@ When Cursor `pstack/` moves, run `python3 scripts/sync-from-upstream.py --log` t
 | `agent-compatibility` | `./agent-compatibility` |
 | `cli-for-agent` | `./cli-for-agent` |
 | `tommy-mode` | `./tommy-mode` |
+| `long-horizon-swarm` | `./long-horizon-swarm` |
 
 After a pstack release, set the pstack `source.sha` to `git -C pstack rev-parse origin/main` (40 hex) and re-run `python3 tests/test_marketplace.py`. Do not tag pstack from this repo.
 
@@ -78,6 +79,8 @@ grok plugin install cli-for-agent --trust
 grok plugin enable cli-for-agent
 grok plugin install tommy-mode --trust
 grok --sandbox off plugin enable tommy-mode
+grok plugin install long-horizon-swarm --trust
+grok --sandbox off plugin enable long-horizon-swarm
 ```
 
 Spawn `agent-compatibility:startup-review`, not `startup-review`. Start a new session after enable.

@@ -1,0 +1,17 @@
+{
+  "name": "long-horizon-swarm",
+  "version": "1.0.0-long-horizon-swarm.0",
+  "description": "Optional overlay on poteto-mode Orchestrate for standing programs, spec-as-root, and swarm economics. Not a pstack pack.",
+  "author": {
+    "name": "tommy-ca"
+  },
+  "homepage": "https://github.com/tommy-ca/grok-build-plugins/tree/main/long-horizon-swarm",
+  "repository": "https://github.com/tommy-ca/grok-build-plugins",
+  "license": "MIT",
+  "keywords": [
+    "long-horizon-swarm",
+    "poteto-mode",
+    "grok-build"
+  ],
+  "skills": "./skills/"
+}

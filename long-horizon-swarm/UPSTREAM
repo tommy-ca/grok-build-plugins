@@ -1,0 +1,7 @@
+Zip source
+pstack-long-horizon-swarm-0.1.1.zip
+sha256 becdfa7f0cd3a0d3550fb2301da61ffb64e333188e04c66ce67cc7f9e7b4056b
+
+Grok-native overlay lives in this catalog sibling folder.
+Spawn is spawn_subagent with pstack:<role>.
+No hooks. No commands/.

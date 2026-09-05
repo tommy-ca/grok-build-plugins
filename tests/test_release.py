@@ -45,6 +45,7 @@ def test_local_versions_are_unique_and_named() -> None:
         "agent-compatibility",
         "cli-for-agent",
         "tommy-mode",
+        "long-horizon-swarm",
     }
     pstack = by_name["pstack"]
     assert pstack["source"].get("source") == "url"

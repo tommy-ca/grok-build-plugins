@@ -13,7 +13,7 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 
 ### Local sibling versions are unique tags
 
-- **GIVEN** local plugins `agent-compatibility`, `cli-for-agent`, and `tommy-mode`
+- **GIVEN** local plugins `agent-compatibility`, `cli-for-agent`, `tommy-mode`, and `long-horizon-swarm`
 - **WHEN** `plugin.json` versions are read
 - **THEN** each version is SemVer `MAJOR.MINOR.PATCH-<plugin-name>.N`
 - **AND** it does not contain `grokbuild`
@@ -63,10 +63,31 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **GIVEN** the marketplace index
 - **WHEN** `plugins[]` is read
 - **THEN** `pstack` is a pinned git url
-- **AND** `agent-compatibility`, `cli-for-agent`, and `tommy-mode` are local paths `./agent-compatibility`, `./cli-for-agent`, and `./tommy-mode`
+- **AND** `agent-compatibility`, `cli-for-agent`, `tommy-mode`, and `long-horizon-swarm` are local paths `./agent-compatibility`, `./cli-for-agent`, `./tommy-mode`, and `./long-horizon-swarm`
 - **AND** there is no `plugins/` directory and no `pstack/` plugin folder
 - **AND** Cursor sibling dirs in this repo are grok-native ports only, not a nested pstack
 - **AND** `cursor-team-kit` and `make-bot-ui` are not required
 - **AND** docs spawn `agent-compatibility:startup-review`, not `startup-review`
 - **AND** docs say start a new session after enable
 - **AND** docs say live roles are `inspect.agents[]` and `provides.agents` is a directory count
+
+### long-horizon-swarm is an optional pstack overlay
+
+- **GIVEN** `.grok-plugin/marketplace.json`
+- **WHEN** `plugins[]` is read
+- **THEN** `long-horizon-swarm` uses local path `./long-horizon-swarm`
+- **AND** pstack remains a pinned git url
+- **AND** there is no `pstack/` directory
+
+- **GIVEN** the overlay skill
+- **WHEN** poteto-mode is missing
+- **THEN** the skill tells the operator to install `tommy-ca/pstack --trust` and enable pstack
+- **AND** it does not spawn workers
+
+- **GIVEN** the overlay playbook
+- **WHEN** a worker is spawned
+- **THEN** the text names `spawn_subagent` and `pstack:`
+- **AND** recurse is parent-owned units
+- **AND** children do not spawn
+- **AND** it does not name `orch init`
+- **AND** it does not name `chatroom_send`
