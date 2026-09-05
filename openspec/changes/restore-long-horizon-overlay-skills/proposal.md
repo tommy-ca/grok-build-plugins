@@ -9,8 +9,8 @@ Do not amend archived `add-long-horizon-swarm-plugin`.
 - Restore grok-native ports of the seven overlay skills plus glossary, REQUIRES, handoff, OpenSpec binding, standing-order extras.
 - Rewrite the entry playbook as the zip 10-step TaskTree, calling those skills by name, with Grok Build spawn and HostStore.
 - Bump `long-horizon-swarm` to `1.1.0-long-horizon-swarm.0`.
-- Tests lock the skill set. They ban Grok-chat leftover tokens and the grok-adapter skill. They do not ban naming pstack `scripts/orch` as Codex compatibility.
-- Grok overlay uses HostStore. It MUST NOT invoke `scripts/orch/orch.ts`. pstack retains that CLI (including `orch init`) for Codex. Zip Cursor `orch init` is not a Grok playbook step.
+- Tests lock the skill set. They ban Grok-chat leftover tokens and the grok-adapter skill.
+- Overlay runs pstack `orch init` when bun or node exists. It skips orch when neither exists (Grok chat). HostStore is the fallback board, not the only board.
 
 ## Capabilities
 

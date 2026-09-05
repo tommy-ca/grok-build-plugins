@@ -89,14 +89,14 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **THEN** the text names `spawn_subagent` and `pstack:`
 - **AND** recurse is parent-owned units
 - **AND** children do not spawn
-- **AND** it does not invoke `scripts/orch/orch.ts`
 - **AND** it does not name `chatroom_send`
 
-- **GIVEN** overlay HARNESS or REQUIRES
+- **GIVEN** overlay HARNESS or REQUIRES and the playbook
 - **WHEN** durable state is described
-- **THEN** HostStore is the Grok board
-- **AND** pstack `scripts/orch/orch.ts` is named as Codex compatibility
-- **AND** the overlay playbook does not contain `orch init`
+- **THEN** the playbook names `orch init`
+- **AND** it probes bun then node
+- **AND** it skips orch when neither exists
+- **AND** Grok chat is the named no-runtime case
 
 - **GIVEN** `long-horizon-swarm/skills/`
 - **WHEN** skill directories are listed

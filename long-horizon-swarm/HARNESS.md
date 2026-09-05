@@ -9,7 +9,7 @@ Host map. grok does not load it as a skill.
 | Skill order | pstack, then user, then this plugin |
 | Hooks | none |
 | Commands | none. Do not clone `/long-horizon-swarm` into `commands/` |
-| Durable board | Grok HostStore (canonical task and agent state). Do not invoke pstack `scripts/orch/orch.ts`. That CLI, including `orch init`, is Codex compatibility only |
+| Durable board | If `bun` or `node` can run pstack `skills/poteto-mode/scripts/orch/orch.ts`, `orch init --store long-horizon/<id>` is the overlay unit store. If neither exists (Grok chat sandbox), skip orch and use HostStore plus extras only |
 | Join | `get_command_or_subagent_output` with `task_ids` and `timeout_ms` > 0 |
 | Cancel | `kill_command_or_subagent` |
 | Overnight | Orchestrate heartbeat. `/loop` then `scheduler_create`. Watch with `monitor` |

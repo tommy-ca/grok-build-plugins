@@ -39,4 +39,4 @@
 
 ## 8. Arena HostStore pick
 
-- [x] 8.1 Playbook step 2 is Confirm the host runtime. No `orch init` in the playbook. Handoff file is extras. Tests lock HARNESS and REQUIRES both name Codex orch. Overlay ships no `scripts/orch`. Arena base is HostStore (C1 12 vs C2 6).
+- [x] 8.1 Playbook step 2 probes bun then node. `orch init` when either exists. Skip orch on Grok chat (no bun, no node). Overlay ships no `scripts/orch`.

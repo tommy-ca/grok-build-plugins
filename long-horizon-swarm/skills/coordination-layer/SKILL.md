@@ -39,6 +39,6 @@ Git adapter:
 
 ## Invariants
 
-- No second source of truth. HostStore remains canonical. Overlay extras are not the board.
+- No third source of truth. Orch store is canonical when bun or node exists. HostStore is canonical when they do not. Overlay extras are not a third board.
 - Reconciler may edit conflicts and `long-horizon/<id>/design-docs/` only.
 - Custom VCS stays an unimplementable adapter slot.
