@@ -140,3 +140,16 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **AND** the propose gate stays serial
 - **AND** it does not invent Drove `max_concurrent` standing-order numbers
 
+### OpenSpec × pstack orch compose binding cite
+
+- **GIVEN** tip `SPEC.md` or `long-horizon-swarm/references/openspec-binding.md`
+- **WHEN** an operator reads how OpenSpec and pstack orch compose
+- **THEN** docs cite `/workspace/fleet-external-agents/openspec-pstack-orch/`
+- **AND** they state three compose rules:
+  1. OpenSpec propose completes before implementer spawn (B8 KEEP)
+  2. Parallelism unlocks after `tasks.md` exists (`## Parallel band` / `P-parallel` leaves)
+  3. Parallel units use exclusive worktrees or conceptKey write targets
+- **AND** they do not vendor-copy `openspec-pstack-orch` into `grok-build-plugins`
+- **AND** they do not invent or prescribe Drove `max_concurrent` standing-order numbers
+
+
