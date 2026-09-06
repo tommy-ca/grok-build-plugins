@@ -32,24 +32,24 @@ Depends: Parallel band A complete
 Depends: §1 green
 
 - [x] 2.1 Hand Horizon `openspec/changes/gbp-openspec-pstack-binding-cite/` (+ orch drafts + durable mirror)
-- [ ] 2.2 Ledger: Wave-4 VALID propose-only Soft-after; apply gated on Todd go (+ Soft-after after #1/#2 land unless Todd authorizes docs-only earlier)
+- [x] 2.2 Ledger: Wave-4 VALID propose-only Soft-after; apply gated on Todd go (+ Soft-after after #1/#2 land unless Todd authorizes docs-only earlier)
 - [x] 2.3 **STOP** — no apply; no `openspec apply`; no PR; no push to main
 
 ## Parallel band B — Apply (Wave-5; Todd-go Soft-after) — P-parallel
 
 Depends: Todd go + §1 green + Soft-after readiness (#1 band language on integration, preferably #2 too)
 
-- [ ] B.1 Add cite in tip `SPEC.md` and/or openspec-intent-flow references pointing at openspec-pstack-orch compose — **P-parallel**
-- [ ] B.2 Document three rules: propose gated; parallel after tasks/Parallel bands; exclusive worktrees — **P-parallel**
-- [ ] B.3 Explicitly exclude Drove quota numbers and vendor copy from gbp cite text — **P-parallel**
-- [ ] B.4 Merge capability delta into tip `openspec/specs/openspec-pstack-binding-cite/`
-- [ ] B.5 `openspec validate --all --strict` green after merge
-- [ ] B.6 **Prove bars Metadata/Static (claim binding cite only if all hold):**
-  - [ ] P1 tip SPEC/docs/LHS cites openspec-pstack-orch compose (or mirrored summary)
-  - [ ] P2 three compose rules present; B8 KEEP
-  - [ ] P3 no vendor tree; no Drove max_concurrent in gbp text; no LIVE_PASS; no remint harden
-  - [ ] P4 OpenSpec intent-driven; validate `--strict` green; tip ≥ `e3cb0c05`
-  - [ ] NOT predicates: Drove quota change; vendor package; LIVE_PASS; remint harden
+- [x] B.1 Add cite in tip `SPEC.md` and/or openspec-intent-flow references pointing at openspec-pstack-orch compose — **P-parallel**
+- [x] B.2 Document three rules: propose gated; parallel after tasks/Parallel bands; exclusive worktrees — **P-parallel**
+- [x] B.3 Explicitly exclude Drove quota numbers and vendor copy from gbp cite text — **P-parallel**
+- [x] B.4 Merge capability delta into tip `openspec/specs/openspec-pstack-binding-cite/`
+- [x] B.5 `openspec validate --all --strict` green after merge
+- [x] B.6 **Prove bars Metadata/Static (claim binding cite only if all hold):**
+  - [x] P1 tip SPEC/docs/LHS cites openspec-pstack-orch compose (or mirrored summary)
+  - [x] P2 three compose rules present; B8 KEEP
+  - [x] P3 no vendor tree; no Drove max_concurrent in gbp text; no LIVE_PASS; no remint harden
+  - [x] P4 OpenSpec intent-driven; validate `--strict` green; tip ≥ `e3cb0c05`
+  - [x] NOT predicates: Drove quota change; vendor package; LIVE_PASS; remint harden
 
 ## 3. Archive — serial gate
 

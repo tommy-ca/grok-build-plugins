@@ -64,7 +64,7 @@ After `tasks.md` exists and passes `openspec validate --strict`:
 
 ## Binding
 
-Read `references/openspec-binding.md` in this plugin. Short form:
+Read `references/openspec-binding.md` in this plugin. Cites fleet OpenSpec × pstack orch compose at `/workspace/fleet-external-agents/openspec-pstack-orch/` (propose gated B8, parallel after tasks, exclusive worktrees; no vendor copy; no Drove quotas). Short form:
 
 - capability kebab-case = `conceptKey`
 - each `#### Scenario` = one Brief.ACCEPTANCE line
