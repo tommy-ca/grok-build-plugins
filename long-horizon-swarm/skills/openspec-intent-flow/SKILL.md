@@ -50,7 +50,17 @@ The change id is the overlay program id and the TaskTree root id. `long-horizon/
 explore? -> proposal -> (specs || design) -> adr -> tasks -> apply -> archive
 ```
 
-Refuse to spawn workers until `tasks.md` exists and `adr.md` is present. specs and design may proceed in parallel after proposal.
+Refuse to spawn workers or implementers until `tasks.md` exists and `adr.md` is present and validates. The propose gate (proposal → specs/design → adr → tasks) stays strictly serial. specs and design may proceed in parallel after proposal (existing gate). If `tasks.md` is missing, implementer spawn is refused naming the tasks / propose gate.
+
+## Parallel bands and N-briefs apply
+
+After `tasks.md` exists and passes `openspec validate --strict`:
+- **N-briefs fan-out**: Horizon/Drove MAY spawn N briefs for independent `P-parallel` leaves under `## Parallel band` headings.
+- **Exclusive write targets**: Each brief/arm runs in a distinct exclusive worktree (or conceptKey write target). Never dual-write sibling trees.
+- **Join on evidence**: Horizon/Drove joins arms on evidence paths (e.g., `briefs/herd/<arm>-evidence.md`), not on first-idle alone.
+- **True gates stay serial**: Serial numbered sections (`## 0.` Preconditions, `## 1.` Validate, `## 2.` STOP handoff, `## 3.` Archive) and Todd-go apply authority remain true gates. Soft-after leaves sequence after their prerequisites without forcing unrelated P-parallel tasks into a fake total order.
+- **No Drove caps invented**: Do not document or invent Drove `max_concurrent` standing-order numbers inside gbp product text; concurrency is governed by orchestrator capacity and exclusive worktrees.
+- **No claim from propose alone**: Never claim parallelism-sync done from propose prose alone; completion is gated on post-apply Prove bars.
 
 ## Binding
 

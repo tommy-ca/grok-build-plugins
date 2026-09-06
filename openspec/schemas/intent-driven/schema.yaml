@@ -267,9 +267,11 @@ artifacts:
 
       Guidelines:
 
-      - Group related tasks under ## numbered headings.
+      - Group related tasks under ## numbered headings for true serial gates (0. Preconditions, 1. Validate, 2. STOP, 3. Archive), or ## Parallel band A/B headings for independent concurrent leaves.
 
       - Each task MUST be a checkbox: `- [ ] X.Y Task description`.
+
+      - Tag independent concurrent tasks with `P-parallel`. Mark dependent leaves with `Soft-after`.
 
       - Tasks should be small enough to complete in one session.
 

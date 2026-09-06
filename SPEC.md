@@ -123,3 +123,20 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **WHEN** arena or interrogate roles are resolved
 - **THEN** they stay on pstack Task (`local` in `pstack-herdr-agents`)
 - **AND** session-sized implement roles may route to ready herdr kinds
+
+### Intent-driven tasks parallel bands and openspec-intent-flow N-briefs
+
+- **GIVEN** `openspec/schemas/intent-driven/templates/tasks.md`
+- **WHEN** the tasks template is inspected
+- **THEN** it includes `## Parallel band A` and `## Parallel band B` headings
+- **AND** it documents `P-parallel` leaf tags for independent checkboxes
+- **AND** serial sections are reserved for true gates: validate, STOP handoff, Todd-go, archive
+
+- **GIVEN** `long-horizon-swarm/skills/openspec-intent-flow/SKILL.md`
+- **WHEN** parallel band apply is orchestrated
+- **THEN** Horizon/Drove may spawn N briefs for `P-parallel` leaves after `tasks.md` validates
+- **AND** each brief runs in an exclusive worktree or write target
+- **AND** join waits on evidence paths
+- **AND** the propose gate stays serial
+- **AND** it does not invent Drove `max_concurrent` standing-order numbers
+

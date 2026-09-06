@@ -32,24 +32,24 @@ Depends: Parallel band A complete
 Depends: §1 green
 
 - [x] 2.1 Hand Horizon `openspec/changes/gbp-tasks-parallel-bands/` (+ orch drafts + durable mirror)
-- [ ] 2.2 Ledger: Wave-4 VALID propose-only; apply gated on Todd go; parallelism-sync done still gated on post-apply Prove bars
+- [x] 2.2 Ledger: Wave-4 VALID propose-only; apply gated on Todd go; parallelism-sync done still gated on post-apply Prove bars
 - [x] 2.3 **STOP** — no apply; no `openspec apply`; no PR; no push to main
 
 ## Parallel band B — Apply (Wave-5; Todd-go) — P-parallel
 
 Depends: Todd go + §1 green + proposal on integration branch
 
-- [ ] B.1 Extend `openspec/schemas/intent-driven/templates/tasks.md` with `## Parallel band A/B` + `P-parallel` leaf tags; serial comments for true gates only — **P-parallel**
-- [ ] B.2 Update `long-horizon-swarm/skills/openspec-intent-flow/SKILL.md` (+ refs as needed) with N-briefs / band apply narrative after tasks; keep propose gate serial — **P-parallel**
-- [ ] B.3 Add SPEC / docs scenarios for parallel-band acceptance (N-briefs; exclusive worktrees; no Drove caps in gbp text) — **P-parallel**
-- [ ] B.4 Merge capability delta into tip `openspec/specs/openspec-tasks-parallel-bands/`
-- [ ] B.5 `openspec validate --all --strict` green after merge
-- [ ] B.6 **Prove bars Static/Metadata (claim parallelism-sync partial for B4/B1 only if all hold):**
-  - [ ] P1 tip tasks template has Parallel band A/B + P-parallel convention
-  - [ ] P2 openspec-intent-flow (+ SPEC) carries N-briefs / band orch language
-  - [ ] P3 OpenSpec still intent-driven; validate `--strict` green; tip ≥ `e3cb0c05`
-  - [ ] P4 no remint harden; no Drove max_concurrent in gbp text; no LIVE_PASS; arena local held
-  - [ ] NOT predicates: Drove quota change; LIVE_PASS; remint harden; N×agy arena — do not invent
+- [x] B.1 Extend `openspec/schemas/intent-driven/templates/tasks.md` with `## Parallel band A/B` + `P-parallel` leaf tags; serial comments for true gates only — **P-parallel**
+- [x] B.2 Update `long-horizon-swarm/skills/openspec-intent-flow/SKILL.md` (+ refs as needed) with N-briefs / band apply narrative after tasks; keep propose gate serial — **P-parallel**
+- [x] B.3 Add SPEC / docs scenarios for parallel-band acceptance (N-briefs; exclusive worktrees; no Drove caps in gbp text) — **P-parallel**
+- [x] B.4 Merge capability delta into tip `openspec/specs/openspec-tasks-parallel-bands/`
+- [x] B.5 `openspec validate --all --strict` green after merge
+- [x] B.6 **Prove bars Static/Metadata (claim parallelism-sync partial for B4/B1 only if all hold):**
+  - [x] P1 tip tasks template has Parallel band A/B + P-parallel convention
+  - [x] P2 openspec-intent-flow (+ SPEC) carries N-briefs / band orch language
+  - [x] P3 OpenSpec still intent-driven; validate `--strict` green; tip ≥ `e3cb0c05`
+  - [x] P4 no remint harden; no Drove max_concurrent in gbp text; no LIVE_PASS; arena local held
+  - [x] NOT predicates: Drove quota change; LIVE_PASS; remint harden; N×agy arena — do not invent
 
 ## 3. Archive — serial gate
 
