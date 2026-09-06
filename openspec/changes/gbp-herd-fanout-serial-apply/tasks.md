@@ -32,24 +32,24 @@ Depends: Parallel band A complete
 Depends: §1 green
 
 - [x] 2.1 Hand Horizon `openspec/changes/gbp-herd-fanout-serial-apply/` (+ orch drafts + durable mirror)
-- [ ] 2.2 Ledger: Wave-4 VALID propose-only; apply gated on Todd go; B3 Prove bar post-apply only
+- [x] 2.2 Ledger: Wave-4 VALID propose-only; apply gated on Todd go; B3 Prove bar post-apply only
 - [x] 2.3 **STOP** — no apply; no `openspec apply`; no PR; no push to main
 
 ## Parallel band B — Apply (Wave-5; Todd-go) — P-parallel
 
 Depends: Todd go + §1 green + proposal on integration branch
 
-- [ ] B.1 Patch tip `pstack-herdr/skills/herd-with-herdr/SKILL.md` toward box: Parallel fan-out default for N parallel-band briefs — **P-parallel**
-- [ ] B.2 Add journal `class: serial_apply` when choosing one (one brief | true gate | slot starved) — **P-parallel**
-- [ ] B.3 Preserve arena/I1/prove-it local anti-patterns; no N×agy fake arena; no pending kinds as live routes — **P-parallel**
-- [ ] B.4 Merge capability delta into tip `openspec/specs/herd-fanout-serial-apply/`
-- [ ] B.5 `openspec validate --all --strict` green after merge
-- [ ] B.6 **Prove bars Static (claim B3 partial only if all hold):**
-  - [ ] P1 tip herd-with-herdr has Parallel fan-out default + serial_apply journal
-  - [ ] P2 tip docs/propose language no longer claims lag as already patched
-  - [ ] P3 OpenSpec intent-driven; validate `--strict` green; tip ≥ `e3cb0c05`
-  - [ ] P4 no remint harden; no Drove caps; no LIVE_PASS; arena local held; pending kinds still park
-  - [ ] NOT predicates: Drove quota; LIVE_PASS; remint harden; N×agy arena; invent pending kinds
+- [x] B.1 Patch tip `pstack-herdr/skills/herd-with-herdr/SKILL.md` toward box: Parallel fan-out default for N parallel-band briefs — **P-parallel**
+- [x] B.2 Add journal `class: serial_apply` when choosing one (one brief | true gate | slot starved) — **P-parallel**
+- [x] B.3 Preserve arena/I1/prove-it local anti-patterns; no N×agy fake arena; no pending kinds as live routes — **P-parallel**
+- [x] B.4 Merge capability delta into tip `openspec/specs/herd-fanout-serial-apply/`
+- [x] B.5 `openspec validate --all --strict` green after merge
+- [x] B.6 **Prove bars Static (claim B3 partial only if all hold):**
+  - [x] P1 tip herd-with-herdr has Parallel fan-out default + serial_apply journal
+  - [x] P2 tip docs/propose language no longer claims lag as already patched
+  - [x] P3 OpenSpec intent-driven; validate `--strict` green; tip ≥ `e3cb0c05`
+  - [x] P4 no remint harden; no Drove caps; no LIVE_PASS; arena local held; pending kinds still park
+  - [x] NOT predicates: Drove quota; LIVE_PASS; remint harden; N×agy arena; invent pending kinds
 
 ## 3. Archive — serial gate
 
