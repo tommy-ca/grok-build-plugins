@@ -18,6 +18,8 @@ Standing-program overlay roles bind to fleet seats per repo-root `EXTERNAL-LOOP.
 
 **Dual orch forbidden.** Exactly one orch owner per brief (Horizon leaf apply/merge XOR Drove continuous tick — never both).
 
+**Session arms:** default Herd→herdr→agy per repo-root `EXTERNAL-LOOP.md` (cite [Herd with herdr](sand-workflow:herd-with-herdr) + [Delegate to agy](sand-workflow:delegate-to-agy); do not clone arena/interrogate here).
+
 ## Grok primitives
 
 | Need | Grok primitive |
