@@ -14,7 +14,7 @@ OverlayGate is refuse or run. Parse `grok inspect --json` `.skills[].name` at th
 2) Confirm the host runtime. Open the trail via show-me-your-work. Write standing orders from `references/standing-orders-template.md` before any spawn. Prefer `bun` to run pstack `skills/poteto-mode/scripts/orch/orch.ts`. If bun is missing, try `node`. If the CLI runs, `orch init --store long-horizon/<id>` is the overlay unit board for the rest of this playbook. If it cannot run (Grok chat sandbox, or node-only host that cannot execute this bun CLI), skip orch. Seed HostStore frontier and extras only. Before any `spawn_subagent`, seed Field Guide via the **field-guide** skill under `long-horizon/<id>/`. Create `design-docs/` and `spend.tsv` there as extras. Write `openspec/config.yaml` with `schema: intent-driven` when using OpenSpec. Do not invent a third store.
 3) Lower the accepted artifacts into a TaskTree. Each `tasks.md` box becomes a TaskNode. `conceptKey` equals the OpenSpec capability id. Role and model come from **planner-worker-split**. Two live nodes must not share a conceptKey. Contested decomposition or a one-way artifact shape runs the pstack `arena` skill (Phases A–F) before implementer spawn; write the synthesis note under `long-horizon/<id>/arena/<unit-id>.md`. Uncontested nodes list `skip: arena, <reason>` on the unit. Refuse to spawn if tasks.md exists without adr.md.
 4) Write the throughput checkpoint as four todo items (Feature step 3). Blocking first steps. Independent workstreams. Shared mutable state. Smallest safe decomposition.
-5) Author a Brief per ready leaf using the Orchestrate brief template. Fields are GOAL, SCOPE, CONTEXT, ACCEPTANCE, VERIFY, TIMEBOX, FORBIDDEN, REPORT, STANDING, FIELD_GUIDE. Acceptance lines are the Gherkin scenarios for that capability, copied not paraphrased. Inject `field-guide/index.md` and standing orders verbatim. Missing Brief fields are a refuse-to-spawn condition.
+5) Author a Brief per ready leaf using the Orchestrate brief template. Fields are GOAL, SCOPE, CONTEXT, ACCEPTANCE, VERIFY, TIMEBOX, FORBIDDEN, REPORT, STANDING, FIELD_GUIDE. Acceptance lines are the Gherkin scenarios for that capability, copied not paraphrased. Inject `field-guide/index.md` and standing orders verbatim. Missing Brief fields are a refuse-to-spawn condition. **Lever-first VERIFY:** for a non-trivial leaf, Brief.VERIFY MUST name a `verify-*` skill or a `scripts/verify-*.sh` path. Refuse spawn when VERIFY is prose-only (self-report, "looks good", or an enum with no lever path). Trivial leaves MAY skip with explicit `skip: lever, <reason>`. Nightly Audit / maintain-verification is the standing cadence for per-repo levers. Do not invent LIVE or LIVE_PASS. Catalog prove lever for this sibling remains `scripts/verify-long-horizon-swarm.sh`.
 6) Spawn workers with exclusive write targets.
 
 ```
@@ -50,6 +50,22 @@ U. **Update.** Implementation surprises revise the change-folder artifacts and F
 R. **Archive.** After ledger-verified land: merge deltas into `openspec/specs/`, move the change folder to `openspec/changes/archive/`, curate Field Guide, encode lessons.
 
 Binding table: `references/openspec-binding.md` in this plugin.
+
+
+#### Blog failure-mode refuse/stop checklist
+
+Cite https://cursor.com/blog/agent-swarm-model-economics (Wilson Lin, Jul 2026). Treat each mode as a falsifiable refuse/stop or drain-incomplete check. Does not replace overlay skills that already implement the mechanism. Keep planner≠worker, CostPolicy, Field Guide, review-lenses, megafile-gate, ossify-break, openspec-intent-flow. Refuse flat-swarm / dual-board (second-board / dual-write) / nested-spawn. Arena and interrogate stay pstack cites — do not clone those skill trees into this plugin.
+
+| Failure mode | Falsifiable check |
+| --- | --- |
+| split-brain | two live or pending nodes share a conceptKey → refuse spawn |
+| planner contention | DesignDoc missing owner, or two writers on the same `design-docs/<conceptKey>.md` → refuse |
+| merge reconciler | drain on a collision without `coordination-layer` record and `pstack:poteto-agent` reconciler → drain incomplete |
+| megafiles | owned file over megafile-loc (default 800) → ISSUES not PASS; spawn decompose |
+| ossify | core change without ossify-break DesignDoc reason → refuse |
+| review lenses | land without ≥2 lenses including pstack interrogate → refuse land |
+| Field Guide | spawn without `field-guide/index.md` → spawn-contract miss |
+| model economics | spawn without CostPolicy model bind, or drain without a `spend.tsv` row → incomplete |
 
 #### Article loop (swarm economics)
 

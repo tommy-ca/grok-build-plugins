@@ -27,6 +27,7 @@ Stop. Do not spawn.
 - **nested-spawn.** A child that would call `spawn_subagent`. Recurse is parent-owned units.
 - **openspec-incomplete.** `adr.md` or `tasks.md` missing. OpenSpec is mandatory.
 - **shared-write-target.** Two live units share a ConceptKey or exclusive path.
+- **prose-only-verify.** Non-trivial leaf Brief.VERIFY lacks a named `verify-*` skill or `scripts/verify-*.sh` path. Refuse spawn; name the missing lever. Do not invent LIVE.
 
 ## Runtime skip
 
@@ -70,7 +71,7 @@ Worker `pstack:feature` (toml key `feature`). Verifier `pstack:independent-verif
 
 ## Stores
 
-CatalogEntry is name `long-horizon-swarm`, version `1.1.0-long-horizon-swarm.0`, source `./long-horizon-swarm`.
+CatalogEntry is name `long-horizon-swarm`, version `1.2.0-long-horizon-swarm.0`, source `./long-horizon-swarm`.
 
 Three stores.
 

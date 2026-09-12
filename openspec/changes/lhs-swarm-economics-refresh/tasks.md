@@ -35,27 +35,27 @@ Depends: §1 green
 - [x] 2.2 Ledger: Wave-4 VALID propose-only; Apply HOLD until Todd/Horizon go
 - [x] 2.3 **STOP** — no `openspec apply`; no product plugin edits; no box roles-map / persona edit from propose executor; do not merge as apply
 
-## Parallel band B — Apply (Wave-5; Todd/Horizon go) — HOLD
+## Parallel band B — Apply (Wave-5; Todd/Horizon go) — COMPLETE (Heavilifter gbp + Drove B.6)
 
 Depends: Todd/Horizon go + §1 green
 
-- [ ] B.1 Refresh `long-horizon-swarm/HARNESS.md` + `README.md` with EXTERNAL-LOOP fleet seat bind (Planner / Horizon / Drove / CAO / Herd / Heavilifter / Nightly Audit) + dual-orch forbidden; keep Grok primitives — **P-parallel (gbp git)**
-- [ ] B.2 Refresh playbook + `references/standing-orders-template.md` with blog failure-mode checklist (split-brain, planner contention, merge reconciler, megafiles, ossify, review lenses, Field Guide, model economics) as refuse/stop checks; keep planner≠worker, CostPolicy, Field Guide, review-lenses, megafile-gate, ossify-break, openspec-intent-flow; refuse flat-swarm / dual-board / nested-spawn; arena/interrogate via pstack cite — **P-parallel (gbp git)**
-- [ ] B.3 Lever-first VERIFY: Brief.VERIFY requires `verify-*` or `scripts/verify-*.sh`; refuse prose-only on non-trivial leaves; handoff records lever path; cite Nightly Audit maintain-verification; no LIVE invent — **P-parallel (gbp git)**
-- [ ] B.4 Bump SemVer `1.1.0-long-horizon-swarm.0` → `1.2.0-long-horizon-swarm.N` in `plugin.json` and marketplace `plugins[].version`; do not move tags — **P-parallel (gbp git)**
-- [ ] B.5 Prove `scripts/verify-long-horizon-swarm.sh` green (extend if new assertions needed) + `python3 tests/test_marketplace.py` PASS + `grok plugin validate ./long-horizon-swarm` — **serial after B.1–B.4**
-- [ ] B.6 Drove/eggbot applies box SoT cite lines to `/workspace/fleet-external-agents/roles-map.md`, `~/.cursor/rules/fleet-roles.mdc`, and personas (Drove, Horizon, Planner, CAO, Herd, Heavilifter, Nightly Audit) with the standing-program overlay block named in spec — **Metadata / box SoT (not necessarily gbp git PR)**
-- [ ] B.7 Merge capability delta into tip `openspec/specs/lhs-swarm-economics-refresh/`
-- [ ] B.8 `openspec validate lhs-swarm-economics-refresh --type change --strict` (and `--all --strict` as needed) green after merge
-- [ ] B.9 **Prove bars Metadata/Static (claim refresh done only if all hold):**
-  - [ ] P1 HARNESS/README name fleet seats + dual-orch forbidden + Grok primitives remain
-  - [ ] P2 playbook + standing-orders name the eight blog failure modes as refuse/stop checks
-  - [ ] P3 Brief.VERIFY / handoff require named lever; prose-only refuse on non-trivial leaves
-  - [ ] P4 SemVer `1.2.0-long-horizon-swarm.N` on plugin.json + marketplace; verify script + marketplace tests green
-  - [ ] P5 box roles-map / fleet-roles.mdc / personas contain the standing-program overlay cite (Metadata)
-  - [ ] P6 keep-list intact; arena/interrogate not cloned; no thermos / gbp-external-loop-docs remint; no LIVE invent
-  - [ ] P7 OpenSpec intent-driven; validate `--strict` green; tip ≥ `d03c318c`
-  - [ ] NOT predicates: remint thermos-grok-port; remint gbp-external-loop-docs; clone arena/interrogate; invent LIVE; dual orch; docs-only apply; propose PR claimed as apply
+- [x] B.1 Refresh `long-horizon-swarm/HARNESS.md` + `README.md` with EXTERNAL-LOOP fleet seat bind (Planner / Horizon / Drove / CAO / Herd / Heavilifter / Nightly Audit) + dual-orch forbidden; keep Grok primitives — **P-parallel (gbp git)**
+- [x] B.2 Refresh playbook + `references/standing-orders-template.md` with blog failure-mode checklist (split-brain, planner contention, merge reconciler, megafiles, ossify, review lenses, Field Guide, model economics) as refuse/stop checks; keep planner≠worker, CostPolicy, Field Guide, review-lenses, megafile-gate, ossify-break, openspec-intent-flow; refuse flat-swarm / dual-board / nested-spawn; arena/interrogate via pstack cite — **P-parallel (gbp git)**
+- [x] B.3 Lever-first VERIFY: Brief.VERIFY requires `verify-*` or `scripts/verify-*.sh`; refuse prose-only on non-trivial leaves; handoff records lever path; cite Nightly Audit maintain-verification; no LIVE invent — **P-parallel (gbp git)**
+- [x] B.4 Bump SemVer `1.1.0-long-horizon-swarm.0` → `1.2.0-long-horizon-swarm.N` in `plugin.json` and marketplace `plugins[].version`; do not move tags — **P-parallel (gbp git)**
+- [x] B.5 Prove `scripts/verify-long-horizon-swarm.sh` green (extend if new assertions needed) + `python3 tests/test_marketplace.py` PASS + `grok plugin validate ./long-horizon-swarm` — **serial after B.1–B.4**
+- [x] B.6 Drove/eggbot applies box SoT cite lines to `/workspace/fleet-external-agents/roles-map.md`, `~/.cursor/rules/fleet-roles.mdc`, and personas (Drove, Horizon, Planner, CAO, Herd, Heavilifter, Nightly Audit) with the standing-program overlay block named in spec — **Metadata / box SoT (not necessarily gbp git PR)**
+- [x] B.7 Merge capability delta into tip `openspec/specs/lhs-swarm-economics-refresh/`
+- [x] B.8 `openspec validate lhs-swarm-economics-refresh --type change --strict` (and `--all --strict` as needed) green after merge
+- [x] B.9 **Prove bars Metadata/Static (claim refresh done only if all hold):**
+  - [x] P1 HARNESS/README name fleet seats + dual-orch forbidden + Grok primitives remain
+  - [x] P2 playbook + standing-orders name the eight blog failure modes as refuse/stop checks
+  - [x] P3 Brief.VERIFY / handoff require named lever; prose-only refuse on non-trivial leaves
+  - [x] P4 SemVer `1.2.0-long-horizon-swarm.N` on plugin.json + marketplace; verify script + marketplace tests green
+  - [x] P5 box roles-map / fleet-roles.mdc / personas contain the standing-program overlay cite (Metadata)
+  - [x] P6 keep-list intact; arena/interrogate not cloned; no thermos / gbp-external-loop-docs remint; no LIVE invent
+  - [x] P7 OpenSpec intent-driven; validate `--strict` green; tip ≥ `d03c318c`
+  - [x] NOT predicates: remint thermos-grok-port; remint gbp-external-loop-docs; clone arena/interrogate; invent LIVE; dual orch; docs-only apply; propose PR claimed as apply
 
 ## 3. Archive — serial gate
 

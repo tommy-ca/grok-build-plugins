@@ -2,6 +2,24 @@
 
 Host map. grok does not load it as a skill.
 
+## Fleet seats (cite EXTERNAL-LOOP.md)
+
+Standing-program overlay roles bind to fleet seats per repo-root `EXTERNAL-LOOP.md` (sand-workflow seats; do not remint `gbp-external-loop-docs`; do not vendor sand-workflow skill bodies):
+
+| Overlay need | Fleet seat |
+|---|---|
+| Propose / plan-with-code / OpenSpec artefacts | **Planner** |
+| Single-change OpenSpec apply/merge | **Horizon** |
+| Continuous tick (goal + quota + TaskTree) | **Drove** |
+| Default parallel implement (cloud fan-out) | **CAO** (Cloud Agent Orchestrator) |
+| Session herdr pane after Act-on (interactive arms; not CAO scale) | **Herd** |
+| Prove-it / session recovery / on-box worktree when cloud blocked — **not** primary N-arm fan-out | **Heavilifter** |
+| Verification cadence / maintain-verification | **Nightly Audit** (Nightly Audit Engineer) |
+
+**Dual orch forbidden.** Exactly one orch owner per brief (Horizon leaf apply/merge XOR Drove continuous tick — never both).
+
+## Grok primitives
+
 | Need | Grok primitive |
 |---|---|
 | Slash | `/long-horizon-swarm` plus overlay skills `/field-guide`, `/review-lenses`, `/openspec-intent-flow` |
