@@ -41,12 +41,12 @@ Depends: Todd/Horizon go + §1 green
 
 - [x] B.1 Land repo-root `EXTERNAL-LOOP.md` — one-page pointer citing sand-workflow:inner-outer-orch, fleet-org-raci, drove-external-loop, herd-with-herdr + research audit path — **P-parallel (gbp git)**
 - [x] B.2 Include Symphony→fleet map (tracker/concurrency/isolation/WORKFLOW/stop) + role names (Drove/Horizon/CAO/Herd/Heavilifter) + dual-orch forbidden + lever-first VERIFY + herd-journal→reconcile + thermos #15→#17 CloudAgent plan-block → Heavilifter recovery — **P-parallel (gbp git)**
-- [ ] B.3 Drove/eggbot applies live rooms-map row to `/workspace/fleet-external-agents/rooms-map.md` with exact content: `| 91ada72e-0abc-40f8-bb44-971a584fbdf3 | grok-build-plugins | gbp / thermos / marketplace plugin programs only | Drove, Herd, Horizon, CAO, Heavilifter (+ Planner when seated) | live |` — **Metadata / box SoT (not necessarily gbp git PR)**
+- [x] B.3 Drove/eggbot applies live rooms-map row to `/workspace/fleet-external-agents/rooms-map.md` with exact content: `| 91ada72e-0abc-40f8-bb44-971a584fbdf3 | grok-build-plugins | gbp / thermos / marketplace plugin programs only | Drove, Herd, Horizon, CAO, Heavilifter (+ Planner when seated) | live |` — **Metadata / box SoT (not necessarily gbp git PR)**
 - [x] B.4 Merge capability delta into tip `openspec/specs/gbp-external-loop-docs/`
 - [x] B.5 `openspec validate gbp-external-loop-docs --type change --strict` (and `--all --strict` as needed) green after merge
 - [x] B.6 **Prove bars Metadata/Static (claim external-loop docs done only if all hold):**
   - [x] P1 tip has thin `EXTERNAL-LOOP.md` with required cites + Symphony map + roles
-  - [ ] P2 box rooms-map contains the exact gbp row (Metadata)
+  - [x] P2 box rooms-map contains the exact gbp row (Metadata)
   - [x] P3 no thermos remint; no LIVE invent; no Elixir daemon; no second SoT skill dump
   - [x] P4 OpenSpec intent-driven; validate `--strict` green; tip ≥ `35c8c6c`
   - [x] NOT predicates: remint thermos-grok-port; invent LIVE; dual orch; propose PR claimed as apply
@@ -55,6 +55,6 @@ Depends: Todd/Horizon go + §1 green
 
 Depends: Parallel band B complete + implementation on integration branch
 
-- [ ] 3.1 `openspec validate gbp-external-loop-docs --type change --strict` still green before archive
-- [ ] 3.2 Archive per openspec-git-discipline (from integration after merge)
-- [ ] 3.3 Update ledger; reaffirm parks; note Prove status (VERIFIED only if Prove bars held — never invent)
+- [x] 3.1 `openspec validate gbp-external-loop-docs --type change --strict` still green before archive
+- [x] 3.2 Archive per openspec-git-discipline (from integration after merge)
+- [x] 3.3 Update ledger; reaffirm parks; note Prove status (VERIFIED only if Prove bars held — never invent)
