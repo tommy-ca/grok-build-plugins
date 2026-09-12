@@ -33,9 +33,9 @@ Depends: Parallel band A complete
 
 Depends: §1 green
 
-- [ ] 2.1 Hand Horizon `openspec/changes/workflow-md-rename/` (+ orch VALID/BRIEF)
-- [ ] 2.2 Ledger: Wave-4 VALID propose-only; Apply HOLD until Todd/Horizon go
-- [ ] 2.3 **STOP** — no `openspec apply`; no product rename; no HARNESS/README/verify edit from propose executor; do not merge as apply; do not edit sand-workflow skill bodies from propose
+- [x] 2.1 Hand Horizon `openspec/changes/workflow-md-rename/` (+ orch VALID/BRIEF)
+- [x] 2.2 Ledger: Wave-4 VALID propose-only; Apply HOLD until Todd/Horizon go
+- [x] 2.3 **STOP** — no `openspec apply`; no product rename; no HARNESS/README/verify edit from propose executor; do not merge as apply; do not edit sand-workflow skill bodies from propose
 
 ## Parallel band B — Apply (Wave-5; Todd/Horizon go) — APPLY HOLD
 
@@ -43,18 +43,18 @@ Depends: Todd/Horizon go + §1 green
 
 ### B-gbp — gbp git Apply (Horizon / Heavilifter) — HOLD
 
-- [ ] B.1 **Hard-rename** repo-root `EXTERNAL-LOOP.md` → `WORKFLOW.md` (`git mv`; preserve Symphony twin body — Session arms + isolation trinity unchanged; prefer no redirect stub) — **P-parallel (gbp git)**
-- [ ] B.2 Flip living cites `EXTERNAL-LOOP.md` → `WORKFLOW.md` in `long-horizon-swarm/HARNESS.md`, `long-horizon-swarm/README.md`, and `scripts/verify-long-horizon-swarm.sh` assert — **P-parallel (gbp git)**
-- [ ] B.3 Merge capability deltas into tip `openspec/specs/` (`workflow-md-rename` NEW + modified living caps)
-- [ ] B.4 `openspec validate workflow-md-rename --type change --strict` (and `--all --strict` as needed) green after merge
-- [ ] B.5 Run `scripts/verify-long-horizon-swarm.sh` → PASS (assert expects WORKFLOW.md)
-- [ ] B.6 **Prove bars Metadata/Static (claim done only if all hold):**
-  - [ ] P1 tip `WORKFLOW.md` exists; live `EXTERNAL-LOOP.md` absent (or ADR stub only if later approved — prefer absent)
-  - [ ] P2 tip WORKFLOW.md retains Symphony twin shape + Session arms Herd→herdr→agy + isolation trinity distinct + Drove tick/concurrency
-  - [ ] P3 HARNESS/README/verify assert cite `WORKFLOW.md` not `EXTERNAL-LOOP.md`
-  - [ ] P4 OpenSpec living caps no longer mandate live filename `EXTERNAL-LOOP.md`
-  - [ ] P5 no thermos/lhs/herdr-agy remint; no LIVE invent; no Elixir daemon; tip ≥ `f4dc2ae`
-  - [ ] NOT predicates: product rename in propose PR; remint closed archives; invent LIVE; dual orch; propose claimed as apply
+- [x] B.1 **Hard-rename** repo-root `EXTERNAL-LOOP.md` → `WORKFLOW.md` (`git mv`; preserve Symphony twin body — Session arms + isolation trinity unchanged; prefer no redirect stub) — **P-parallel (gbp git)**
+- [x] B.2 Flip living cites `EXTERNAL-LOOP.md` → `WORKFLOW.md` in `long-horizon-swarm/HARNESS.md`, `long-horizon-swarm/README.md`, and `scripts/verify-long-horizon-swarm.sh` assert — **P-parallel (gbp git)**
+- [x] B.3 Merge capability deltas into tip `openspec/specs/` (`workflow-md-rename` NEW + modified living caps)
+- [x] B.4 `openspec validate workflow-md-rename --type change --strict` (and `--all --strict` as needed) green after merge
+- [x] B.5 Run `scripts/verify-long-horizon-swarm.sh` → PASS (assert expects WORKFLOW.md)
+- [x] B.6 **Prove bars Metadata/Static (claim done only if all hold):**
+  - [x] P1 tip `WORKFLOW.md` exists; live `EXTERNAL-LOOP.md` absent (or ADR stub only if later approved — prefer absent)
+  - [x] P2 tip WORKFLOW.md retains Symphony twin shape + Session arms Herd→herdr→agy + isolation trinity distinct + Drove tick/concurrency
+  - [x] P3 HARNESS/README/verify assert cite `WORKFLOW.md` not `EXTERNAL-LOOP.md`
+  - [x] P4 OpenSpec living caps no longer mandate live filename `EXTERNAL-LOOP.md`
+  - [x] P5 no thermos/lhs/herdr-agy remint; no LIVE invent; no Elixir daemon; tip ≥ `f4dc2ae`
+  - [x] NOT predicates: product rename in propose PR; remint closed archives; invent LIVE; dual orch; propose claimed as apply
 
 ### B-drove — Drove Apply / box SoT (out-of-repo; NOT gbp product files) — HOLD / note only
 

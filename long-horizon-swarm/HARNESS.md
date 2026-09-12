@@ -2,9 +2,9 @@
 
 Host map. grok does not load it as a skill.
 
-## Fleet seats (cite EXTERNAL-LOOP.md)
+## Fleet seats (cite WORKFLOW.md)
 
-Standing-program overlay roles bind to fleet seats per repo-root `EXTERNAL-LOOP.md` (sand-workflow seats; do not remint `gbp-external-loop-docs`; do not vendor sand-workflow skill bodies):
+Standing-program overlay roles bind to fleet seats per repo-root `WORKFLOW.md` (sand-workflow seats; do not remint `gbp-external-loop-docs`; do not vendor sand-workflow skill bodies):
 
 | Overlay need | Fleet seat |
 |---|---|
@@ -18,7 +18,7 @@ Standing-program overlay roles bind to fleet seats per repo-root `EXTERNAL-LOOP.
 
 **Dual orch forbidden.** Exactly one orch owner per brief (Horizon leaf apply/merge XOR Drove continuous tick — never both).
 
-**Session arms:** default Herd→herdr→agy per repo-root `EXTERNAL-LOOP.md` (cite [Herd with herdr](sand-workflow:herd-with-herdr) + [Delegate to agy](sand-workflow:delegate-to-agy); do not clone arena/interrogate here).
+**Session arms:** default Herd→herdr→agy per repo-root `WORKFLOW.md` (cite [Herd with herdr](sand-workflow:herd-with-herdr) + [Delegate to agy](sand-workflow:delegate-to-agy); do not clone arena/interrogate here).
 
 ## Grok primitives
 
