@@ -61,6 +61,6 @@ Depends: Todd/Horizon go + §1 green
 
 Depends: Parallel band B complete + implementation on integration branch
 
-- [ ] 3.1 `openspec validate lhs-swarm-economics-refresh --type change --strict` still green before archive
-- [ ] 3.2 Archive per openspec-git-discipline (from integration after merge)
-- [ ] 3.3 Update ledger; reaffirm parks; note Prove status (VERIFIED only if Prove bars held — never invent)
+- [x] 3.1 `openspec validate lhs-swarm-economics-refresh --type change --strict` still green before archive
+- [x] 3.2 Archive per openspec-git-discipline (from integration after merge)
+- [x] 3.3 Update ledger; reaffirm parks; note Prove status (VERIFIED only if Prove bars held — never invent)
