@@ -71,6 +71,8 @@ Depends: Todd/Horizon go + §1 green
 
 Depends: Parallel band B-gbp complete + implementation on integration branch (B-drove may trail)
 
-- [ ] 3.1 `openspec validate workflow-md-rename --type change --strict` still green before archive
-- [ ] 3.2 Archive per openspec-git-discipline (from integration after merge)
-- [ ] 3.3 Update ledger; reaffirm parks; note Prove status + whether Drove Band B Metadata is VERIFIED or still pending
+- [x] 3.1 `openspec validate workflow-md-rename --type change --strict` still green before archive
+- [x] 3.2 Archive per openspec-git-discipline (from integration after merge)
+- [x] 3.3 Update ledger; reaffirm parks; note Prove status + whether Drove Band B Metadata is VERIFIED or still pending
+
+> Archive note (2026-09-12): Drove Band B (B.7–B.9) VERIFIED out-of-repo @ tip `6c197417` / evidence `B-DROVE-WORKFLOW-LOAD-DONE.md`. gbp apply landed `WORKFLOW.md` @ `#28` / `5b2d8f5b`.
