@@ -1,0 +1,9 @@
+Official plugin source
+https://github.com/cursor/plugins/tree/main/thermos
+tree 889ec4b68fa5aab0e867dad71ec3fdf386ae48f3
+License MIT (Copyright (c) 2026 Cursor)
+
+Grok-native adapter lives in this catalog sibling folder.
+Spawn is spawn_subagent with thermos:<role>.
+No .cursor-plugin/. No hooks. No commands/.
+Cursor Task / subagent_type / run_in_background are NOT the sole API — contrast only.
