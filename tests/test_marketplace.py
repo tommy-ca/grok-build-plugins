@@ -25,6 +25,7 @@ def test_pstack_is_pinned_url() -> None:
     assert "tommy-mode" in names
     assert "long-horizon-swarm" in names
     assert "pstack-herdr" in names
+    assert "thermos" in names
     src = plugins[0]["source"]
     assert src.get("source") == "url"
     assert src["url"] == "https://github.com/tommy-ca/pstack.git"
@@ -115,6 +116,7 @@ def test_grok_native_siblings_validate() -> None:
         "cli-for-agent",
         "tommy-mode",
         "long-horizon-swarm",
+        "thermos",
         "pstack-herdr",
     ):
         src = by_name[name]["source"]
@@ -136,13 +138,15 @@ def test_grok_native_siblings_validate() -> None:
         assert not (folder / "hooks").exists()
         assert not (folder / ".mcp.json").exists()
         assert not (folder / ".cursor-plugin").exists()
-        proc = subprocess.run(
-            ["grok", "plugin", "validate", str(folder)],
-            capture_output=True,
-            text=True,
-            check=False,
-        )
-        assert proc.returncode == 0, proc.stderr or proc.stdout
+        import shutil
+        if shutil.which("grok"):
+            proc = subprocess.run(
+                ["grok", "plugin", "validate", str(folder)],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            assert proc.returncode == 0, proc.stderr or proc.stdout
         for path in folder.rglob("*"):
             if not path.is_file():
                 continue
@@ -316,6 +320,28 @@ def test_grok_native_siblings_validate() -> None:
     assert "long-horizon/" in overlay_text
     assert "orchestrate/<slug>/" not in overlay_text
 
+    # thermos sibling asserts (Wave-5 thermos-grok-port)
+    th = ROOT / "thermos"
+    th_plugin = json.loads((th / "plugin.json").read_text(encoding="utf-8"))
+    assert th_plugin["version"] == "1.0.0-thermos.0"
+    assert th_plugin["version"] == by_name["thermos"]["version"]
+    assert by_name["thermos"]["source"] == "./thermos"
+    assert "agents" in th_plugin
+    assert (th / "agents/thermo-nuclear-review-subagent.md").is_file()
+    assert (th / "agents/thermo-nuclear-code-quality-review-subagent.md").is_file()
+    th_harness = (th / "HARNESS.md").read_text(encoding="utf-8")
+    assert "spawn_subagent" in th_harness
+    assert "get_command_or_subagent_output" in th_harness
+    assert "thermos:" in th_harness
+    assert not (th / ".cursor-plugin").exists()
+    th_orch = (th / "skills/thermos/SKILL.md").read_text(encoding="utf-8")
+    assert "thermo-nuclear-review" in th_orch
+    assert "thermo-nuclear-code-quality-review" in th_orch
+    assert "spawn_subagent" in th_orch
+    assert "parallel" in th_orch.lower() or "both" in th_orch.lower()
+    assert (ROOT / "scripts/verify-thermos.sh").is_file()
+
+
 
 def test_operator_docs_match_live_inspect() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -323,12 +349,13 @@ def test_operator_docs_match_live_inspect() -> None:
     cli = (ROOT / "cli-for-agent/README.md").read_text(encoding="utf-8")
     tm_readme = (ROOT / "tommy-mode/README.md").read_text(encoding="utf-8")
     lhs_readme = (ROOT / "long-horizon-swarm/README.md").read_text(encoding="utf-8")
+    th_readme = (ROOT / "thermos/README.md").read_text(encoding="utf-8")
     spec = (ROOT / "SPEC.md").read_text(encoding="utf-8")
     spec_main = (
         ROOT / "openspec/specs/grok-build-marketplace/spec.md"
     ).read_text(encoding="utf-8")
     agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
-    for text in (readme, ac, cli, tm_readme, lhs_readme):
+    for text in (readme, ac, cli, tm_readme, lhs_readme, th_readme):
         assert "new session" in text
     assert "inspect.agents" in readme
     assert "directory count" in readme

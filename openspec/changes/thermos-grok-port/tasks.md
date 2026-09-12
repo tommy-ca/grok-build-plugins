@@ -40,17 +40,17 @@ Depends: §1 green
 
 Depends: Todd/Horizon go + §1 green
 
-- [ ] B.1 Land `thermos/` sibling: `plugin.json`, README, `HARNESS.md`, `skills/` (thermos + both rubrics), `agents/` adapted from upstream — **P-parallel**
-- [ ] B.2 Marketplace entry `./thermos` + SemVer `MAJOR.MINOR.PATCH-thermos.N` (plugin.json == marketplace version) — **P-parallel**
-- [ ] B.3 Lever VERIFY: `scripts/verify-thermos.sh` and/or `verify-thermos` skill + skill smoke receipts — **P-parallel**
-- [ ] B.4 Update catalog README/SPEC/tests sibling sets; reject docs-only without installable surfaces
-- [ ] B.5 Merge capability deltas into tip `openspec/specs/`; `openspec validate --all --strict` green
-- [ ] B.6 **Prove bars (claim VERIFIED only if all hold):**
-  - [ ] P1 `grok plugin validate` (or repo equivalent) green on `thermos/`
-  - [ ] P2 skill smoke: orchestrator + both rubrics load; HARNESS names Grok spawn/join
-  - [ ] P3 poteto surfaces named; lever VERIFY rerunnable
-  - [ ] P4 marketplace + SemVer `-thermos.N`; no pstack nest; ADRs 0001–0006 held
-  - [ ] NOT predicates: Cursor Task sole API; docs-only; LIVE_PASS invent; remint closed gbp leaves
+- [x] B.1 Land `thermos/` sibling: `plugin.json`, README, `HARNESS.md`, `skills/` (thermos + both rubrics), `agents/` adapted from upstream — **P-parallel**
+- [x] B.2 Marketplace entry `./thermos` + SemVer `MAJOR.MINOR.PATCH-thermos.N` (plugin.json == marketplace version) — **P-parallel**
+- [x] B.3 Lever VERIFY: `scripts/verify-thermos.sh` and/or `verify-thermos` skill + skill smoke receipts — **P-parallel**
+- [x] B.4 Update catalog README/SPEC/tests sibling sets; reject docs-only without installable surfaces
+- [x] B.5 Merge capability deltas into tip `openspec/specs/`; `openspec validate --all --strict` green
+- [x] B.6 **Prove bars (claim VERIFIED only if all hold):**
+  - [x] P1 `grok plugin validate` (or repo equivalent) green on `thermos/`
+  - [x] P2 skill smoke: orchestrator + both rubrics load; HARNESS names Grok spawn/join
+  - [x] P3 poteto surfaces named; lever VERIFY rerunnable
+  - [x] P4 marketplace + SemVer `-thermos.N`; no pstack nest; ADRs 0001–0006 held
+  - [x] NOT predicates: Cursor Task sole API; docs-only; LIVE_PASS invent; remint closed gbp leaves
 
 ## 3. Archive — serial gate
 

@@ -13,7 +13,7 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 
 ### Local sibling versions are unique tags
 
-- **GIVEN** local plugins `agent-compatibility`, `cli-for-agent`, `tommy-mode`, `long-horizon-swarm`, and `pstack-herdr`
+- **GIVEN** local plugins `agent-compatibility`, `cli-for-agent`, `tommy-mode`, `long-horizon-swarm`, `thermos`, and `pstack-herdr`
 - **WHEN** `plugin.json` versions are read
 - **THEN** each version is SemVer `MAJOR.MINOR.PATCH-<plugin-name>.N`
 - **AND** it does not contain `grokbuild`
@@ -63,7 +63,7 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **GIVEN** the marketplace index
 - **WHEN** `plugins[]` is read
 - **THEN** `pstack` is a pinned git url
-- **AND** `agent-compatibility`, `cli-for-agent`, `tommy-mode`, `long-horizon-swarm`, and `pstack-herdr` are local paths `./agent-compatibility`, `./cli-for-agent`, `./tommy-mode`, `./long-horizon-swarm`, and `./pstack-herdr`
+- **AND** `agent-compatibility`, `cli-for-agent`, `tommy-mode`, `long-horizon-swarm`, `thermos`, and `pstack-herdr` are local paths `./agent-compatibility`, `./cli-for-agent`, `./tommy-mode`, `./long-horizon-swarm`, `./thermos`, and `./pstack-herdr`
 - **AND** there is no `plugins/` directory and no `pstack/` plugin folder
 - **AND** Cursor sibling dirs in this repo are grok-native ports only, not a nested pstack
 - **AND** `cursor-team-kit` and `make-bot-ui` are not required
@@ -110,6 +110,22 @@ The marketplace lists plugin `pstack` whose source is `https://github.com/tommy-
 - **AND** it names `field-guide`
 - **AND** it names TaskTree or TaskNode
 
+
+
+### thermos is a grok-native dual-rubric review sibling
+
+- **GIVEN** `.grok-plugin/marketplace.json`
+- **WHEN** `plugins[]` is read
+- **THEN** `thermos` uses local path `./thermos`
+- **AND** pstack remains a pinned git url
+- **AND** there is no nested `thermos/` under pstack
+
+- **GIVEN** shipped thermos README and HARNESS
+- **WHEN** an operator enables thermos
+- **THEN** docs name parallel bug/security and code-quality rubrics plus synthesize
+- **AND** HARNESS names Grok primitives for spawn/join (`spawn_subagent`, `get_command_or_subagent_output`)
+- **AND** docs spawn `thermos:thermo-nuclear-review-subagent` / `thermos:thermo-nuclear-code-quality-review-subagent`
+- **AND** lever VERIFY cites `scripts/verify-thermos.sh`
 
 ### pstack-herdr is an optional pstack overlay
 

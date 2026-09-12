@@ -1,0 +1,12 @@
+{
+  "name": "thermos",
+  "version": "1.0.0-thermos.0",
+  "description": "Thermo-nuclear dual-rubric branch review for Grok Build: parallel correctness+security and code-quality rubrics, synthesize, poteto bind.",
+  "author": {"name": "tommy-ca"},
+  "homepage": "https://github.com/tommy-ca/grok-build-plugins/tree/main/thermos",
+  "repository": "https://github.com/tommy-ca/grok-build-plugins",
+  "license": "MIT",
+  "keywords": ["thermos", "thermo-nuclear", "code-review", "grok-build", "poteto-mode"],
+  "skills": "./skills/",
+  "agents": "./agents/"
+}
