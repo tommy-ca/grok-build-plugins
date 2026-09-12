@@ -12,9 +12,9 @@ After apply, tommy-ca/grok-build-plugins repo-root `EXTERNAL-LOOP.md` MUST be re
 | Runtime key | Fleet mapping (MUST state) |
 | --- | --- |
 | tracker / board | boards / `long-horizon/*` + OpenSpec tasks |
-| polling / tick | Drove continuous tick when brief has goal+quota+TaskTree; Horizon for single-change OpenSpec apply |
-| workspace / isolation | CAO cloud VM / Heavilifter worktree / herdr pane |
-| agent concurrency | `max_concurrent` default **5** + CPU/mem backpressure |
+| polling / tick | **Drove** owns continuous tick when brief has goal+quota+TaskTree (Horizon = single-change OpenSpec apply/merge only — not the continuous tick) |
+| workspace / isolation | **Isolation trinity — distinct, do not collapse:** (1) **CAO** = cloud VM (scale fan-out); (2) **Herd session** = herdr pane + `kind=agy` (session implement/PR-review); (3) **Heavilifter** = on-box worktree recovery (prove-it / when cloud blocked — not primary N-arm fan-out) |
+| agent concurrency | **Drove**-owned `max_concurrent` default **5** + CPU/mem backpressure (Herd fills herdr slots under that policy; CAO scale is separate cloud concurrency) |
 | hooks | optional (may be named absent / N/A) |
 | observability | approvals journal + herd-journal (stalls/fallbacks) |
 
@@ -35,6 +35,8 @@ The twin MUST remain a **pointer/index**, not a second SoT: it MUST cite sand-wo
 - **WHEN** an operator opens repo-root `EXTERNAL-LOOP.md`
 - **THEN** a YAML fenced block or equivalent keyed table names tracker/board, polling/tick, workspace/isolation, max_concurrent default 5 + backpressure, hooks (optional), and observability (approvals/herd journals)
 - **AND** fleet mappings for those keys are stated
+- **AND** polling/tick + concurrency are owned by Drove (Horizon is not the continuous tick)
+- **AND** isolation lists the trinity as three distinct surfaces (CAO cloud VM; Herd herdr pane + kind=agy; Heavilifter on-box worktree recovery) without collapsing them into one path
 
 #### Scenario: Body contract covers orch loop
 
@@ -72,9 +74,12 @@ The rewritten `EXTERNAL-LOOP.md` MUST bind the **session implement / PR-review p
 - **Herd** owns session-sized interactive orch after Act-on / tasks exist
 - Default path: [Herd with herdr](sand-workflow:herd-with-herdr) → [Delegate to agy](sand-workflow:delegate-to-agy) (interactive agy via herdr)
 - Bare `agy --print` is **exception-only** (herdr down or prompt still stalled after heal) and MUST journal `fallback` / `fallback_used` first via [Herd failure journal](sand-workflow:herd-failure-journal)
-- **CAO** = default parallel *scale* fan-out (cloud); do not treat Herd as the N-arm scale path
-- **Heavilifter** = prove-it / session recovery / on-box worktree when cloud blocked — **not** primary N-arm fan-out
+- **CAO** = default parallel *scale* fan-out isolation = **cloud VM** (distinct from herdr pane and on-box worktree); do not treat Herd as the N-arm scale path
+- **Herd session isolation** = **herdr pane + `kind=agy`** (interactive session implement/PR-review); not a cloud VM and not a Heavilifter worktree
+- **Heavilifter** = prove-it / session recovery isolation = **on-box worktree** when cloud blocked — **not** primary N-arm fan-out; not a herdr pane substitute for scale
+- **Drove** owns continuous tick + concurrency/`max_concurrent` reconcile; Horizon owns single-change apply/merge only
 - **Dual orch forbidden** — exactly one orch owner per brief (Horizon leaf XOR Drove continuous tick)
+- Isolation trinity MUST remain **distinct** — MUST NOT collapse CAO / Herd / Heavilifter into one isolation path
 
 #### Scenario: Session path names herdr default and agy cite
 
@@ -83,8 +88,21 @@ The rewritten `EXTERNAL-LOOP.md` MUST bind the **session implement / PR-review p
 - **THEN** Herd → herdr → agy is the default session path
 - **AND** sand-workflow `herd-with-herdr` and `delegate-to-agy` are cited
 - **AND** bare `agy --print` is stated as exception-only with fallback journal first
-- **AND** CAO is named for scale fan-out and Heavilifter for recovery
-- **AND** dual orch is forbidden
+- **AND** CAO is named for scale fan-out on cloud VM
+- **AND** Herd session isolation is herdr pane + kind=agy
+- **AND** Heavilifter is named for on-box worktree recovery
+- **AND** the three isolation surfaces are distinct (not collapsed)
+- **AND** Drove owns tick/concurrency; dual orch is forbidden
+
+#### Scenario: Isolation trinity stays distinct
+
+- **GIVEN** `EXTERNAL-LOOP.md` after apply
+- **WHEN** workspace/isolation guidance is read
+- **THEN** CAO = cloud VM is stated as scale isolation
+- **AND** Herd session = herdr pane + kind=agy is stated as session isolation
+- **AND** Heavilifter = on-box worktree recovery is stated as recovery isolation
+- **AND** no prose collapses the three into a single interchangeable path
+- **AND** continuous tick and max_concurrent policy are attributed to Drove
 
 ### Requirement: Box SoT Session arms honesty (Drove/Opus/eggbot; no remint)
 

@@ -30,5 +30,7 @@ ADR review completed for this change. **No new durable ADR.** Rewriting `EXTERNA
 - Dual orch forbidden; Horizon leaf apply default; Drove/Opus/eggbot own box skill SoT
 - No Elixir Symphony daemon unless Todd/Opus ask
 - No invent LIVE / LIVE_PASS
+- Isolation trinity (distinct): CAO = cloud VM; Herd session = herdr pane + kind=agy; Heavilifter = on-box worktree recovery — do not collapse
+- Tick/concurrency = Drove; Horizon = single-change apply/merge only
 - Herd session path ≠ CAO scale fan-out; Heavilifter = recovery
 - STOP thin-only cite — WORKFLOW.md-shaped rewrite required at apply

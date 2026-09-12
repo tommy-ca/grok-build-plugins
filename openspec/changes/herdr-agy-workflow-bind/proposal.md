@@ -7,9 +7,9 @@ Todd + Horizon Act-on REFRESH + WAVE-0 GO: **rewrite** gbp repo-root `EXTERNAL-L
 - **Wave-4 (this PR):** OpenSpec propose artefacts only under `openspec/changes/herdr-agy-workflow-bind/`. No product `EXTERNAL-LOOP.md` rewrite in this PR. No HARNESS rewrite. No box sand-workflow remint. No persona remint.
 - **Wave-5 Apply (HOLD until Todd/Horizon go):**
   - **Rewrite** repo-root `EXTERNAL-LOOP.md` to Symphony WORKFLOW.md-shaped sections:
-    1. YAML frontmatter-equivalent runtime (YAML fenced block **or** equivalent table): tracker/board, polling/tick, workspace/isolation, agent concurrency (`max_concurrent` default 5 + CPU/mem backpressure), hooks (optional), observability (approvals / herd journals).
+    1. YAML frontmatter-equivalent runtime (YAML fenced block **or** equivalent table): tracker/board; polling/tick (**Drove** owns continuous tick); workspace/isolation as **isolation trinity (distinct):** CAO = cloud VM; Herd session = herdr pane + `kind=agy`; Heavilifter = on-box worktree recovery; agent concurrency (`max_concurrent` default 5 + CPU/mem backpressure, **Drove**-owned); hooks (optional); observability (approvals / herd journals).
     2. Markdown body = agent/orch contract: eligibility, dispatch, reconcile, retry/stall, handoff states (`VERIFIED` | `human_review` | quota exhausted), lever-first VERIFY.
-    3. Session implement/PR-review path: Herd → [Herd with herdr] + [Delegate to agy] (herdr default; bare `agy --print` exception-only + fallback journal); CAO = scale fan-out; Heavilifter = recovery; dual orch forbidden.
+    3. Session implement/PR-review path: Herd → [Herd with herdr] + [Delegate to agy] (herdr default; bare `agy --print` exception-only + fallback journal); CAO = scale on cloud VM; Heavilifter = on-box worktree recovery; isolation trinity distinct; dual orch forbidden.
     4. Cite sand-workflow SoT + research audit; do **not** vendor skill bodies; no Elixir Symphony daemon.
   - Optional light `long-horizon-swarm/HARNESS.md` cross-cite to session path (do **not** clone arena).
   - Box SoT Session arms = separate Drove/Opus/eggbot apply (already VERIFIED B1) — like rooms-map; do not remint personas B1.
@@ -20,7 +20,7 @@ Todd + Horizon Act-on REFRESH + WAVE-0 GO: **rewrite** gbp repo-root `EXTERNAL-L
 
 ### New Capabilities
 
-- `herdr-agy-workflow-bind`: Rewrite `EXTERNAL-LOOP.md` as Symphony WORKFLOW.md-shaped gbp twin (frontmatter-equivalent runtime + Markdown body contract) including Herd→herdr→agy session arms (bare `agy --print` exception-only + fallback journal); cite sand-workflow SoT + research audit; honesty that box SoT Session arms are Drove/Opus/eggbot (already VERIFIED); optional light HARNESS cross-cite; no remint closed archives / personas B1; no Elixir daemon.
+- `herdr-agy-workflow-bind`: Rewrite `EXTERNAL-LOOP.md` as Symphony WORKFLOW.md-shaped gbp twin (frontmatter-equivalent runtime + Markdown body contract) including Herd→herdr→agy session arms (bare `agy --print` exception-only + fallback journal); lock isolation trinity (CAO=cloud VM; Herd=herdr pane+kind=agy; Heavilifter=on-box worktree — distinct) with Drove owning tick/concurrency; cite sand-workflow SoT + research audit; honesty that box SoT Session arms are Drove/Opus/eggbot (already VERIFIED); optional light HARNESS cross-cite; no remint closed archives / personas B1; no Elixir daemon.
 
 ### Modified Capabilities
 

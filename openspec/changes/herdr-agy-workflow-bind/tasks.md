@@ -40,9 +40,9 @@ Depends: §1 green
 Depends: Todd/Horizon go + §1 green
 
 - [ ] B.1 **Rewrite** repo-root `EXTERNAL-LOOP.md` to Symphony WORKFLOW.md shape:
-  - Frontmatter-equivalent runtime (YAML block or keyed table): tracker/board, polling/tick, workspace/isolation, `max_concurrent` default 5 + backpressure, hooks optional, observability (approvals/herd journals)
+  - Frontmatter-equivalent runtime (YAML block or keyed table): tracker/board; polling/tick (**Drove** owns continuous tick); workspace/isolation as **isolation trinity (distinct — do not collapse):** CAO = cloud VM; Herd session = herdr pane + `kind=agy`; Heavilifter = on-box worktree recovery; `max_concurrent` default 5 + backpressure (**Drove**-owned concurrency); hooks optional; observability (approvals/herd journals)
   - Markdown body contract: eligibility, dispatch, reconcile, retry/stall, handoff VERIFIED|human_review|quota, lever-first VERIFY
-  - Session arms: Herd→herdr→agy (cite herd-with-herdr + delegate-to-agy; bare `agy --print` exception-only + fallback journal); CAO=scale; Heavilifter=recovery; dual orch forbidden
+  - Session arms: Herd→herdr→agy (cite herd-with-herdr + delegate-to-agy; bare `agy --print` exception-only + fallback journal); CAO=scale on cloud VM; Heavilifter=on-box worktree recovery; dual orch forbidden; trinity stays distinct
   - Cite sand-workflow SoT + research audit; do not vendor skill bodies; no Elixir daemon
   - Keep prior useful cites (thermos #15→#17 worked example; rooms-map honesty if still relevant) without reminting closed Act-ons — **P-parallel (gbp git)**
 - [ ] B.2 Optional light `long-horizon-swarm/HARNESS.md` cross-cite to EXTERNAL-LOOP session path — do **not** clone arena — **P-parallel (gbp git; optional)**
@@ -51,12 +51,12 @@ Depends: Todd/Horizon go + §1 green
 - [ ] B.5 `openspec validate herdr-agy-workflow-bind --type change --strict` (and `--all --strict` as needed) green after merge
 - [ ] B.6 If verify / marketplace scripts touched, keep them green; else leave untouched (marketplace unaffected)
 - [ ] B.7 **Prove bars Metadata/Static (claim done only if all hold):**
-  - [ ] P1 tip `EXTERNAL-LOOP.md` is WORKFLOW-shaped (frontmatter-equivalent runtime keys + body contract sections present)
+  - [ ] P1 tip `EXTERNAL-LOOP.md` is WORKFLOW-shaped (frontmatter-equivalent runtime keys + body contract sections present) with isolation trinity distinct (CAO=cloud VM; Herd=herdr pane+kind=agy; Heavilifter=on-box worktree) and Drove owning tick/concurrency
   - [ ] P2 tip `EXTERNAL-LOOP.md` contains herdr→agy default session path + bare-print exception + herd-with-herdr + delegate-to-agy cites
   - [ ] P3 Drove B1 skills already green (cite-only); personas B1 not reminted
   - [ ] P4 no thermos/lhs/gbp-external-loop-docs remint; no LIVE invent; no Elixir daemon; no skill-body dump
   - [ ] P5 OpenSpec intent-driven; validate `--strict` green; tip ≥ `4c126d8e`; verify scripts green if touched
-  - [ ] NOT predicates: thin-only cite regress; remint closed archives; invent LIVE; dual orch; propose PR claimed as apply
+  - [ ] NOT predicates: thin-only cite regress; isolation trinity collapsed; remint closed archives; invent LIVE; dual orch; propose PR claimed as apply
 
 ## 3. Archive — serial gate
 
