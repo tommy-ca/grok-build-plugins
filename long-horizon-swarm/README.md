@@ -16,7 +16,7 @@ Then `/poteto-mode`. Then `/long-horizon-swarm`. If poteto-mode is missing, the 
 
 ## Who runs a standing program?
 
-Fleet seat bind (Planner / Horizon / Drove / CAO / Herd / Heavilifter / Nightly Audit) lives in [`HARNESS.md`](./HARNESS.md) and cites repo-root `EXTERNAL-LOOP.md`. **Dual orch forbidden** — one orch owner per brief. Heavilifter is prove-it / recovery / worktree, not primary fan-out. Herd is session herdr after Act-on, not CAO scale.
+Fleet seat bind (Planner / Horizon / Drove / CAO / Herd / Heavilifter / Nightly Audit) lives in [`HARNESS.md`](./HARNESS.md) and cites repo-root `WORKFLOW.md`. **Dual orch forbidden** — one orch owner per brief. Heavilifter is prove-it / recovery / worktree, not primary fan-out. Herd is session herdr after Act-on, not CAO scale.
 
 Overlay skills: `long-horizon-swarm`, `field-guide`, `planner-worker-split`, `review-lenses`, `coordination-layer`, `megafile-gate`, `ossify-break`, `openspec-intent-flow`.
 

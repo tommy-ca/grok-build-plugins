@@ -38,7 +38,7 @@ for seat in (
     "Nightly Audit",
 ):
     assert seat in harness, seat
-assert "EXTERNAL-LOOP.md" in harness
+assert "WORKFLOW.md" in harness
 assert "Dual orch forbidden" in harness or "dual orch forbidden" in harness.lower()
 assert "spawn_subagent" in harness or "pstack:<role>" in harness
 assert "pstack:" in harness

@@ -1,16 +1,13 @@
-# herdr-agy-workflow-bind Specification
-
 ## Purpose
 Rewrite repo-root EXTERNAL-LOOP.md as Symphony WORKFLOW.md-shaped twin (frontmatter-equivalent runtime + Markdown body contract) binding Herd→herdr→agy session arms, isolation trinity (CAO cloud VM / Herd herdr pane+kind=agy / Heavilifter on-box worktree), and Drove-owned tick/concurrency — without reminting thermos / gbp-external-loop-docs / lhs, without vendoring skill bodies, and without an Elixir Symphony daemon.
 
 ## Requirements
-
-### Requirement: EXTERNAL-LOOP.md is Symphony WORKFLOW.md-shaped twin
+### Requirement: WORKFLOW.md is Symphony WORKFLOW.md-shaped twin
 
 Feature: herdr-agy-workflow-bind
 Rule: Frontmatter-equivalent runtime + Markdown body contract; map not clone Elixir
 
-After apply, tommy-ca/grok-build-plugins repo-root `EXTERNAL-LOOP.md` MUST be rewritten as the in-repo **Symphony-class WORKFLOW.md twin** (cite https://openai-symphony.mintlify.app/setup/workflow-file and `/workspace/fleet-external-agents/audits/2026-09-05-drove-symphony-external-loop-research.md`). The file MUST include both of the following sections (YAML fenced block preferred for runtime, or an equivalent keyed Markdown table that is machine-scannable):
+After apply of `workflow-md-rename`, tommy-ca/grok-build-plugins repo-root `WORKFLOW.md` MUST be the in-repo **Symphony-class WORKFLOW.md twin** (cite https://openai-symphony.mintlify.app/setup/workflow-file and `/workspace/fleet-external-agents/audits/2026-09-05-drove-symphony-external-loop-research.md`). The live twin path MUST be `WORKFLOW.md` (hard-renamed from historical `EXTERNAL-LOOP.md`). The file MUST include both of the following sections (YAML fenced block preferred for runtime, or an equivalent keyed Markdown table that is machine-scannable):
 
 **1. Frontmatter-equivalent runtime** — MUST name at least:
 
@@ -32,12 +29,12 @@ After apply, tommy-ca/grok-build-plugins repo-root `EXTERNAL-LOOP.md` MUST be re
 - handoff states: `VERIFIED` | `human_review` | quota exhausted
 - lever-first VERIFY (Brief.VERIFY cites a lever script or verify-* skill; refuse prose-only on non-trivial leaves)
 
-The twin MUST remain a **pointer/index**, not a second SoT: it MUST cite sand-workflow skill ids (at minimum `inner-outer-orch`, `fleet-org-raci`, `drove-external-loop`, `herd-with-herdr`, `delegate-to-agy`) and MUST NOT vendor full skill bodies, MUST NOT require an Elixir Symphony daemon, MUST NOT invent LIVE/LIVE_PASS, and MUST NOT remint closed `thermos-grok-port`, `gbp-external-loop-docs`, or `lhs-swarm-economics-refresh`. Cite living `gbp-external-loop-docs` as prior pointer Act-on — this change **rewrites** the product file under the NEW capability, without MODIFY of that living spec.
+The twin MUST remain a **pointer/index**, not a second SoT: it MUST cite sand-workflow skill ids (at minimum `inner-outer-orch`, `fleet-org-raci`, `drove-external-loop`, `herd-with-herdr`, `delegate-to-agy`) and MUST NOT vendor full skill bodies, MUST NOT require an Elixir Symphony daemon, MUST NOT invent LIVE/LIVE_PASS, and MUST NOT remint closed `thermos-grok-port`, `gbp-external-loop-docs`, or `lhs-swarm-economics-refresh`. Cite living `gbp-external-loop-docs` as prior pointer Act-on — the twin content was rewritten under `herdr-agy-workflow-bind`; the live filename is now owned by `workflow-md-rename`.
 
 #### Scenario: Frontmatter-equivalent runtime keys present
 
-- **GIVEN** tip after this change applies
-- **WHEN** an operator opens repo-root `EXTERNAL-LOOP.md`
+- **GIVEN** tip after `workflow-md-rename` applies
+- **WHEN** an operator opens repo-root `WORKFLOW.md`
 - **THEN** a YAML fenced block or equivalent keyed table names tracker/board, polling/tick, workspace/isolation, max_concurrent default 5 + backpressure, hooks (optional), and observability (approvals/herd journals)
 - **AND** fleet mappings for those keys are stated
 - **AND** polling/tick + concurrency are owned by Drove (Horizon is not the continuous tick)
@@ -45,7 +42,7 @@ The twin MUST remain a **pointer/index**, not a second SoT: it MUST cite sand-wo
 
 #### Scenario: Body contract covers orch loop
 
-- **GIVEN** `EXTERNAL-LOOP.md` after apply
+- **GIVEN** `WORKFLOW.md` after apply
 - **WHEN** the Markdown body (agent/orch contract) is read
 - **THEN** eligibility, dispatch, reconcile, and retry/stall are named
 - **AND** handoff states include VERIFIED, human_review, and quota exhausted
@@ -53,7 +50,7 @@ The twin MUST remain a **pointer/index**, not a second SoT: it MUST cite sand-wo
 
 #### Scenario: Twin cites SoT and refuses Elixir/LIVE/remint
 
-- **GIVEN** `EXTERNAL-LOOP.md` after apply
+- **GIVEN** `WORKFLOW.md` after apply
 - **WHEN** SoT and must-nots are checked
 - **THEN** sand-workflow ids including herd-with-herdr and delegate-to-agy are cited
 - **AND** the Drove Symphony research audit path is cited
@@ -64,9 +61,10 @@ The twin MUST remain a **pointer/index**, not a second SoT: it MUST cite sand-wo
 
 #### Scenario: Propose PR does not land product rewrite
 
-- **GIVEN** Wave-4 propose-only artefacts for `herdr-agy-workflow-bind`
+- **GIVEN** Wave-4 propose-only artefacts for `workflow-md-rename`
 - **WHEN** the propose PR is reviewed
-- **THEN** product `EXTERNAL-LOOP.md` is unchanged in that PR (no rewrite commit)
+- **THEN** product `EXTERNAL-LOOP.md` is still present and unrenamed in that PR
+- **AND** product `WORKFLOW.md` is absent from that PR
 - **AND** apply tasks remain HOLD until Todd/Horizon go
 
 ### Requirement: Session arms Herd → herdr → agy on the WORKFLOW twin
@@ -74,7 +72,7 @@ The twin MUST remain a **pointer/index**, not a second SoT: it MUST cite sand-wo
 Feature: herdr-agy-workflow-bind
 Rule: herdr default session path; bare agy --print exception-only + fallback journal
 
-The rewritten `EXTERNAL-LOOP.md` MUST bind the **session implement / PR-review path** as:
+Repo-root `WORKFLOW.md` MUST bind the **session implement / PR-review path** as:
 
 - **Herd** owns session-sized interactive orch after Act-on / tasks exist
 - Default path: [Herd with herdr](sand-workflow:herd-with-herdr) → [Delegate to agy](sand-workflow:delegate-to-agy) (interactive agy via herdr)
@@ -88,7 +86,7 @@ The rewritten `EXTERNAL-LOOP.md` MUST bind the **session implement / PR-review p
 
 #### Scenario: Session path names herdr default and agy cite
 
-- **GIVEN** `EXTERNAL-LOOP.md` after apply
+- **GIVEN** `WORKFLOW.md` after apply
 - **WHEN** session implement / PR-review guidance is read
 - **THEN** Herd → herdr → agy is the default session path
 - **AND** sand-workflow `herd-with-herdr` and `delegate-to-agy` are cited
@@ -101,7 +99,7 @@ The rewritten `EXTERNAL-LOOP.md` MUST bind the **session implement / PR-review p
 
 #### Scenario: Isolation trinity stays distinct
 
-- **GIVEN** `EXTERNAL-LOOP.md` after apply
+- **GIVEN** `WORKFLOW.md` after apply
 - **WHEN** workspace/isolation guidance is read
 - **THEN** CAO = cloud VM is stated as scale isolation
 - **AND** Herd session = herdr pane + kind=agy is stated as session isolation
@@ -109,40 +107,22 @@ The rewritten `EXTERNAL-LOOP.md` MUST bind the **session implement / PR-review p
 - **AND** no prose collapses the three into a single interchangeable path
 - **AND** continuous tick and max_concurrent policy are attributed to Drove
 
-### Requirement: Box SoT Session arms honesty (Drove/Opus/eggbot; no remint)
-
-Feature: herdr-agy-workflow-bind
-Rule: Skills already VERIFIED B1; gbp PR does not remint; personas B1 do not remint
-
-The change MUST document that box SoT sand-workflow Session arms live under `/home/box/sand-data/workflows/` for at least:
-
-- `fleet-org-raci`
-- `inner-outer-orch`
-- `eng-lead-merge-authority`
-- `fleet-roles-map` (when present)
-
-Drove/Opus/eggbot own those skill bodies (separate box SoT apply, like rooms-map). Drove B1 for this program is **already VERIFIED** — Apply MUST NOT remint those skill files from the gbp git PR. Personas B1 (herdr-agy-pr-review-lane) are **already VERIFIED** — MUST NOT remint. Propose MUST NOT claim gbp OpenSpec prose alone reminted box skills.
-
-#### Scenario: Spec names box SoT owner and VERIFIED status
-
-- **GIVEN** propose artefacts for `herdr-agy-workflow-bind`
-- **WHEN** box Session arms ownership is assigned
-- **THEN** Drove/Opus/eggbot own the live sand-workflow skill Session arms
-- **AND** tasks/spec state Drove B1 already VERIFIED (cite-only)
-- **AND** personas B1 MUST NOT be reminted
-- **AND** the gbp git propose PR is not required to contain skill body edits
-
 ### Requirement: Optional HARNESS light cross-cite only
 
 Feature: herdr-agy-workflow-bind
-Rule: Do not clone arena; EXTERNAL-LOOP remains session-path SoT twin
+Rule: Do not clone arena; WORKFLOW.md remains session-path SoT twin
 
-Apply MAY add a light cross-cite in `long-horizon-swarm/HARNESS.md` pointing operators at EXTERNAL-LOOP session arms (Herd→herdr→agy). Apply MUST NOT clone arena/interrogate into the plugin, MUST NOT vendor sand-workflow bodies into HARNESS, and MUST NOT treat the optional cite as a second WORKFLOW twin. If EXTERNAL-LOOP alone satisfies session-path discoverability, the HARNESS cite MAY be skipped.
+Apply MAY add or keep a light cross-cite in `long-horizon-swarm/HARNESS.md` pointing operators at `WORKFLOW.md` session arms (Herd→herdr→agy). Apply MUST NOT clone arena/interrogate into the plugin, MUST NOT vendor sand-workflow bodies into HARNESS, and MUST NOT treat the optional cite as a second WORKFLOW twin. If `WORKFLOW.md` alone satisfies session-path discoverability, the HARNESS cite MAY be skipped. After `workflow-md-rename` apply, any live HARNESS cite MUST name `WORKFLOW.md` (not `EXTERNAL-LOOP.md`).
 
 #### Scenario: Optional cite does not clone arena
 
-- **GIVEN** Wave-5 apply for this change
+- **GIVEN** Wave-5 apply for `workflow-md-rename` (or a later HARNESS cite refresh)
 - **WHEN** HARNESS is considered for a session-path cross-cite
-- **THEN** any edit is a light cite to EXTERNAL-LOOP / session arms only
+- **THEN** any edit is a light cite to `WORKFLOW.md` / session arms only
 - **OR** the cite is skipped as optional
 - **AND** arena/interrogate are not cloned into long-horizon-swarm
+- **AND** live cites do not assert path `EXTERNAL-LOOP.md`
+
+## Requirements
+- FROM: `### Requirement: EXTERNAL-LOOP.md is Symphony WORKFLOW.md-shaped twin`
+- TO: `### Requirement: WORKFLOW.md is Symphony WORKFLOW.md-shaped twin`
