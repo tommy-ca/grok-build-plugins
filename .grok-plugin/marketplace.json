@@ -62,7 +62,7 @@
     {
       "name": "long-horizon-swarm",
       "description": "Optional overlay on pstack Orchestrate for standing programs and TaskTree. Not a pstack pack.",
-      "version": "1.1.0-long-horizon-swarm.0",
+      "version": "1.2.0-long-horizon-swarm.0",
       "homepage": "https://github.com/tommy-ca/grok-build-plugins/tree/main/long-horizon-swarm",
       "license": "MIT",
       "keywords": [

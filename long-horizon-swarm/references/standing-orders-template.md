@@ -17,3 +17,14 @@ Paste into `long-horizon/<id>/preferences.md` before the first spawn. Numbered. 
 13. Brief.ACCEPTANCE is GIVEN/WHEN/THEN copied from the capability spec scenarios.
 14. If openspec/changes/<id>/ exists, do not spawn workers until tasks.md exists.
 15. Recurse is parent-owned units. Children do not call spawn_subagent.
+16. Lever-first VERIFY: for a non-trivial leaf, Brief.VERIFY MUST name a `verify-*` skill or a `scripts/verify-*.sh` path. Refuse spawn when VERIFY is prose-only. Trivial leaves MAY use `skip: lever, <reason>`. Handoff Verification MUST record lever path + PASS/FAIL/INCONCLUSIVE (INCONCLUSIVE is not a pass). Nightly Audit / maintain-verification refreshes per-repo levers. Do not invent LIVE or LIVE_PASS.
+17. Refuse flat-swarm, dual-board (second-board / dual-write), and nested-spawn. Arena and interrogate stay pstack cites — do not clone them into this overlay.
+18. Blog failure-mode refuse/stop checklist (https://cursor.com/blog/agent-swarm-model-economics, Wilson Lin, Jul 2026) — keep planner≠worker, CostPolicy, Field Guide, review-lenses, megafile-gate, ossify-break, openspec-intent-flow:
+    - split-brain: two live/pending nodes share a conceptKey → refuse spawn
+    - planner contention: DesignDoc missing owner or two writers on same design-docs/<conceptKey>.md → refuse
+    - merge reconciler: drain on collision without coordination-layer record and pstack:poteto-agent reconciler → drain incomplete
+    - megafiles: owned file over megafile-loc (default 800) → ISSUES not PASS; spawn decompose
+    - ossify: core change without ossify-break DesignDoc reason → refuse
+    - review lenses: land without ≥2 lenses including pstack interrogate → refuse land
+    - Field Guide: spawn without field-guide/index.md → spawn-contract miss
+    - model economics: spawn without CostPolicy model bind, or drain without a spend.tsv row → incomplete

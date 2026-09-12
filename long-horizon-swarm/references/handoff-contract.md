@@ -19,7 +19,9 @@ success | partial | blocked | error
 - <name>: <value>
 
 ## Verification
-live-ui-verified | unit-test-verified | type-check-only | not-verified
+lever: <verify-* skill OR scripts/verify-*.sh path>
+outcome: PASS | FAIL | INCONCLUSIVE
+kind: live-ui-verified | unit-test-verified | type-check-only | not-verified
 
 ## Notes
 deviations, surprises, field-guide entries added
@@ -28,11 +30,15 @@ deviations, surprises, field-guide entries added
 - ...
 ```
 
+The existing kind enum alone is not sufficient. Always record the lever path and PASS/FAIL/INCONCLUSIVE against that lever. INCONCLUSIVE is not a pass. Do not invent LIVE or LIVE_PASS.
+
 ## Verifier
 
 ```
 ## Verification
-live-ui-verified | unit-test-verified | type-check-only | verifier-blocked | verifier-failed
+lever: <verify-* skill OR scripts/verify-*.sh path>
+outcome: PASS | FAIL | INCONCLUSIVE
+kind: live-ui-verified | unit-test-verified | type-check-only | verifier-blocked | verifier-failed
 
 ## Target
 <unit id or task name> @ <sha>
@@ -41,7 +47,7 @@ live-ui-verified | unit-test-verified | type-check-only | verifier-blocked | ver
 <branch>
 
 ## Execution
-commands and outcomes
+commands and outcomes (must include the named lever)
 
 ## Findings
 one line per acceptance criterion: PASS | FAIL | INCONCLUSIVE
@@ -49,4 +55,4 @@ one line per acceptance criterion: PASS | FAIL | INCONCLUSIVE
 ## Notes & suggestions
 ```
 
-INCONCLUSIVE is not a pass. A new SHA voids the ledger row.
+INCONCLUSIVE is not a pass. A new SHA voids the ledger row. Nightly Audit / maintain-verification is the standing cadence for lever freshness.

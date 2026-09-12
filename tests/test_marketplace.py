@@ -195,7 +195,7 @@ def test_grok_native_siblings_validate() -> None:
     assert "upstream-cursor-plugins" not in tm
     lhs_root = ROOT / "long-horizon-swarm"
     lhs_plugin = json.loads((lhs_root / "plugin.json").read_text(encoding="utf-8"))
-    assert lhs_plugin["version"] == "1.1.0-long-horizon-swarm.0"
+    assert lhs_plugin["version"] == "1.2.0-long-horizon-swarm.0"
     assert lhs_plugin["version"] == by_name["long-horizon-swarm"]["version"]
     assert by_name["long-horizon-swarm"]["source"] == "./long-horizon-swarm"
     assert "agents" not in lhs_plugin
