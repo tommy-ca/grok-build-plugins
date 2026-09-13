@@ -100,6 +100,24 @@
         "grok-build"
       ],
       "source": "./pstack-herdr"
+    },
+    {
+      "name": "grok-bot-fleet-config",
+      "description": "Grok Bot fleet-config.v1 \u2014 export/verify/import/bootstrap scrubbed multi-agent packs.",
+      "version": "1.0.0-grok-bot-fleet-config.0",
+      "homepage": "https://github.com/tommy-ca/grok-bot-fleet-config",
+      "license": "MIT",
+      "keywords": [
+        "fleet-config",
+        "grok-bot",
+        "bootstrap",
+        "grok-build"
+      ],
+      "source": {
+        "source": "url",
+        "url": "https://github.com/tommy-ca/grok-bot-fleet-config.git",
+        "sha": "d24d2366a7f2d6add4cec93b27afbc45e5327204"
+      }
     }
   ]
 }
